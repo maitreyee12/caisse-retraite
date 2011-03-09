@@ -1,0 +1,88 @@
+<?php
+
+	$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+	$this->headTitle()->setSeparator(' - ');
+	$this->headTitle('Tutoriel Zend Framework');
+	
+	echo $this->doctype(); ?>
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+		<head>
+			<?php echo $this->headMeta(); ?>
+			<?php echo $this->headTitle(); ?>
+			<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); ?>	
+		</head>
+		<body>
+			
+			<div id="wrapper">
+				<div id="header">
+					<div id="logo">
+						<h1><a href="#">crc </a></h1>
+						<p>Caisse de retraite compl&eacute;mentaire</p>
+					</div>
+					<div id="search">
+						<form method="get" action="">
+							<fieldset>
+								<input type="text" name="s" id="search-text" size="15" value="enter keywords here..." />
+								<input type="submit" id="search-submit" value="GO" />
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<!-- end #header -->
+				<div id="page">
+					<div id="page-bgtop">
+						<div id="page-bgbtm">
+							<div id="menu">
+								<ul>
+									<li class="current_page_item"><a href="#">Home</a></li>
+									<li><a href="#">Blog</a></li>
+									<li><a href="#">Photos</a></li>
+									<li><a href="#">About</a></li>
+									<li><a href="#">Links</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</div>
+							<!-- end #menu -->
+							<div id="content">
+								<div class="post">
+									<h2 class="title"><?php echo $this->escape($this->title); ?></h2>
+									
+									<div class="entry">
+										<?php echo $this->layout()->content; ?>
+									</div>
+									
+								</div>
+								
+								<div style="clear: both;">&nbsp;</div>
+								
+							</div>
+							<!-- end #content -->
+							<div id="sidebar">
+								<ul>
+									<li>
+										<h2>Categories</h2>
+										<ul>
+											<li><a href="#">Aliquam libero</a></li>
+											<li><a href="#">Consectetuer adipiscing elit</a></li>
+											<li><a href="#">Metus aliquam pellentesque</a></li>
+											<li><a href="#">Suspendisse iaculis mauris</a></li>
+											<li><a href="#">Urnanet non molestie semper</a></li>
+											<li><a href="#">Proin gravida orci porttitor</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<!-- end #sidebar -->
+							<div style="clear: both;">&nbsp;</div>
+						</div>
+					</div>
+				</div>
+				<!-- end #page -->
+			</div>
+			<div id="footer-wrapper">
+				<div id="footer">
+					<p>Copyright (c) 2011</p>
+				</div>
+			</div>	
+		</body>
+	</html>
