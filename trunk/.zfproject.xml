@@ -18,6 +18,51 @@
           <actionMethod actionName="supprimer"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Demande">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="departRetraite"/>
+          <actionMethod actionName="affiliation"/>
+          <actionMethod actionName="modificationDossier"/>
+          <actionMethod actionName="reversion"/>
+          <actionMethod actionName="rachatTrimestres"/>
+          <actionMethod actionName="informations"/>
+        </controllerFile>
+        <controllerFile controllerName="Transfert">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="dossier"/>
+        </controllerFile>
+        <controllerFile controllerName="Profil">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="carriere"/>
+          <actionMethod actionName="periode"/>
+          <actionMethod actionName="documents"/>
+          <actionMethod actionName="infosPerso"/>
+          <actionMethod actionName="rib"/>
+          <actionMethod actionName="versements"/>
+          <actionMethod actionName="dads"/>
+        </controllerFile>
+        <controllerFile controllerName="Recherche">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="listeEntreprises"/>
+          <actionMethod actionName="listeAdherents"/>
+        </controllerFile>
+        <controllerFile controllerName="ListeDemandes">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="ficheReversion"/>
+          <actionMethod actionName="ficheRachatTrimestres"/>
+          <actionMethod actionName="ficheDepartRetraite"/>
+          <actionMethod actionName="ficheInformations"/>
+          <actionMethod actionName="ficheDemandeModification"/>
+        </controllerFile>
+        <controllerFile controllerName="Main">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="navigationInterne"/>
+          <actionMethod actionName="navigationExterne"/>
+        </controllerFile>
+        <controllerFile controllerName="Connexion">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="authentification"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Album"/>
@@ -54,6 +99,99 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="supprimer"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Transfert">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Recherche">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="ListeDemandes">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Main">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Connexion">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="departRetraite"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="affiliation"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="modificationDossier"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="reversion"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="rachatTrimestres"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="informations"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Transfert">
+            <viewScriptFile forActionName="dossier"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="carriere"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="periode"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="documents"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="infosPerso"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="rib"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="versements"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="dads"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Recherche">
+            <viewScriptFile forActionName="listeEntreprises"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Recherche">
+            <viewScriptFile forActionName="listeAdherents"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="ListeDemandes">
+            <viewScriptFile forActionName="ficheReversion"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="ListeDemandes">
+            <viewScriptFile forActionName="ficheRachatTrimestres"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="ListeDemandes">
+            <viewScriptFile forActionName="ficheDepartRetraite"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="ListeDemandes">
+            <viewScriptFile forActionName="ficheInformations"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="ListeDemandes">
+            <viewScriptFile forActionName="ficheDemandeModification"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Main">
+            <viewScriptFile forActionName="navigationInterne"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Main">
+            <viewScriptFile forActionName="navigationExterne"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Connexion">
+            <viewScriptFile forActionName="authentification"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
