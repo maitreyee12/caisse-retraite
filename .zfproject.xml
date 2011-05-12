@@ -71,6 +71,28 @@
       <modelsDirectory>
         <dbTableDirectory>
           <dbTableFile dbTableName="Albums"/>
+          <dbTableFile dbTableName="Adherent"/>
+          <dbTableFile dbTableName="Caisse"/>
+          <dbTableFile dbTableName="Carriere"/>
+          <dbTableFile dbTableName="Courrier"/>
+          <dbTableFile dbTableName="Declaration"/>
+          <dbTableFile dbTableName="Demande"/>
+          <dbTableFile dbTableName="DemandeAffiliation"/>
+          <dbTableFile dbTableName="DemandeModificationCarriere"/>
+          <dbTableFile dbTableName="DemandeRachat"/>
+          <dbTableFile dbTableName="DemandeReversion"/>
+          <dbTableFile dbTableName="Documents"/>
+          <dbTableFile dbTableName="EmployeCaisse"/>
+          <dbTableFile dbTableName="Entreprise"/>
+          <dbTableFile dbTableName="Periode"/>
+          <dbTableFile dbTableName="Prelevement"/>
+          <dbTableFile dbTableName="Retraite"/>
+          <dbTableFile dbTableName="Retraites"/>
+          <dbTableFile dbTableName="Reversion"/>
+          <dbTableFile dbTableName="Rib"/>
+          <dbTableFile dbTableName="Salaire"/>
+          <dbTableFile dbTableName="Utilisateur"/>
+          <dbTableFile dbTableName="Versement"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>

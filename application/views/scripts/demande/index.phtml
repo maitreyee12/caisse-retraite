@@ -1,4 +1,8 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Demande</b> and script/action name <b>index</b></p>
-</div>
+<?php
+	$this->title = 'Listes des demandes';
+	$this->headTitle($this->title);
+?>
+
+<p>
+	<a href="<?php echo $this->url(array('controller'=>'demandes','action'=>'ajouter'));?>">Ajouter de nouveaux albums</a>
+</p>
