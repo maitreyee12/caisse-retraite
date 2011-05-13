@@ -1,13 +1,10 @@
 #summary Wiki projet Caisse retraite complémentaire CRC.
 
-= Introduction =
+= Sommaire =
 
-Add your content here.
+#sidebar Base de données
 
 
-= Details =
+= Base de données =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+sql
