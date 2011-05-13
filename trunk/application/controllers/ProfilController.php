@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class ProfilController extends Zend_Controller_Action
 {
