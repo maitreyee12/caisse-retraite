@@ -3,6 +3,11 @@
 	$this->headTitle($this->title);
 ?>
 
-<p>
-	<a href="<?php echo $this->url(array('controller'=>'demandes','action'=>'ajouter'));?>">Ajouter de nouveaux albums</a>
-</p>
+<ul>
+	<li><a href="<?php echo $this->url(array('controller'=>'demande','action'=>'affiliation'));?>">Demandes affiliation</a></li>
+	<li><a href="<?php echo $this->url(array('controller'=>'demande','action'=>'informations'));?>">Demandes informations</a></li>
+	<li><a href="<?php echo $this->url(array('controller'=>'demande','action'=>'rachat-trimestres'));?>">Demandes rachat trimestres</a></li>
+	<li><a href="<?php echo $this->url(array('controller'=>'demande','action'=>'reversion'));?>">Demandes reversion</a></li>
+	<li><a href="<?php echo $this->url(array('controller'=>'demande','action'=>'modification-dossier'));?>">Demandes modifications de dossier</a></li>
+	<li><a href="<?php echo $this->url(array('controller'=>'demande','action'=>'depart-retraite'));?>">Demandes depart en retraite</a></li>
+</ul>
