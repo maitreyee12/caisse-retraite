@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class MainController extends Zend_Controller_Action
 {
