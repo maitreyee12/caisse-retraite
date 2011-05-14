@@ -214,7 +214,8 @@ img.aligncenter {
 
 #content {
 	float: left;
-	width: 540px;
+	width: 700px;
+	min-height:330px;
 	padding: 30px 20px 0px 0px;
 }
 
@@ -264,7 +265,7 @@ img.aligncenter {
 
 #sidebar {
 	float: right;
-	width: 330px;
+	width: 200px;
 	padding: 40px 0px 0px 0px;
 }
 
