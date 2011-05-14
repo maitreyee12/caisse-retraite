@@ -13,6 +13,7 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 		$identifiant = new Zend_Form_Element_Text('Identifiant');
 		$identifiant->setLabel('Nom de la société')
 		->setRequired(true)
+		->addValidator('alnum')	//only alphanumeric
 		->addFilter('StripTags')
 		->addFilter('StringTrim')
 		->addValidator('NotEmpty');
@@ -30,16 +31,18 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 		->addFilter('StringTrim')
 		->addValidator('NotEmpty');
 		
-		$password = new Zend_Form_Element_Text('Password');
+		$password = new Zend_Form_Element_Password('Password');
 		$password->setLabel('Password')
 		->setRequired(true)
 		->addFilter('StripTags')
 		->addFilter('StringTrim')
 		->addValidator('NotEmpty');
 		
-		$adresse = new Zend_Form_Element_Text('Adresse');
+		$adresse = new Zend_Form_Element_Textarea('Adresse');
 		$adresse->setLabel('Adresse')
 		->setRequired(true)
+		->setAttrib('COLS', '40')
+		->setAttrib('ROWS', '4')
 		->addFilter('StripTags')
 		->addFilter('StringTrim')
 		->addValidator('NotEmpty');

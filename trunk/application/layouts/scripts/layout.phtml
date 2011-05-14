@@ -2,7 +2,7 @@
 
 	$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
 	$this->headTitle()->setSeparator(' - ');
-	$this->headTitle('Tutoriel Zend Framework');
+	$this->headTitle('CRC');
 	
 	echo $this->doctype(); ?>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
@@ -34,8 +34,8 @@
 						<div id="page-bgbtm">
 							<div id="menu">
 								<ul>
-									<li class="current_page_item"><a href="#">Home</a></li>
-									<li><a href="#">Blog</a></li>
+									<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Home</a></li>
+									<li><a href="<?php echo $this->url(array('controller'=>'Demande','action'=>'index'));?>">Demande</a></li>
 									<li><a href="#">Photos</a></li>
 									<li><a href="#">About</a></li>
 									<li><a href="#">Links</a></li>
@@ -60,14 +60,11 @@
 							<div id="sidebar">
 								<ul>
 									<li>
-										<h2>Categories</h2>
+										<h2>Aide</h2>
 										<ul>
-											<li><a href="#">Aliquam libero</a></li>
-											<li><a href="#">Consectetuer adipiscing elit</a></li>
-											<li><a href="#">Metus aliquam pellentesque</a></li>
-											<li><a href="#">Suspendisse iaculis mauris</a></li>
-											<li><a href="#">Urnanet non molestie semper</a></li>
-											<li><a href="#">Proin gravida orci porttitor</a></li>
+											<li>Ici on aura</li>
+											<li>l'aide en ligne</li>
+											<li>c plutot cool</li>
 										</ul>
 									</li>
 								</ul>
