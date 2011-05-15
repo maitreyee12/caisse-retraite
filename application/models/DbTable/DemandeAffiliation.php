@@ -9,12 +9,12 @@ class Application_Model_DbTable_DemandeAffiliation extends Zend_Db_Table_Abstrac
     {
         $data = array(
             'Identifiant' => $identifiant,
-            'Num_siret' => $num_siret,
+            'Num_siret' => (int)$num_siret,
             'E_mail' => $e_mail,
-            'Password' => $password,
+            'Password' => md5($password),
             'Adresse' => $adresse,
-            'Telephone' => $telephone,
-            'Nombre_employes' => $nombre_employes,
+            'Telephone' => (int)$telephone,
+            'Nombre_employes' => (int)$nombre_employes,
         );
         $this->insert($data);
     }
