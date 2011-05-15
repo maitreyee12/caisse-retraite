@@ -19,13 +19,18 @@
 						<h1><a href="#">crc </a></h1>
 						<p>Caisse de retraite compl&eacute;mentaire</p>
 					</div>
-					<div id="search">
-						<form method="get" action="">
-							<fieldset>
-								<input type="text" name="s" id="search-text" size="15" value="enter keywords here..." />
-								<input type="submit" id="search-submit" value="GO" />
-							</fieldset>
-						</form>
+					<div id="authsearch">
+						<div id="authentification">
+							<?php echo $this->login();  ?>
+						</div>
+						<div id="search">
+							<form method="get" action="">
+								<fieldset>
+									<input type="text" name="s" id="search-text" size="15" value="enter keywords here..." />
+									<input type="submit" id="search-submit" value="GO" />
+								</fieldset>
+							</form>
+						</div>
 					</div>
 				</div>
 				<!-- end #header -->
@@ -58,14 +63,17 @@
 							</div>
 							<!-- end #content -->
 							<div id="sidebar">
+								<div id="auth">
+									
+									
+									
+								</div>
 								<ul>
 									<li>
 										<h2>Aide</h2>
-										<ul>
-											<li>Ici on aura</li>
-											<li>l'aide en ligne</li>
-											<li>c plutot cool</li>
-										</ul>
+										Ici un élément du Layout nommé 'aide'
+										A remplir en fonction du contexte
+										<?php echo $this->layout()->aide; ?>
 									</li>
 								</ul>
 							</div>
