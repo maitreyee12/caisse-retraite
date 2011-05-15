@@ -38,7 +38,7 @@ class DemandeController extends Zend_Controller_Action
 						
 						$albums = new Application_Model_DbTable_DemandeAffiliation();
 						$albums->ajouterDemande($identifiant, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes);
-						$this->_helper->redirector('index');
+						$this->_helper->redirector('accepte');
 					} 
 				else 
 					{
@@ -67,8 +67,15 @@ class DemandeController extends Zend_Controller_Action
         // action body
     }
 
+    public function accepteAction()
+    {
+        // action body
+    }
+
 
 }
+
+
 
 
 

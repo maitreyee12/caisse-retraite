@@ -20,6 +20,7 @@
           <actionMethod actionName="reversion"/>
           <actionMethod actionName="rachatTrimestres"/>
           <actionMethod actionName="informations"/>
+          <actionMethod actionName="accepte"/>
         </controllerFile>
         <controllerFile controllerName="Transfert">
           <actionMethod actionName="index"/>
@@ -63,6 +64,13 @@
       <formsDirectory>
         <formFile formName="DemandeAffiliation"/>
         <formFile formName="UserLogin"/>
+        <formFile formName="DemandeInformations"/>
+        <formFile formName="DemandeRachatTrimestres"/>
+        <formFile formName="DemandeReversion"/>
+        <formFile formName="DemandeModificationDossier"/>
+        <formFile formName="DemandeDepartRetraite"/>
+        <formFile formName="RechercheEntreprises"/>
+        <formFile formName="RechercheAdherents"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -192,6 +200,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Connexion">
             <viewScriptFile forActionName="preDispatch"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="accepte"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
