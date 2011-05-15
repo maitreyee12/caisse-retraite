@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <projectProfile type="default" version="1.11.4">
   <projectDirectory>
     <projectProfileFile filesystemName=".zfproject.xml"/>
@@ -55,11 +55,14 @@
         </controllerFile>
         <controllerFile controllerName="Connexion">
           <actionMethod actionName="index"/>
-          <actionMethod actionName="authentification"/>
+          <actionMethod actionName="login"/>
+          <actionMethod actionName="logout"/>
+          <actionMethod actionName="preDispatch"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="DemandeAffiliation"/>
+        <formFile formName="UserLogin"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -113,9 +116,6 @@
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Main">
-            <viewScriptFile forActionName="index"/>
-          </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Connexion">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Demande">
@@ -188,7 +188,10 @@
             <viewScriptFile forActionName="navigationExterne"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Connexion">
-            <viewScriptFile forActionName="authentification"/>
+            <viewScriptFile forActionName="login"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Connexion">
+            <viewScriptFile forActionName="preDispatch"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
