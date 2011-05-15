@@ -29,7 +29,7 @@ class DemandeController extends Zend_Controller_Action
 				if ($form->isValid($formData)) 
 					{
 						$identifiant = $form->getValue('Identifiant');
-						$num_siret  = $form->getValue('Num_siret ');
+						$num_siret  = $form->getValue('Num_siret');
 						$e_mail = $form->getValue('E_mail');
 						$password = $form->getValue('Password');
 						$adresse = $form->getValue('Adresse');

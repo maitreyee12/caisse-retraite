@@ -5,63 +5,135 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 
     public function init()
     {
+		//Titre du formulaire
 		$this->setName('demande_affiliation');
-		
+
+		//ID
 		$id = new Zend_Form_Element_Hidden('Num_demande');
-		$id->addFilter('Int');
+		$id
+				->addFilter('Int');
+	
 		
+		//IDENTIFIANT
 		$identifiant = new Zend_Form_Element_Text('Identifiant');
-		$identifiant->setLabel('Nom de la société')
-		->setRequired(true)
-		->addValidator('alnum')	//only alphanumeric
-		->addFilter('StripTags')
-		->addFilter('StringTrim')
-		->addValidator('NotEmpty');
+		$identifiant
+				->setLabel('Raison sociale : ')
+				->addFilter('StripTags')
+				->addFilter('StringTrim')
+				->addValidator('StringLength', false, array(3, 200))
+				->addValidator('Alnum', false, array('allowWhiteSpace' => true))
+				->setRequired(true)
+				//->setDescription('Minimum de 3 caractères')
+				->addErrorMessages(array('Le nom de la société doit comprendre au moins 3 caractères', 'Ne peut pas comprendre de caractères spéciaux'));
 		
-		$num_siret = new Zend_Form_Element_Text('Num_siert');
-		$num_siret->setLabel('Num_siert')
-		->setRequired(true)
-		->addFilter('Int')
-		->addValidator('NotEmpty');
 		
+
+		//NUM_SIRET
+		$num_siret = new Zend_Form_Element_Text('Num_siret');
+		$num_siret
+				->setLabel('Numéro de SIRET : ')
+				->addFilter('StripTags')
+				->addValidator('regex', false, array('([0-9]{14})'))
+				->setRequired(true)
+				->setAttrib('maxlength', '14')
+				//->setDescription('14 Chiffres composants le numéro de SIRET de votre société')
+				->addErrorMessages(array('Le numéro de SIRET ne comporte pas les 14 chiffres'));
+		
+		
+
+		//E_MAIL
 		$e_mail = new Zend_Form_Element_Text('E_mail');
-		$e_mail->setLabel('E_mail')
-		->setRequired(true)
-		->addFilter('StripTags')
-		->addFilter('StringTrim')
-		->addValidator('NotEmpty');
+		$e_mail
+				->setLabel('Adresse email : ')
+				->addFilter('StripTags')
+				->addValidator('regex', false, array('/^[-_a-z0-9\'+*$^&%=~!?{}]++(?:\.[-_a-z0-9\'+*$^&%=~!?{}]+)*+@(?:(?![-.])[-a-z0-9.]+(?<![-.])\.[a-z]{2,6}|\d{1,3}(?:\.\d{1,3}){3})(?::\d++)?$/iD'))
+				->setRequired(true)
+				->addErrorMessages(array('Adresse email invalide'));
 		
+		$e_mail1 = new Zend_Form_Element_Text('e_mail1');
+		$e_mail1
+				->setLabel('Confirmer adresse email : ')
+				->addFilter('StripTags')
+				->addValidator('regex', false, array('/^[-_a-z0-9\'+*$^&%=~!?{}]++(?:\.[-_a-z0-9\'+*$^&%=~!?{}]+)*+@(?:(?![-.])[-a-z0-9.]+(?<![-.])\.[a-z]{2,6}|\d{1,3}(?:\.\d{1,3}){3})(?::\d++)?$/iD'))
+				->addValidator('identical', false, array('token' => 'E_mail', 'strict' => true))
+				->setRequired(true)
+				->addErrorMessages(array('Adresse email différente'));
+				
+		
+
+		//PASSWORD
 		$password = new Zend_Form_Element_Password('Password');
-		$password->setLabel('Password')
-		->setRequired(true)
-		->addFilter('StripTags')
-		->addFilter('StringTrim')
-		->addValidator('NotEmpty');
+		$password
+				->setLabel('Mot de passe : ')
+				->addFilter('StripTags')
+				->addFilter('StringTrim')
+				->addValidator('StringLength', false, array(6))
+				->setRequired(true)
+				->addErrorMessages(array('Le mot de passe doit contenir au moins 6 caractères'));
 		
+		$password1 = new Zend_Form_Element_Password('password1');
+		$password1
+				->setLabel('Confirmer mot de passe : ')
+				->addFilter('StripTags')
+				->addFilter('StringTrim')
+				->addValidator('StringLength', false, array(6))
+				->addValidator('identical', false, array('token' => 'Password', 'strict' => true))
+				->setRequired(true)
+				->addErrorMessages(array('Mot de passe différent'));		
+
+				
+		//ADRESSE
 		$adresse = new Zend_Form_Element_Textarea('Adresse');
-		$adresse->setLabel('Adresse')
-		->setRequired(true)
-		->setAttrib('COLS', '40')
-		->setAttrib('ROWS', '4')
-		->addFilter('StripTags')
-		->addFilter('StringTrim')
-		->addValidator('NotEmpty');
+		$adresse
+				->setLabel('Adresse')
+				->addFilter('StripTags')
+				->addFilter('StringTrim')
+				->addValidator('StringLength', false, array(30))
+				->setRequired(true)
+				->setAttrib('cols', '40')
+				->setAttrib('rows', '4')
+				->setErrorMessages(array('Adresse invalide'));	
+				
 		
+		
+		//TEL
 		$telephone = new Zend_Form_Element_Text('Telephone');
-		$telephone->setLabel('Telephone')
-		->setRequired(true)
-		->addFilter('Int')
-		->addValidator('NotEmpty');
+		$telephone
+				->setLabel('Numéro de téléphone : ')
+				->addFilter('StripTags')
+				->addValidator('regex', false, array('([0-9]{10})'))
+				->setRequired(true)
+				->setAttrib('maxlength', '10')
+				->setDescription('format : 0142179352')
+				->addErrorMessages(array('Le numéro de téléphone ne comporte pas les 10 chiffres'));
 		
+
 		$nombre_employes = new Zend_Form_Element_Text('Nombre_employes');
-		$nombre_employes->setLabel('Nombre_employes')
-		->setRequired(true)
-		->addFilter('Int')
-		->addValidator('NotEmpty');
+		$nombre_employes
+				->setLabel('Nombre_employes : ')	
+				->addFilter('Int')
+				->addFilter('StripTags')
+				->addValidator('Between',false, array(1, 100000))
+				->setRequired(true)
+				->addErrorMessages(array('Vous devez déclarer au moins 1 salarié'));
 		
 		$envoyer = new Zend_Form_Element_Submit('envoyer');
 		$envoyer->setAttrib('id', 'boutonenvoyer');
-		$this->addElements(array($id, $identifiant, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes, $envoyer));
+	
+		$this->addElements(array(
+									$id, 
+									$identifiant, 
+									$num_siret,
+									$e_mail, 
+									$e_mail1, 
+									$password, 
+									$password1, 
+									$adresse, 
+									$telephone, 
+									$nombre_employes, 
+									$envoyer)
+								);
+
     }
 
 

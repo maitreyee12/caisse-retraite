@@ -366,3 +366,19 @@ img.aligncenter {
 
 #footer a {
 }
+
+
+
+/* Form */
+
+p.description {
+	color:green;
+}
+
+ul.errors{
+	color:red;
+}
+
+label.required{
+	font-weight:bold;
+	}
