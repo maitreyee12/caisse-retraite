@@ -116,9 +116,21 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 				->addValidator('Between',false, array(1, 100000))
 				->setRequired(true)
 				->addErrorMessages(array('Vous devez déclarer au moins 1 salarié'));
+				
+		//COMMENTAIRE
+		$commentaire = new Zend_Form_Element_Textarea('Commentaire');
+		$commentaire
+				->setLabel('commentaire')
+				->addFilter('StripTags')
+				->addFilter('StringTrim')
+				->setAttrib('cols', '40')
+				->setAttrib('rows', '4')
+				->setDescription('Vous pouvez déposer un commentaire pour aider les administrateurs à traiter votre demande.');
 		
 		$envoyer = new Zend_Form_Element_Submit('envoyer');
-		$envoyer->setAttrib('id', 'boutonenvoyer');
+		$envoyer
+					->setAttrib('id', 'boutonenvoyer')
+					->setLabel('Envoyer la demande');;
 	
 		$this->addElements(array(
 									$id, 
@@ -130,7 +142,8 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 									$password1, 
 									$adresse, 
 									$telephone, 
-									$nombre_employes, 
+									$nombre_employes,
+									$commentaire,
 									$envoyer)
 								);
 

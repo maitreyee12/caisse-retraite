@@ -20,29 +20,29 @@ class DemandeController extends Zend_Controller_Action
 
     public function affiliationAction()
     {
-		$form = new Application_Form_DemandeAffiliation();
-		$form->envoyer->setLabel('Envoyer la demande');
-		$this->view->form = $form;
+		$form_DemandeAffiliation = new Application_Form_DemandeAffiliation();
+		$this->view->form = $form_DemandeAffiliation;
 		if ($this->getRequest()->isPost()) 
 			{
 				$formData = $this->getRequest()->getPost();
-				if ($form->isValid($formData)) 
+				if ($form_DemandeAffiliation->isValid($formData)) 
 					{
-						$identifiant = $form->getValue('Identifiant');
-						$num_siret  = $form->getValue('Num_siret');
-						$e_mail = $form->getValue('E_mail');
-						$password = $form->getValue('Password');
-						$adresse = $form->getValue('Adresse');
-						$telephone = $form->getValue('Telephone');
-						$nombre_employes = $form->getValue('Nombre_employes');
+						$identifiant = $form_DemandeAffiliation->getValue('Identifiant');
+						$num_siret  = $form_DemandeAffiliation->getValue('Num_siret');
+						$e_mail = $form_DemandeAffiliation->getValue('E_mail');
+						$password = $form_DemandeAffiliation->getValue('Password');
+						$adresse = $form_DemandeAffiliation->getValue('Adresse');
+						$telephone = $form_DemandeAffiliation->getValue('Telephone');
+						$nombre_employes = $form_DemandeAffiliation->getValue('Nombre_employes');
+						$commentaires = $form_DemandeAffiliation->getValue('Commentaires');
 						
-						$albums = new Application_Model_DbTable_DemandeAffiliation();
-						$albums->ajouterDemande($identifiant, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes);
+						$model_DemandeAffiliation = new Application_Model_DbTable_DemandeAffiliation();
+						$model_DemandeAffiliation->ajouterDemande($identifiant, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes, $commentaires);
 						$this->_helper->redirector('accepte');
 					} 
 				else 
 					{
-						$form->populate($formData);
+						$form_DemandeAffiliation->populate($formData);
 					}
 			}
     }
@@ -64,7 +64,7 @@ class DemandeController extends Zend_Controller_Action
 
     public function informationsAction()
     {
-        // action body
+       // action body
     }
 
     public function accepteAction()

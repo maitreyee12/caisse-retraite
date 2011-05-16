@@ -375,6 +375,10 @@ p.description {
 	color:green;
 }
 
+label.optional {
+	font-weight:bold;
+}
+
 ul.errors{
 	color:red;
 }
