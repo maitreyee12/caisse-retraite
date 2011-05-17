@@ -386,3 +386,26 @@ ul.errors{
 label.required{
 	font-weight:bold;
 	}
+
+#view-content{
+	float: left;
+	width: 230px;
+	height: 350px;
+    padding: 0cm;
+   	}
+	
+#map{
+	width: 450px;
+	height: 350px;
+	display: inline-block;
+    padding: 0cm;
+    text-align: justify;
+	}
+	
+#coordonnees{
+	margin-top: 80;
+	border-style: solid;
+    border-width: 2px;
+    padding: 0cm;
+    text-align: center;
+	}

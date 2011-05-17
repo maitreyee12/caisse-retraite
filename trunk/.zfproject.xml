@@ -60,6 +60,9 @@
           <actionMethod actionName="logout"/>
           <actionMethod actionName="preDispatch"/>
         </controllerFile>
+        <controllerFile controllerName="Contact">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="DemandeAffiliation"/>
@@ -203,6 +206,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Demande">
             <viewScriptFile forActionName="accepte"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Contact">
+            <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
