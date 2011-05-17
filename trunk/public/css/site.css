@@ -270,6 +270,15 @@ img.aligncenter {
 	color: #FFFFFF;
 }
 
+
+/* Liste des demandes*/
+
+table.tableclass {
+	border-width:1px; 
+ 	border-style:solid; 
+ 	border-color:black;	
+}
+
 /* Sidebar */
 
 #sidebar {

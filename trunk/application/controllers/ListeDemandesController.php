@@ -10,7 +10,8 @@ class ListeDemandesController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        $demandes = new Application_Model_DbTable_Demande();
+		$this->view->demandes = $demandes->fetchAll();
     }
 
     public function ficheReversionAction()
