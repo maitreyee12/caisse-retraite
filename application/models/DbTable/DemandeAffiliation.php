@@ -5,10 +5,10 @@ class Application_Model_DbTable_DemandeAffiliation extends Zend_Db_Table_Abstrac
 
     protected $_name = 'demande_affiliation';
 
-	public function ajouterDemande($identifiant, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes)
+	public function ajouterDemande($nom, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes)
     {
         $data = array(
-            'Identifiant' => $identifiant,
+            'Nom' => $nom,
             'Num_siret' => (int)$num_siret,
             'E_mail' => $e_mail,
             'Password' => md5($password),
