@@ -14,9 +14,9 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 				->addFilter('Int');
 	
 		
-		//IDENTIFIANT
-		$identifiant = new Zend_Form_Element_Text('Identifiant');
-		$identifiant
+		//NOM
+		$nom = new Zend_Form_Element_Text('Nom');
+		$nom
 				->setLabel('Raison sociale : ')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
@@ -134,7 +134,7 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 	
 		$this->addElements(array(
 									$id, 
-									$identifiant, 
+									$nom, 
 									$num_siret,
 									$e_mail, 
 									$e_mail1, 

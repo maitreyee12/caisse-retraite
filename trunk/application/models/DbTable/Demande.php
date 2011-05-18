@@ -14,11 +14,7 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
 		}
 		return $row->toArray();
 	}
-	public function ajouterDemande()
-	{
-		//$data = array('artiste' => $artiste,'titre' => $titre,);
-		//$this->insert($data);
-	}
+
 	public function modifierDemande()
 	{
 		//$data = array('artiste' => $artiste,'titre' => $titre,);
@@ -29,16 +25,15 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
 		$this->delete('Num_demande =' . (int)$id);
 	}
 
-	public function ajouterDemandeInformation($identifiant, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes)
+	public function ajouterDemande($id_courrier, $id_utilisateur, $commentaires, $date_demande, $etat, $type)
     {
         $data = array(
-            'Identifiant' => $identifiant,
-            'Num_siret' => (int)$num_siret,
-            'E_mail' => $e_mail,
-            'Password' => md5($password),
-            'Adresse' => $adresse,
-            'Telephone' => (int)$telephone,
-            'Nombre_employes' => (int)$nombre_employes,
+            'Id_courrier' => $id_courrier,
+            'Id_utilisateur' => $id_utilisateur,
+            'Commentaires' => $commentaires,
+            'Date_demande' => $date_demande,
+            'Etat' => $etat,
+            'Type' => $type			
         );
         $this->insert($data);
     }

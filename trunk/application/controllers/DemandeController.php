@@ -27,7 +27,7 @@ class DemandeController extends Zend_Controller_Action
 				$formData = $this->getRequest()->getPost();
 				if ($form_DemandeAffiliation->isValid($formData)) 
 					{
-						$identifiant = $form_DemandeAffiliation->getValue('Identifiant');
+						$nom = $form_DemandeAffiliation->getValue('Nom');
 						$num_siret  = $form_DemandeAffiliation->getValue('Num_siret');
 						$e_mail = $form_DemandeAffiliation->getValue('E_mail');
 						$password = $form_DemandeAffiliation->getValue('Password');
@@ -36,8 +36,29 @@ class DemandeController extends Zend_Controller_Action
 						$nombre_employes = $form_DemandeAffiliation->getValue('Nombre_employes');
 						$commentaires = $form_DemandeAffiliation->getValue('Commentaires');
 						
+						$auth = Zend_Auth::getInstance();
+						//si c'est une demande sans etre connecté : demande d'une nouvelle entreprise
+						if (!$auth->hasIdentity ()) 
+							{
+								$id_courrier = null;
+								$id_utilisateur = null;
+							}
+						//sinon c'est un employé de la caisse
+						else if(($auth.getIdentity()->Droits) == (3))
+							{
+								$id_courrier = $form_DemandeAffiliation->getValue('Id_courrier');
+								$id_utilisateur = $form_DemandeAffiliation->getValue('Id_utilisateur');
+							}
+							
+						$date_demande = date("Y-m-d H:i:s");
+						$etat = 0;
+						$type = "demande affiliation";
+						
+						$model_Demande = new Application_Model_DbTable_Demande();
+						$model_Demande->ajouterDemande($id_courrier, $id_utilisateur, $commentaires, $date_demande, $etat, $type);
+						
 						$model_DemandeAffiliation = new Application_Model_DbTable_DemandeAffiliation();
-						$model_DemandeAffiliation->ajouterDemande($identifiant, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes, $commentaires);
+						$model_DemandeAffiliation->ajouterDemande($nom, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes);
 						$this->_helper->redirector('accepte');
 					} 
 				else 
