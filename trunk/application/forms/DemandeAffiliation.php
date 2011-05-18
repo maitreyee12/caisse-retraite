@@ -12,6 +12,19 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 		$id = new Zend_Form_Element_Hidden('Num_demande');
 		$id
 				->addFilter('Int');
+				
+		$auth = Zend_Auth::getInstance();
+		if(($auth->getIdentity()->Droits) == (3))
+			{
+				//NUM_SIRET
+				$num_courrier = new Zend_Form_Element_Text('Id_courrier');
+				$num_courrier
+				->setLabel('Numéro de courrier : ')
+				->addFilter('StripTags')
+				->addValidator('regex', false, array('([0-9]*)'))
+				->setRequired(true)
+				->setDescription('Numéro du courrier qui contient la demande écrite.');
+			}
 	
 		
 		//NOM
@@ -36,7 +49,6 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 				->addValidator('regex', false, array('([0-9]{14})'))
 				->setRequired(true)
 				->setAttrib('maxlength', '14')
-				//->setDescription('14 Chiffres composants le numéro de SIRET de votre société')
 				->addErrorMessages(array('Le numéro de SIRET ne comporte pas les 14 chiffres'));
 		
 		
@@ -118,7 +130,7 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 				->addErrorMessages(array('Vous devez déclarer au moins 1 salarié'));
 				
 		//COMMENTAIRE
-		$commentaire = new Zend_Form_Element_Textarea('Commentaire');
+		$commentaire = new Zend_Form_Element_Textarea('Commentaires');
 		$commentaire
 				->setLabel('commentaire')
 				->addFilter('StripTags')
@@ -132,21 +144,41 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 					->setAttrib('id', 'boutonenvoyer')
 					->setLabel('Envoyer la demande');;
 	
-		$this->addElements(array(
-									$id, 
-									$nom, 
-									$num_siret,
-									$e_mail, 
-									$e_mail1, 
-									$password, 
-									$password1, 
-									$adresse, 
-									$telephone, 
-									$nombre_employes,
-									$commentaire,
-									$envoyer)
-								);
-
+		if(($auth->getIdentity()->Droits) == (3))
+			{	
+				$this->addElements(array(
+											$id, 
+											$num_courrier,
+											$nom, 
+											$num_siret,
+											$e_mail, 
+											$e_mail1, 
+											$password, 
+											$password1, 
+											$adresse, 
+											$telephone, 
+											$nombre_employes,
+											$commentaire,
+											$envoyer)
+										);
+			}
+		else
+			{
+				$this->addElements(array(
+											$id, 
+											$nom, 
+											$num_siret,
+											$e_mail, 
+											$e_mail1, 
+											$password, 
+											$password1, 
+											$adresse, 
+											$telephone, 
+											$nombre_employes,
+											$commentaire,
+											$envoyer)
+										);
+			}
     }
 
 
