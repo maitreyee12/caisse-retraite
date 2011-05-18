@@ -396,22 +396,17 @@ label.required{
 	font-weight:bold;
 	}
 
-#view-content{
-	float: left;
-	width: 230px;
-	height: 350px;
-    padding: 0cm;
-   	}
-	
 #map{
 	width: 450px;
 	height: 350px;
 	display: inline-block;
-    padding: 0cm;
+    padding-left: 10px;
     text-align: justify;
 	}
 	
 #coordonnees{
+	float: left;
+	width: 230px;
 	margin-top: 80;
 	border-style: solid;
     border-width: 2px;
