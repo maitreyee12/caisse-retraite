@@ -39,16 +39,69 @@
 						<div id="page-bgbtm">
 							<div id="menu">
 								<ul>
-									<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
-									<li><a href="#">Voir mon profil</a></li>
-									<li><a href="<?php echo $this->url(array('controller'=>'Demande','action'=>'index'));?>">Déposer une demande</a></li>
-									<li><a href="#">Envoyer la DADS</a></li>
-									<li><a href="#">Envoyer autorisations de départ</a></li>
-									<li><a href="#">Transférer dossier</a></li>
-									<li><a href="<?php echo $this->url(array('controller'=>'ListeDemandes','action'=>'index'));?>">Afficher la liste des demandes</a></li>
-									<li><a href="#">Afficher la liste des adhérents</a></li>
-									<li><a href="#">S'affilier</a></li>
-									<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
+								<?php
+									$auth=Zend_Auth::getInstance();
+									if(!$auth->hasIdentity()){
+								?>
+								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Demande','action'=>'affiliation'));?>">S'affilier</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
+								<?php
+								}
+								else{
+									$droits = Zend_Auth::getInstance()->getIdentity()->Droits;
+									if($droits==0){
+								?>
+								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
+								<li><a href="#">Voir mon profil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Demande','action'=>'index'));?>">Déposer une demande</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
+								<?php
+									}
+									if($droits==1){
+								?>
+								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
+								<li><a href="#">Voir mon profil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
+								<?php
+									}
+									if($droits==2){
+								?>
+								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
+								<li><a href="#">Voir mon profil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'dads'));?>">Envoyer la DADS</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
+								<?php
+									}
+									if($droits==3){
+								?>
+								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
+								<li><a href="#">Voir mon profil</a></li>
+								<li><a href="#">Afficher la liste des demandes</a></li>
+								<li><a href="#">Afficher la liste des adhérents</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
+								<?php
+									}
+									if($droits==4){
+								?>
+								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
+								<li><a href="#">Voir mon profil</a></li>
+								<li><a href="#">Transférer dossier</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
+								<?php
+									}
+									if($droits==5){
+								?>
+								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
+								<li><a href="#">Voir mon profil</a></li>
+								<li><a href="#">Envoyer autorisations de départ</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
+								<?php
+								}}
+								?>
+								
+								
+								
 								</ul>
 									
 							</div>
