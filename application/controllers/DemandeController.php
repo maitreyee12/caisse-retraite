@@ -20,6 +20,7 @@ class DemandeController extends Zend_Controller_Action
 
     public function affiliationAction()
     {
+
 		$form_DemandeAffiliation = new Application_Form_DemandeAffiliation();
 		$this->view->form = $form_DemandeAffiliation;
 		if ($this->getRequest()->isPost()) 
@@ -27,6 +28,7 @@ class DemandeController extends Zend_Controller_Action
 				$formData = $this->getRequest()->getPost();
 				if ($form_DemandeAffiliation->isValid($formData)) 
 					{
+								
 						$nom = $form_DemandeAffiliation->getValue('Nom');
 						$num_siret  = $form_DemandeAffiliation->getValue('Num_siret');
 						$e_mail = $form_DemandeAffiliation->getValue('E_mail');
@@ -36,18 +38,13 @@ class DemandeController extends Zend_Controller_Action
 						$nombre_employes = $form_DemandeAffiliation->getValue('Nombre_employes');
 						$commentaires = $form_DemandeAffiliation->getValue('Commentaires');
 						
+						
+						
 						$auth = Zend_Auth::getInstance();
-						//si c'est une demande sans etre connecté : demande d'une nouvelle entreprise
-						if (!$auth->hasIdentity ()) 
-							{
-								$id_courrier = null;
-								$id_utilisateur = null;
-							}
-						//sinon c'est un employé de la caisse
-						else if(($auth.getIdentity()->Droits) == (3))
+						if(($auth->getIdentity()->Droits) == (3))
 							{
 								$id_courrier = $form_DemandeAffiliation->getValue('Id_courrier');
-								$id_utilisateur = $form_DemandeAffiliation->getValue('Id_utilisateur');
+								$id_utilisateur = $auth->getIdentity()->Id_utilisateur;
 							}
 							
 						$date_demande = date("Y-m-d H:i:s");
@@ -57,8 +54,11 @@ class DemandeController extends Zend_Controller_Action
 						$model_Demande = new Application_Model_DbTable_Demande();
 						$model_Demande->ajouterDemande($id_courrier, $id_utilisateur, $commentaires, $date_demande, $etat, $type);
 						
+						$appli_model_db_demande = new Application_Model_DbTable_Demande();
+						$id_demande = $appli_model_db_demande->getDerniereId();				
+						
 						$model_DemandeAffiliation = new Application_Model_DbTable_DemandeAffiliation();
-						$model_DemandeAffiliation->ajouterDemande($nom, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes);
+						$model_DemandeAffiliation->ajouterDemande($id_demande, $nom, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes);
 						$this->_helper->redirector('accepte');
 					} 
 				else 

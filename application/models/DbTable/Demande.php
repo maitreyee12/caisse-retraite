@@ -5,14 +5,14 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
 
     protected $_name = 'demande';
     
-    public function obtenirDemande($id)
+    public function obtenirDemande()
 	{
-		$id = (int)$id;
-		$row = $this->fetchRow('Num_demande= ' . $id);
-		if (!$row) {
-			throw new Exception("Impossible de trouver l'enregistrement $id");
-		}
-		return $row->toArray();
+		//$id = (int)$id;
+		//$row = $this->fetchRow('Num_demande= ' . $id);
+		//if (!$row) {
+		//	throw new Exception("Impossible de trouver l'enregistrement $id");
+		//}
+		//return $row->toArray();
 	}
 
 	public function modifierDemande()
@@ -20,9 +20,9 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
 		//$data = array('artiste' => $artiste,'titre' => $titre,);
 		//$this->update($data, 'id = '. (int)$id);
 	}
-	public function supprimerDemande($id)
+	public function supprimerDemande()
 	{
-		$this->delete('Num_demande =' . (int)$id);
+		//$this->delete('Num_demande =' . (int)$id);
 	}
 
 	public function ajouterDemande($id_courrier, $id_utilisateur, $commentaires, $date_demande, $etat, $type)
@@ -37,5 +37,13 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
         );
         $this->insert($data);
     }
+	
+	public function getDerniereId(){		
+		$row =  $this->fetchRow(
+									$this->select(array('MAX(Id_demande)'))
+											->order('Id_demande DESC')
+								);
+		return $row->Id_demande;
+	}
 }
 
