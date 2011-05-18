@@ -1,6 +1,8 @@
-﻿<br /><br />
+﻿<?php
+	$this->title = 'Listes des demandes';
+	$this->headTitle($this->title);
+?>
 <div id="view-content">
-	<p>View script for controller <b>ListeDemandes</b> and script/action name <b>index</b></p>
 	<table id='listedemandes' class='tableclass'>
 		<thead>
 			<tr>
@@ -15,16 +17,32 @@
 		<tbody>
 			<?php foreach($this->demandes as $demande) : ?>
 			<tr>
-				<td><?php echo $this->escape($demande->Num_demande);?></td>
+				<td><?php echo $this->escape($demande->Id_demande);?></td>
 				<td><?php echo $this->escape($demande->Type);?></td>
-				<td><?php echo $this->escape($demande->Date_demande);?></td>
+				<td>
+				<?php
+					$date = explode(" ",$this->escape($demande->Date_demande)); 
+					echo $date[0];
+				?>
+				</td>
+				<td>
+				<?php $etat = $this->escape($demande->Etat);
+						  if($etat == 0){
+						  	echo "En attente";
+						  }elseif ($etat == 1){
+						  	echo "En cours";
+						  }else {
+						  	echo "Traité";
+						  }
+				?>
+				</td>
 				<td>
 					<a href="<?php echo $this->url(array('controller'=>'Profil',
-					'action'=>'infosPerso', 'id'=>$demande->Adh_Identifiant));?>">Voir</a>
+					'action'=>'infosPerso', 'id'=>$demande->Id_utilisateur));?>">Voir</a>
 				</td>
 				<td>
 					<a href="<?php echo $this->url(array('controller'=>'ListeDemandes',
-					'action'=>'index', 'id'=>$demande->id));?>">Voir</a>
+					'action'=>'index', 'id'=>$demande->Id_demande));?>">Voir</a>
 				</td>
 			</tr>
 			<?php endforeach; ?>
