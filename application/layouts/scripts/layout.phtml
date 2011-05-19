@@ -11,13 +11,8 @@
 			<?php echo $this->headTitle(); ?>
 			<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); ?>	
 			<?php
-				if($this->jQuery()->isEnabled()){
-					$this->jQuery()->setLocalPath($this->baseUrl().'/js/jquery/js/jquery-1.3.2.min.js')
-									->setUiLocalPath($this->baseUrl().'/js/jquery/js/jquery-ui-1.7.2.custom.min.js')
-									->addStyleSheet($this->baseUrl().'/js/jquery/css/redmond/jquery-ui-1.7.2.custom.css');
-					echo $this->jQuery();
 					$this->jQuery()->enable();
-				}
+					echo $this->jQuery();
 			?>
 		</head>
 		<body>
