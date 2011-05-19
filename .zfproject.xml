@@ -64,6 +64,9 @@
         <controllerFile controllerName="Contact">
           <actionMethod actionName="index"/>
         </controllerFile>
+        <controllerFile controllerName="Profil">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="DemandeAffiliation"/>
@@ -75,6 +78,7 @@
         <formFile formName="DemandeDepartRetraite"/>
         <formFile formName="RechercheEntreprises"/>
         <formFile formName="RechercheAdherents"/>
+        <formFile formName="Profil"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -151,27 +155,6 @@
           <viewControllerScriptsDirectory forControllerName="Transfert">
             <viewScriptFile forActionName="dossier"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Profil">
-            <viewScriptFile forActionName="carriere"/>
-          </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Profil">
-            <viewScriptFile forActionName="periode"/>
-          </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Profil">
-            <viewScriptFile forActionName="documents"/>
-          </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Profil">
-            <viewScriptFile forActionName="infosPerso"/>
-          </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Profil">
-            <viewScriptFile forActionName="rib"/>
-          </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Profil">
-            <viewScriptFile forActionName="versements"/>
-          </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Profil">
-            <viewScriptFile forActionName="dads"/>
-          </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Recherche">
             <viewScriptFile forActionName="listeEntreprises"/>
           </viewControllerScriptsDirectory>
@@ -209,6 +192,9 @@
             <viewScriptFile forActionName="accepte"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Contact">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+ 		  <viewControllerScriptsDirectory forControllerName="Profil">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Transfert">
