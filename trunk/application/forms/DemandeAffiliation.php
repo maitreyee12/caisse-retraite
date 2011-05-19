@@ -142,7 +142,7 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 		$envoyer = new Zend_Form_Element_Submit('envoyer');
 		$envoyer
 					->setAttrib('id', 'boutonenvoyer')
-					->setLabel('Envoyer la demande');;
+					->setLabel('Envoyer la demande');
 	
 		if(($auth->getIdentity()->Droits) == (3))
 			{	
