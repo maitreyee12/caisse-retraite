@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class ProfilController extends Zend_Controller_Action
 {
@@ -10,58 +10,27 @@ class ProfilController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
-    }
-
-    public function carriereAction()
-    {
-        // action body
-    }
-
-    public function periodeAction()
-    {
-        // action body
-    }
-
-    public function documentsAction()
-    {
-        // action body
-    }
-
-    public function infosPersoAction()
-    {
-        // action body
-    }
-
-    public function ribAction()
-    {
-        // action body
-    }
-
-    public function versementsAction()
-    {
-        // action body
-    }
-
-    public function dadsAction()
-    {
-        // action body
+    	// Chargmenent du profil
+		$form = new Application_Form_Profil();
+		$this->view->form = $form;
+		if ($this->getRequest()->isPost()) {
+			$formData = $this->getRequest()->getPost();
+			if ($form->isValid($formData)) {
+				$id = $form->getValue('id');
+				$nom = $form->getValue('nom');
+				$prenom = $form->getValue('prenom');
+				$num_SS = $form->getValue('num_SS');
+				$telephone = $form->getValue('telephone');
+				$adresse = $form->getValue('adresse');
+				$e_mail = $form->getValue('e_mail');
+									
+				$this->_helper->redirector('index');
+			} else {
+				$form->populate($formData);
+			}
+		} 
     }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
