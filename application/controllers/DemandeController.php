@@ -41,7 +41,7 @@ class DemandeController extends Zend_Controller_Action
 						
 						
 						$auth = Zend_Auth::getInstance();
-						if(($auth->getIdentity()->Droits) == (3))
+						if($auth->getIdentity())
 							{
 								$id_courrier = $form_DemandeAffiliation->getValue('Id_courrier');
 								$id_utilisateur = $auth->getIdentity()->Id_utilisateur;
@@ -85,32 +85,33 @@ class DemandeController extends Zend_Controller_Action
 
     public function informationsAction()
     {
-		$form_DemandeAffiliation = new Application_Form_DemandeInformations();
+		$form_DemandeInformations = new Application_Form_DemandeInformations();
 		$this->view->form = $form_DemandeInformations;
-		if ($this->getRequest()->isPost()) 
+		if ($this->getRequest()->isPost())
 			{
 				$formData = $this->getRequest()->getPost();
-				if ($form_DemandeInformations->isValid($formData)) 
+				if ($form_DemandeInformations->isValid($formData))
 					{
+						$auth = Zend_Auth::getInstance();
 						$commentaires = $form_DemandeInformations->getValue('Commentaires');
 						$id_utilisateur = $auth->getIdentity()->Id_utilisateur;
 						$date_demande = date("Y-m-d H:i:s");
 						$etat = 0;
 						$type = "demande informations";
 						
+						if($auth->getIdentity()->Droits == 3)
+							{
+								$id_courrier = $form_DemandeInformations->getValue('Id_courrier');
+							}
+						
 						$model_Demande = new Application_Model_DbTable_Demande();
 						$model_Demande->ajouterDemande($id_courrier, $id_utilisateur, $commentaires, $date_demande, $etat, $type);
-						
-						$appli_model_db_demande = new Application_Model_DbTable_Demande();
-						$id_demande = $appli_model_db_demande->getDerniereId();				
-						
-						$model_DemandeAffiliation = new Application_Model_DbTable_DemandeAffiliation();
-						$model_DemandeAffiliation->ajouterDemande($id_demande, $nom, $num_siret, $e_mail, $password, $adresse, $telephone, $nombre_employes);
+	
 						$this->_helper->redirector('accepte');
 					} 
 				else 
 					{
-						$form_DemandeAffiliation->populate($formData);
+						$form_DemandeInformations->populate($formData);
 					}
 			}
     }

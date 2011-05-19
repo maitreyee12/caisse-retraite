@@ -14,16 +14,16 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 				->addFilter('Int');
 				
 		$auth = Zend_Auth::getInstance();
-		if(($auth->getIdentity()->Droits) == (3))
+		if($auth->getIdentity())
 			{
-				//NUM_SIRET
+				//NUM_COURRIER
 				$num_courrier = new Zend_Form_Element_Text('Id_courrier');
 				$num_courrier
-				->setLabel('Numéro de courrier : ')
-				->addFilter('StripTags')
-				->addValidator('regex', false, array('([0-9]*)'))
-				->setRequired(true)
-				->setDescription('Numéro du courrier qui contient la demande écrite.');
+						->setLabel('Numéro de courrier : ')
+						->addFilter('StripTags')
+						->addValidator('regex', false, array('([0-9]*)'))
+						->setRequired(true)
+						->setDescription('Numéro du courrier qui contient la demande écrite.');
 			}
 	
 		
@@ -122,7 +122,7 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 
 		$nombre_employes = new Zend_Form_Element_Text('Nombre_employes');
 		$nombre_employes
-				->setLabel('Nombre_employes : ')	
+				->setLabel('Nombre employes : ')	
 				->addFilter('Int')
 				->addFilter('StripTags')
 				->addValidator('Between',false, array(1, 100000))
@@ -132,7 +132,7 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 		//COMMENTAIRE
 		$commentaire = new Zend_Form_Element_Textarea('Commentaires');
 		$commentaire
-				->setLabel('commentaire')
+				->setLabel('Commentaire')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
 				->setAttrib('cols', '40')
@@ -143,8 +143,9 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 		$envoyer
 					->setAttrib('id', 'boutonenvoyer')
 					->setLabel('Envoyer la demande');
-	
-		if(($auth->getIdentity()->Droits) == (3))
+		
+		
+		if($auth->getIdentity())
 			{	
 				$this->addElements(array(
 											$id, 
