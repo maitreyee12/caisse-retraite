@@ -2,7 +2,18 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
-
+	/*protected function _initViewHelpers()
+		{
+			$this->bootstrap('layout');
+			$layout = $this->getResource('layout');
+			$view = $layout->getView();
+			
+			$view->setHelperPath(APPLICATION_PATH.'/helpers', '');
+			ZendX_jQuery::enableView($view);
+			
+			
+		}*/
+	
 	protected function _initView()
 		{
 			// Initialize view
@@ -23,8 +34,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			// Return it, so that it can be stored by the bootstrap
 			return $view;
 		} 
-
-
 
 	
 }
