@@ -80,7 +80,35 @@ class DemandeController extends Zend_Controller_Action
 
     public function rachatTrimestresAction()
     {
-        // action body
+        $form_DemandeRachatTrimestres = new ZendX_JQuery_Form();
+		$this->view->form = $form_DemandeRachatTrimestres;
+		if ($this->getRequest()->isPost())
+			{
+				$formData = $this->getRequest()->getPost();
+				if ($form_DemandeRachatTrimestres->isValid($formData))
+					{
+						$auth = Zend_Auth::getInstance();
+						$commentaires = $form_DemandeRachatTrimestres->getValue('Commentaires');
+						$id_utilisateur = $auth->getIdentity()->Id_utilisateur;
+						$date_demande = date("Y-m-d H:i:s");
+						$etat = 0;
+						$type = "demande informations";
+						
+						if($auth->getIdentity()->Droits == 3)
+							{
+								$id_courrier = $form_DemandeRachatTrimestres->getValue('Id_courrier');
+							}
+						
+						$model_Demande = new Application_Model_DbTable_Demande();
+						$model_Demande->ajouterDemande($id_courrier, $id_utilisateur, $commentaires, $date_demande, $etat, $type);
+	
+						$this->_helper->redirector('accepte');
+					} 
+				else 
+					{
+						$form_DemandeRachatTrimestres->populate($formData);
+					}
+			}
     }
 
     public function informationsAction()
