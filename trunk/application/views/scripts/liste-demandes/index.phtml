@@ -41,8 +41,25 @@
 					'action'=>'infosPerso', 'id'=>$demande->Id_utilisateur));?>">Voir</a>
 				</td>
 				<td>
-					<a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes',
-					'action'=>'demande-affiliation', 'id'=>$demande->Id_demande));?>">Voir</a>
+				<?php
+					$type = $this->escape($demande->Type);
+					
+					  if($type == "demande affiliation")
+						{
+				?>
+							<a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes',
+								'action'=>'demande-affiliation', 'id'=>$demande->Id_demande));?>">Voir</a>
+				<?php
+						}
+					  else if($type == "demande informations")
+						{
+				?>
+							<a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes',
+								'action'=>'demande-informations', 'id'=>$demande->Id_demande));?>">Voir</a>
+				<?php
+						}
+				?>
+					
 				</td>
 			</tr>
 			<?php endforeach; ?>

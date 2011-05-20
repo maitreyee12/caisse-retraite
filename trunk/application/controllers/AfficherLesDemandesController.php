@@ -27,7 +27,12 @@ class AfficherLesDemandesController extends Zend_Controller_Action
 
     public function demandeInformationsAction()
     {
-        // action body
+        //on récupère l'id
+		$id =  $this->_getParam("id");
+		
+        //on récupère les infos de la demande dans afficher_demande
+		$afficher_demande = new Application_Model_DbTable_Demande();
+		$this->view->afficher_demande = $afficher_demande->getDemande($id);
     }
 
     public function demandeDepartRetraiteAction()

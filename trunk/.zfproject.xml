@@ -106,6 +106,7 @@
           <dbTableFile dbTableName="Salaire"/>
           <dbTableFile dbTableName="Utilisateur"/>
           <dbTableFile dbTableName="Versement"/>
+          <dbTableFile dbTableName="Note"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
