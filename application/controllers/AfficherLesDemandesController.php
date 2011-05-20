@@ -18,10 +18,6 @@ class AfficherLesDemandesController extends Zend_Controller_Action
 		//on récupère l'id
 		$id =  $this->_getParam("id");
 		
-		//on récupère les infos de la demande dans afficher_demande
-		$afficher_demande = new Application_Model_DbTable_Demande();
-		$this->view->afficher_demande = $afficher_demande->getDemande($id);
-		
 		//puis on récupère les infos de la demande_affiliation dans afficher_demande_affiliation
         $afficher_demande_affiliation = new Application_Model_DbTable_DemandeAffiliation();
 		$this->view->afficher_demande_affiliation = $afficher_demande_affiliation->getDemande($id);
@@ -39,14 +35,25 @@ class AfficherLesDemandesController extends Zend_Controller_Action
         // action body
     }
 
-
     public function demandeRachatTrimestresAction()
     {
         // action body
     }
 
+    public function demandeAction()
+    {
+		//on récupère l'id
+		$id =  $this->_getParam("id");
+		
+        //on récupère les infos de la demande dans afficher_demande
+		$afficher_demande = new Application_Model_DbTable_Demande();
+		$this->view->afficher_demande = $afficher_demande->getDemande($id);
+    }
+
 
 }
+
+
 
 
 

@@ -64,6 +64,7 @@
           <actionMethod actionName="demandeDepartRetraite"/>
           <actionMethod actionName="demanderachatTrimestres"/>
           <actionMethod actionName="demandeRachatTrimestres"/>
+          <actionMethod actionName="demande"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
@@ -77,7 +78,8 @@
         <formFile formName="RechercheEntreprises"/>
         <formFile formName="RechercheAdherents"/>
         <formFile formName="ProfilAdherent"/>
-		<formFile formName="ProfilEntreprise"/>
+        <formFile formName="ProfilEntreprise"/>
+        <formFile formName="Note"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -213,6 +215,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="AfficherLesDemandes">
             <viewScriptFile forActionName="demandeRachatTrimestres"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="AfficherLesDemandes">
+            <viewScriptFile forActionName="demande"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
