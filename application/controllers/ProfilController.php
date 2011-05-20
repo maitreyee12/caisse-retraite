@@ -61,10 +61,10 @@ class ProfilController extends Zend_Controller_Action
 					$form->populate($adhérent->obtenirAdherent($id));
 				}elseif($droits == 2){
 					//Si l'utilisateur est une entreprise
-					/*$form = new Application_Form_ProfilEntreprise();
+					$form = new Application_Form_ProfilEntreprise();
 					$this->view->form = $form;
 					$entreprise = new  Application_Model_DbTable_Entreprise();
-					$form->populate($entreprise->obtenirEntreprise($id));*/
+					$form->populate($entreprise->obtenirEntreprise($id));
 				}elseif($droits == 3){
 					//Si l'utilisateur est une Employé caisse
 					/*$form = new Application_Form_ProfilEntreprise();
