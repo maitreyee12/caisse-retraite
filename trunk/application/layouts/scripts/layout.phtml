@@ -1,6 +1,5 @@
 ﻿<?php
 
-	$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
 	$this->headTitle()->setSeparator(' - ');
 	$this->headTitle('CRC');
 	
@@ -9,9 +8,13 @@
 		<head>
 			<?php echo $this->headMeta(); ?>
 			<?php echo $this->headTitle(); ?>
-			<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); ?>	
+			<?php 
+				echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); 
+			?>	
 			<?php
 					$this->jQuery()->enable();
+					$this->jQuery()->addStylesheet("http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css");
+					$this->jQuery()->addStylesheet("http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css"); 
 					echo $this->jQuery();
 			?>
 		</head>
