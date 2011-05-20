@@ -1,12 +1,12 @@
 <?php
 
-class Application_Form_Profil extends Zend_Form
+class Application_Form_ProfilAdherent extends Zend_Form
 {
 
     public function init()
     {
         //Titre du formulaire
-		$this->setName('Mes informations personnelles');
+		$this->setName('profiladherent');
 		
 		$id = new Zend_Form_Element_Hidden('id');
 		$id->addFilter('Int');
@@ -21,7 +21,7 @@ class Application_Form_Profil extends Zend_Form
 				->addValidator('Alnum', false, array('allowWhiteSpace' => true))
 				->setRequired(true)
 				//->setDescription('Minimum de 3 caractères')
-				->addErrorMessages(array('Nom invalide', 'Nom invalide'));
+				->addErrorMessages(array('Nom invalide'));
 		
 		//PRENOM
 		$prenom = new Zend_Form_Element_Text('Prenom');
@@ -33,11 +33,11 @@ class Application_Form_Profil extends Zend_Form
 				->addValidator('Alnum', false, array('allowWhiteSpace' => true))
 				->setRequired(true)
 				//->setDescription('Minimum de 3 caractères')
-				->addErrorMessages(array('Prénom invalide', 'Prénom invalide'));
+				->addErrorMessages(array('Prénom invalide'));
 		
 		//NUM SECURITE SOCIALE
-		$num_SS= new Zend_Form_Element_Text('Num_SS');
-		$num_SS
+		$numSS= new Zend_Form_Element_Text('NumSS');
+		$numSS
 				->setLabel('Numéro S.S. : ')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
@@ -45,7 +45,7 @@ class Application_Form_Profil extends Zend_Form
 				->addValidator('regex', false, array('([0-9]{10})'))
 				->setRequired(true)
 				->setDescription('format : 188099400011122')
-				->addErrorMessages(array('Numéro de sécurité sociale invalide', 'Numéro de sécurité sociale invalide'));
+				->addErrorMessages(array('Numéro de sécurité sociale invalide'));
 		
 		//TEL
 		$telephone = new Zend_Form_Element_Text('Telephone');
@@ -62,10 +62,10 @@ class Application_Form_Profil extends Zend_Form
 		//ADRESSE
 		$adresse = new Zend_Form_Element_Textarea('Adresse');
 		$adresse
-				->setLabel('Adresse')
+				->setLabel('Adresse :')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
-				->addValidator('StringLength', false, array(30))
+				
 				->setRequired(true)
 				->setAttrib('cols', '40')
 				->setAttrib('rows', '4')
@@ -78,6 +78,7 @@ class Application_Form_Profil extends Zend_Form
 				->addFilter('StripTags')
 				->addValidator('regex', false, array('/^[-_a-z0-9\'+*$^&%=~!?{}]++(?:\.[-_a-z0-9\'+*$^&%=~!?{}]+)*+@(?:(?![-.])[-a-z0-9.]+(?<![-.])\.[a-z]{2,6}|\d{1,3}(?:\.\d{1,3}){3})(?::\d++)?$/iD'))
 				->setRequired(true)
+				->setAttrib('size', 30)
 				->addErrorMessages(array('Adresse email invalide'));
 		
 		
@@ -90,7 +91,7 @@ class Application_Form_Profil extends Zend_Form
 									$id,
 									$nom,
 									$prenom,
-									$num_SS,
+									$numSS,
 									$telephone,
 									$adresse,
 									$e_mail,
