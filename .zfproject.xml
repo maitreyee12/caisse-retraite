@@ -27,16 +27,6 @@
           <actionMethod actionName="dossier"/>
           <actionMethod actionName="autorisationDepart"/>
         </controllerFile>
-        <controllerFile controllerName="Profil">
-          <actionMethod actionName="index"/>
-          <actionMethod actionName="carriere"/>
-          <actionMethod actionName="periode"/>
-          <actionMethod actionName="documents"/>
-          <actionMethod actionName="infosPerso"/>
-          <actionMethod actionName="rib"/>
-          <actionMethod actionName="versements"/>
-          <actionMethod actionName="dads"/>
-        </controllerFile>
         <controllerFile controllerName="Recherche">
           <actionMethod actionName="index"/>
           <actionMethod actionName="listeEntreprises"/>
@@ -78,7 +68,7 @@
         <formFile formName="DemandeDepartRetraite"/>
         <formFile formName="RechercheEntreprises"/>
         <formFile formName="RechercheAdherents"/>
-        <formFile formName="Profil"/>
+        <formFile formName="ProfilAdhérent"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -194,9 +184,7 @@
           <viewControllerScriptsDirectory forControllerName="Contact">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
- 		  <viewControllerScriptsDirectory forControllerName="Profil">
-            <viewScriptFile forActionName="index"/>
-          </viewControllerScriptsDirectory>
+ 		  
           <viewControllerScriptsDirectory forControllerName="Transfert">
             <viewScriptFile forActionName="autorisationDepart"/>
           </viewControllerScriptsDirectory>
