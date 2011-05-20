@@ -3,8 +3,8 @@
  * 
  * Pour récupérer les infos sur l'utilisateur connecter, utiliser:
  * 
- * $login = Zend_Auth::getInstance ().getIdentity()->Login; pour le login
- * $droits = Zend_Auth::getInstance ().getIdentity()->Droits; pour les droits
+ * $login = Zend_Auth::getInstance ()->getIdentity()->Login; pour le login
+ * $droits = Zend_Auth::getInstance ()->getIdentity()->Droits; pour les droits
  * 
  * 
  * */

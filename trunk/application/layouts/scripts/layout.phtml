@@ -53,11 +53,12 @@
 								<?php
 								}
 								else{
-									$droits = Zend_Auth::getInstance()->getIdentity()->Droits;
+									$profil = $auth->getIdentity();
+									$droits = $profil->Droits;
 									if($droits==0){
 								?>
 								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
-								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index'));?>">Voir mon profil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur));?>">Voir mon profil</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Demande','action'=>'index'));?>">Déposer une demande</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
 								<?php
@@ -65,14 +66,14 @@
 									if($droits==1){
 								?>
 								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
-								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index'));?>">Voir mon profil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur));?>">Voir mon profil</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
 								<?php
 									}
 									if($droits==2){
 								?>
 								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
-								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index'));?>">Voir mon profil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur));?>">Voir mon profil</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'dads'));?>">Envoyer la DADS</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
 								<?php
@@ -80,7 +81,7 @@
 									if($droits==3){
 								?>
 								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
-								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index'));?>">Voir mon profil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur));?>">Voir mon profil</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Liste-demandes','action'=>'index'));?>">Liste des demandes</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Recherche','action'=>'liste-adherents'));?>">Liste des adhérents</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
@@ -89,7 +90,7 @@
 									if($droits==4){
 								?>
 								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
-								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index'));?>">Voir mon profil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur));?>">Voir mon profil</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Transfer','action'=>'dossier'));?>">Transférer dossier</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
 								<?php
@@ -97,7 +98,7 @@
 									if($droits==5){
 								?>
 								<li class="current_page_item"><a href="<?php echo $this->url(array('controller'=>'Index','action'=>'index'));?>">Accueil</a></li>
-								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index'));?>">Voir mon profil</a></li>
+								<li><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur));?>">Voir mon profil</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Transfert','action'=>'autorisation-depart'));?>">Envoyer autorisations de départ</a></li>
 								<li><a href="<?php echo $this->url(array('controller'=>'Contact','action'=>'index'));?>">Contact</a></li>
 								<?php
