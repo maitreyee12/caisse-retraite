@@ -1,4 +1,9 @@
-<br /><br />
+<?php
+	$this->title = 'Fiche demande informations';
+	$this->headTitle($this->title);
+?>
 <div id="view-content">
-	<p>View script for controller <b>AfficherLesDemandes</b> and script/action name <b>demandeInformations</b></p>
+
+<?php echo $this->action('demande', 'AfficherLesDemandes', null, array('id' => ($this->afficher_demande->Id_demande))); ?>
+
 </div>
