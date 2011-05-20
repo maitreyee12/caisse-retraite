@@ -51,6 +51,8 @@ class ProfilController extends Zend_Controller_Action
 			$id = $this->_getParam('id', -1);
 			if ($id > -1) {
 				
+				$utilisateur = new Application_Model_DbTable_Utilisateur();
+				$droits = $utilisateur->obtenirDroits($id);
 				
 				//Affichage du formulaire correspondant au type d'utilisateur
 				if($droits == 0){
@@ -67,22 +69,16 @@ class ProfilController extends Zend_Controller_Action
 					$form->populate($entreprise->obtenirEntreprise($id));
 				}elseif($droits == 3){
 					//Si l'utilisateur est une Employé caisse
-					/*$form = new Application_Form_ProfilEntreprise();
+					$form = new Application_Form_ProfilEmployeCaisse();
 					$this->view->form = $form;
-					$entreprise = new  Application_Model_DbTable_Entreprise();
-					$form->populate($entreprise->obtenirEntreprise($id));*/
+					$employeCaisse = new  Application_Model_DbTable_EmployeCaisse();
+					$form->populate($employeCaisse->obtenirEmployeCaisse($id));
 				}elseif($droits == 4){
 					//Si l'utilisateur est une autre Caisse
-					/*$form = new Application_Form_ProfilEntreprise();
+					$form = new Application_Form_ProfilCaisse();
 					$this->view->form = $form;
-					$entreprise = new  Application_Model_DbTable_Entreprise();
-					$form->populate($entreprise->obtenirEntreprise($id));*/
-				}elseif($droits == 5){
-					//Si l'utilisateur est une CNAV
-					/*$form = new Application_Form_ProfilEntreprise();
-					$this->view->form = $form;
-					$entreprise = new  Application_Model_DbTable_Entreprise();
-					$form->populate($entreprise->obtenirEntreprise($id));*/
+					$caisse = new  Application_Model_DbTable_Caisse();
+					$form->populate($caisse->obtenirCaisse($id));
 				}
 			}
 		}

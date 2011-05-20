@@ -79,7 +79,9 @@
         <formFile formName="RechercheAdherents"/>
         <formFile formName="ProfilAdherent"/>
         <formFile formName="ProfilEntreprise"/>
-        <formFile formName="Note"/>
+        <formFile formName="ProfilEmployeCaisse"/>
+        <formFile formName="ProfilCaisse"/>
+		<formFile formName="Note"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
