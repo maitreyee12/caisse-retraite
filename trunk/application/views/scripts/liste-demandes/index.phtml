@@ -41,8 +41,8 @@
 					'action'=>'infosPerso', 'id'=>$demande->Id_utilisateur));?>">Voir</a>
 				</td>
 				<td>
-					<a href="<?php echo $this->url(array('controller'=>'ListeDemandes',
-					'action'=>'index', 'id'=>$demande->Id_demande));?>">Voir</a>
+					<a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes',
+					'action'=>'demande-affiliation', 'id'=>$demande->Id_demande));?>">Voir</a>
 				</td>
 			</tr>
 			<?php endforeach; ?>

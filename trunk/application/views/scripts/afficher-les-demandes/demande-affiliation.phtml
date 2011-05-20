@@ -1,4 +1,21 @@
-<br /><br />
+﻿<?php
+	$this->title = 'Fiche demande affiliation';
+	$this->headTitle($this->title);
+?>
 <div id="view-content">
-	<p>View script for controller <b>AfficherLesDemandes</b> and script/action name <b>demandeAffiliation</b></p>
-</div>
+	<table id='listedemandes' class='tableclass'>
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Numéro de courrier</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?php echo $this->escape($this->afficher_demande_affiliation->Id_demande);?></td>
+				<td><?php echo $this->escape($this->afficher_demande->Id_courrier);?></td>
+			</tr>
+		</tbody>
+		<tfoot></tfoot>
+	</table>
+</div><br /><br />

@@ -4,15 +4,11 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
 {
 
     protected $_name = 'demande';
+	protected $_primary = 'Id_demande';
     
-    public function obtenirDemande()
-	{
-		//$id = (int)$id;
-		//$row = $this->fetchRow('Num_demande= ' . $id);
-		//if (!$row) {
-		//	throw new Exception("Impossible de trouver l'enregistrement $id");
-		//}
-		//return $row->toArray();
+    public function getDemande($id_demande)
+    {
+		return $this->fetchRow($this->select()->where('Id_demande = ?', $id_demande));
 	}
 
 	public function modifierDemande()
