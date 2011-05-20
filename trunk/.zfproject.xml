@@ -76,7 +76,8 @@
         <formFile formName="DemandeDepartRetraite"/>
         <formFile formName="RechercheEntreprises"/>
         <formFile formName="RechercheAdherents"/>
-        <formFile formName="ProfilAdh?nt"/>
+        <formFile formName="ProfilAdherent"/>
+		<formFile formName="ProfilEntreprise"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
