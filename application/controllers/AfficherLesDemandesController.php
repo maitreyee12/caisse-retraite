@@ -22,7 +22,6 @@ class AfficherLesDemandesController extends Zend_Controller_Action
         $afficher_demande_affiliation = new Application_Model_DbTable_DemandeAffiliation();
 		$this->view->afficher_demande_affiliation = $afficher_demande_affiliation->getDemande($id);
 		
-		
     }
 
     public function demandeInformationsAction()
@@ -55,18 +54,4 @@ class AfficherLesDemandesController extends Zend_Controller_Action
 		$this->view->afficher_demande = $afficher_demande->getDemande($id);
     }
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

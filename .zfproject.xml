@@ -66,6 +66,11 @@
           <actionMethod actionName="demandeRachatTrimestres"/>
           <actionMethod actionName="demande"/>
         </controllerFile>
+        <controllerFile controllerName="Note">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="ajouterNote"/>
+          <actionMethod actionName="afficherNotes"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="DemandeAffiliation"/>
@@ -221,6 +226,15 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="AfficherLesDemandes">
             <viewScriptFile forActionName="demande"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Note">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Note">
+            <viewScriptFile forActionName="ajouterNote"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Note">
+            <viewScriptFile forActionName="afficherNotes"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
