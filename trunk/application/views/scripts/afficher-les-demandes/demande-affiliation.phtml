@@ -4,7 +4,12 @@
 ?>
 <div id="view-content">
 
-<?php echo $this->action('demande', 'AfficherLesDemandes', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); ?>
+
+<?php 
+
+	//appel de l'action demande du controller AfficherLesDemandes
+	echo $this->action('demande', 'AfficherLesDemandes', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
+?>
 
 	<table id='listedemandes' class='tableclass'>
 		<thead>
@@ -21,10 +26,26 @@
 			<tr>
 				<td><?php echo $this->escape($this->afficher_demande_affiliation->Nom);?></td>
 				<td><?php echo $this->escape($this->afficher_demande_affiliation->Num_siret);?></td>
+				<td><?php echo $this->escape($this->afficher_demande_affiliation->E_mail);?></td>
+				<td><?php echo $this->escape($this->afficher_demande_affiliation->Adresse);?></td>
 				<td><?php echo $this->escape($this->afficher_demande_affiliation->Telephone);?></td>
 				<td><?php echo $this->escape($this->afficher_demande_affiliation->Nombre_employes);?></td>
 			</tr>
 		</tbody>
 		<tfoot></tfoot>
 	</table>
-</div>
+
+	<?php 
+
+	//lister les notes de cette demande et les afficher
+	echo $this->action('afficher-notes', 'Note', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
+	
+	//appel de l'action demande du controller AfficherLesDemandes
+	//formulaire pour ajouter une note
+	echo $this->action('ajouter-note', 'Note', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
+	?>
+	
+	</div>
+
+
+

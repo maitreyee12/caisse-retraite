@@ -1,0 +1,14 @@
+﻿
+<?php foreach($this->afficherNote as $demande) : ?>
+	<table id='listedemandes' class='tableclass'>
+		<tr>
+			<td>Posté par <?php echo $this->escape($demande->Id_demande);?></td>
+			<td> le <?php echo $this->escape($demande->Date_soumission);?></td>
+		</tr>
+		<tr>
+			<td> le <?php echo $this->escape($demande->Contenu);?></td>
+		</tr>
+	</table>
+<br />
+<?php endforeach; ?>
+	
