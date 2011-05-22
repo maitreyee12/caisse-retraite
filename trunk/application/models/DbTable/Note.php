@@ -19,7 +19,12 @@ class Application_Model_DbTable_Note extends Zend_Db_Table_Abstract
 	}
 	
 	public function afficherNote($Id_demande){
-		return $this->fetchRow($this->select()->where('Id_demande = ?', $id_demande));
+		$row = $this->fetchRow($this->select()
+												->where('Id_demande = ?', $id_demande)
+												->order('Date_soumission DESC')
+								);
+		return $row->toArray();
+		
 	}
 
 }
