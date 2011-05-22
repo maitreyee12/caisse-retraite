@@ -30,12 +30,12 @@ class NoteController extends Zend_Controller_Action
 						
 						$model_Note = new Application_Model_DbTable_Note();
 						$model_Note->ajouterDemande($id, $id_utilisateur, $date_soumission, $note);
-
-						$this->_helper->redirector('index');
+						
+						$this->_helper->redirector('demande-affiliation','AfficherLesDemandes', null, array('id' => ($id)));
 					} 
 				else 
 					{
-						$form_DemandeAffiliation->populate($formData);
+						$form_Note->populate($formData);
 					}
 			}
     }

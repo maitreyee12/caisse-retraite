@@ -1,4 +1,4 @@
-<?php
+Ôªø<?php
 
 class Application_Form_Note extends Zend_Form
 {
@@ -8,17 +8,17 @@ class Application_Form_Note extends Zend_Form
 	public function init()
     {
 		//Titre du formulaire
-		$this->setName('DÈposer une note');
+		$this->setName('D√©poser une note');
 				
 		//NOTE
 		$note = new Zend_Form_Element_Textarea('Note');
 		$note
-				->setLabel('Note')
+				->setLabel('Ajouter une note')
 				->addValidator('StringLength', false, array(1))
 				->setRequired(true)
 				->setAttrib('cols', '40')
 				->setAttrib('rows', '4')
-				->setErrorMessages(array('Vous devez complÈter la note avant de l\'envoyer'));	
+				->setErrorMessages(array('Vous devez compl√©ter la note avant de l\'envoyer'));	
 				
 		//ENVOYER		
 		$envoyer = new Zend_Form_Element_Submit('envoyer');
