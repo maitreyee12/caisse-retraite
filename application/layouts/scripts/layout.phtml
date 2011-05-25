@@ -7,16 +7,28 @@
 			$this->headTitle('CRC');
 			echo $this->doctype(); 
 
-			echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); 
-			echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/carousel.css'); 
+			//CSS
+			$this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); 
+			$this->headLink()->prependStylesheet($this->baseUrl().'/css/carousel.css'); 
+			$this->headLink()->prependStylesheet($this->baseUrl().'/css/ui.jqgrid.css'); 
+			$this->headLink()->prependStylesheet($this->baseUrl().'/css/ui-lightness/jquery-ui-1.8.12.custom.css'); 
 			
+			//jQuery
 			$this->jQuery()->enable();
-			$this->jQuery()->addStylesheet("http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css");
 			$this->jQuery()->addStylesheet("http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css");   
-			echo $this->jQuery();		
+				
+			//JS
+			$this->headScript()->appendFile($this->baseUrl().'/js/JQueryCarousel/ie6.js');
+			$this->headScript()->appendFile($this->baseUrl().'/js/Jqgrid/jquery.jqGrid.min.js');
+			$this->headScript()->appendFile($this->baseUrl().'/js/JQueryCarousel/carousel.js');
+			$this->headScript()->appendFile($this->baseUrl().'/js/Jqgrid/jquery.jqGrid.min.js');
+			$this->headScript()->appendFile($this->baseUrl().'/js/Jqgrid/i18n/grid.locale-fr.js');
 			
-			echo $this->headScript()->appendFile($this->baseUrl().'/js/JQueryCarousel/carousel.js');
-			echo $this->headScript()->appendFile($this->baseUrl().'/js/JQueryCarousel/ie6.js');
+			//appel des librairies / affichage
+			echo $this->headLink();	
+			echo $this->jQuery();	
+			echo $this->headScript();	
+
 		?>
 	</head>
 	<body>
@@ -24,13 +36,72 @@
 		<!-- header begins -->
 			<div id="header">
 				<div id="buttons">
-					<div ><a href="#" class="but"  title="">Home</a></div>
-					<div ><a href="#" class="but" title="">Blog</a></div>
-					<div><a href="#"  class="but" title="">Gallery</a></div>
-					<div><a href="#"  class="but" title="">About us</a></div>
-					<div ><a href="#" class="but" title="">Contact us</a></div>
+					<?php  
+					
+						//on cherche l'instance de connexion
+						$auth=Zend_Auth::getInstance();
+						
+						//si non connecté
+						if(!$auth->hasIdentity())
+							{
+								 echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Accueil</a></div>";
+								 echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'affiliation'))."' class='but' title=''>S'affilier</a></div>";
+								 echo "<div ><a href='".$this->url(array('controller'=>'Contact','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+							}
+						//connecté
+						else
+							{
+								//on récupère son niveau de droit
+								//pour chaque niveau on définit l'affichage du menu / restriction d'acccès aux actions/vues
+								$profil = $auth->getIdentity();
+								$droits = $profil->Droits;
+								if($droits==0)
+									{
+										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index'))."' class='but' title=''>S'affilier</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Contact','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+									}
+								if($droits==1)
+									{
+										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+									}
+								if($droits==2)
+									{
+										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'dads'))."' class='but' title=''>DADS</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+									}
+								if($droits==3)
+									{
+										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Liste-demandes','action'=>'index'))."' class='but' title=''>Liste demandes</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Recherche','action'=>'index'))."' class='but' title=''>Recherche</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+									}
+								if($droits==4)
+									{
+										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Transfert','action'=>'dossier'))."' class='but' title=''>Transfert dossier</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+									}
+								if($droits==5)
+									{
+										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Transfert','action'=>'autorisation-depart'))."' class='but' title=''>Autoriser départ</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+									}
+							}
+					?>
+					
 				</div>
-				<!-- <div id="logo"></div> -->
+				<!-- Carousel jQuery -->
 				<div class="wrap">
 				<div id="slide-holder">
 					<div id="slide-runner">
@@ -47,7 +118,7 @@
 							<p id="slide-nav"></p>
 						</div>
 					</div>
-				<!--content featured gallery here -->
+				<!--galleries d'images -->
 				</div>
 				<script type="text/javascript">
 					if(!window.slider) 
