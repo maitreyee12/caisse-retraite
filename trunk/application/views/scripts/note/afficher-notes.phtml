@@ -1,14 +1,29 @@
-﻿
-<?php foreach($this->afficherNote as $demande) : ?>
-	<table id='listedemandes' class='tableclass'>
+﻿<h2>Notes</h2>
+
+<?php 
+
+$i=0;
+
+foreach($this->afficherNote as $demande) : ?>
+	<table <?php echo "id='afficher_note_$i'"; ?>>
 		<tr>
-			<td>Posté par <?php echo $this->escape($demande->Id_demande);?></td>
-			<td> le <?php echo $this->escape($demande->Date_soumission);?></td>
+			<th>Posté par <?php echo $this->escape($demande->Id_demande)." le ".$this->escape($demande->Date_soumission);?></th>
 		</tr>
 		<tr>
 			<td><?php echo $this->escape($demande->Contenu);?></td>
 		</tr>
 	</table>
 <br />
-<?php endforeach; ?>
+
+<script>
+		$(function () {
+			tableToGrid("#afficher_note_<?php echo $i ?>", {height:'100'});;
+		});
+</script>
 	
+
+<?php 
+$i++;
+
+endforeach; ?>
+

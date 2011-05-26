@@ -1,13 +1,13 @@
 ﻿
-<table id='listedemandes' class='tableclass'>
+<table id='afficher_demande' border="1">
 	<thead>
 		<tr>
-			<td>ID</td>
-			<td>Numéro de courrier</td>
-			<td>Déposé par</td>
-			<td>Date</td>
-			<td>Etat</td>
-			<td>Type</td>
+			<th>ID</th>
+			<th>Numéro de courrier</th>
+			<th>Déposé par</th>
+			<th>Date</th>
+			<th>Etat</th>
+			<th>Type</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,22 +20,28 @@
 			<td><?php echo $this->escape($this->afficher_demande->Type);?></td>
 		</tr>
 	</tbody>
-	<tfoot></tfoot>
 </table>
 
 <br />
 
-<table id='listedemandes' class='tableclass'>
-		<thead>
-			<tr>
-				<td>Commentaire</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><?php echo $this->escape($this->afficher_demande->Commentaires);?></td>
-			</tr>
-		</tbody>
-		<tfoot></tfoot>
-	</table>
+<table id='afficher_demande_commentaire' >
+	<thead>
+		<tr>
+			<th>Commentaire</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php echo $this->escape($this->afficher_demande->Commentaires);?></td>
+		</tr>
+	</tbody>	
+</table>
 	
+	
+
+<script>
+	$(function () {
+		tableToGrid("#afficher_demande", {height:'22'});
+		tableToGrid("#afficher_demande_commentaire", {});
+	});
+</script>

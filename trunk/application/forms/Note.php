@@ -13,7 +13,7 @@ class Application_Form_Note extends Zend_Form
 		//NOTE
 		$note = new Zend_Form_Element_Textarea('Note');
 		$note
-				->setLabel('Ajouter une note')
+				->setLabel('Remplissez votre demande ci dessous :')
 				->addValidator('StringLength', false, array(1))
 				->setRequired(true)
 				->setAttrib('cols', '40')
