@@ -2,8 +2,8 @@
 	$this->title = 'Listes des demandes';
 	$this->headTitle($this->title);
 ?>
-<div id="view-content">
-	<table id='listedemandes' class='tableclass'>
+
+	<table id='listedemandes'>
 		<thead>
 			<tr>
 				<td>ID</td>
@@ -37,8 +37,11 @@
 				?>
 				</td>
 				<td>
-					<a href="<?php echo $this->url(array('controller'=>'Profil',
-					'action'=>'infosPerso', 'id'=>$demande->Id_utilisateur));?>">Voir</a>
+					<?php
+						$utilisateur = new Application_Model_DbTable_Utilisateur();
+						if($utilisateur->exist($demande->Id_utilisateur))
+					?><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index', 'id'=>$demande->Id_utilisateur));?>">Voir</a>
+					
 				</td>
 				<td>
 				<?php
@@ -64,6 +67,10 @@
 			</tr>
 			<?php endforeach; ?>
 		</tbody>
-		<tfoot></tfoot>
 	</table>
-</div>
+
+<script>
+	$(function () {
+		tableToGrid("#listedemandes", {});
+	});
+</script>
