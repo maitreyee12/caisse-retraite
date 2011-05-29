@@ -10,6 +10,10 @@ class ListeDemandesController extends Zend_Controller_Action
 
     public function indexAction()
     {
+    	//on récupère l'id s'il y en a un
+		$id =  $this->_getParam("id");
+		$this->view->id_demandeur = $id;
+		
         $demandes = new Application_Model_DbTable_Demande();
 		$this->view->demandes = $demandes->fetchAll();
     }

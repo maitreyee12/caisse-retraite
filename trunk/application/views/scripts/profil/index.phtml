@@ -11,8 +11,9 @@
 		</div>
 	
 	</div>
-	<div id='profildemandes' >demandes</div>
-	
+	<div id='profildemandes' >demandes
+	<?php echo $this->action('index', 'ListeDemandes', null, array('id' => ($this->id))); ?>
+	</div>
 	<div id='profilcarriere' >carriere</div>
 	 <!-- -->
 </div>
