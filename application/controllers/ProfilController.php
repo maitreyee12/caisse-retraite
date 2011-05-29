@@ -53,7 +53,7 @@ class ProfilController extends Zend_Controller_Action
 				
 				$utilisateur = new Application_Model_DbTable_Utilisateur();
 				$droits = $utilisateur->obtenirDroits($id);
-				
+				$this->view->id =$id;
 				//Affichage du formulaire correspondant au type d'utilisateur
 				if($droits == 0){
 					//Si l'utilisateur est un adhérent

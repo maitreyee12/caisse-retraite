@@ -13,11 +13,16 @@ class Application_Model_DbTable_Utilisateur extends Zend_Db_Table_Abstract
 	}
 	public function exist($Id_utilisateur)
 	{
-		$row = $this->fetchRow('Id_utilisateur = ' . $Id_utilisateur);
-		if (!$row) {
+		if($Id_utilisateur != null){
+			$row = $this->fetchRow('Id_utilisateur = ' . $Id_utilisateur);
+			if (!$row) {
+				return false;
+			}else {
+				return true;
+			}
+		}
+		else{
 			return false;
-		}else {
-			return true;
 		}
 	}
 
