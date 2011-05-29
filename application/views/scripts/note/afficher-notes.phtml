@@ -7,7 +7,7 @@ $i=0;
 foreach($this->afficherNote as $demande) : ?>
 	<table <?php echo "id='afficher_note_$i'"; ?>>
 		<tr>
-			<th>Posté par <?php echo $this->escape($demande->Id_demande)." le ".$this->escape($demande->Date_soumission);?></th>
+			<th>Posté par <?php echo $this->escape($demande->Id_utilisateur)." le ".$this->escape($demande->Date_soumission);?></th>
 		</tr>
 		<tr>
 			<td><?php echo $this->escape($demande->Contenu);?></td>

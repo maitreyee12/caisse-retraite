@@ -42,8 +42,10 @@ class NoteController extends Zend_Controller_Action
 
     public function afficherNotesAction()
     {
+		$id_demande =  $this->_getParam("id");
+	
         $notes = new Application_Model_DbTable_Note();
-		$this->view->afficherNote = $notes->fetchAll();
+		$this->view->afficherNote = $notes->afficherNote($id_demande);
     }
 
 
