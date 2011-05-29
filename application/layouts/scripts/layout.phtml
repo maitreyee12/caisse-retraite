@@ -53,47 +53,53 @@
 								//pour chaque niveau on définit l'affichage du menu / restriction d'acccès aux actions/vues
 								$profil = $auth->getIdentity();
 								$droits = $profil->Droits;
+								//Si c'est un salarié
 								if($droits==0)
 									{
 										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index'))."' class='but' title=''>S'affilier</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Contact','action'=>'index'))."' class='but' title=''>Contact</a></div>";
 									}
+								//Si c'est un retraité
 								if($droits==1)
 									{
 										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
 									}
+								//Si c'est une entreprise
 								if($droits==2)
 									{
 										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'dads'))."' class='but' title=''>DADS</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
 									}
+								//Si c'est un employé caisse
 								if($droits==3)
 									{
 										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Liste-demandes','action'=>'index'))."' class='but' title=''>Liste demandes</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Recherche','action'=>'index'))."' class='but' title=''>Recherche</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
 									}
+								//Si c'est une autre caisse
 								if($droits==4)
 									{
 										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Transfert','action'=>'dossier'))."' class='but' title=''>Transfert dossier</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
 									}
+								//Si c'est la CNAV
 								if($droits==5)
 									{
 										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'index','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
 										echo "<div ><a href='".$this->url(array('controller'=>'Transfert','action'=>'autorisation-depart'))."' class='but' title=''>Autoriser départ</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Contact</a></div>";
+										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
 									}
 							}
 					?>
