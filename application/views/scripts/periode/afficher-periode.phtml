@@ -1,0 +1,71 @@
+<h2>Périodes</h2>
+
+<?php 
+$i=0;
+
+foreach($this->Periodes as $periode) : ?>
+	<table <?php echo "id='periode_$i'"; ?>>
+	<thead>
+		<tr>
+			<th>Débute le:</th>
+			<th>S'achève le:</th>
+			<th>Entreprise</th>
+			<th>Salaire</th>
+			<th>Point ARRCO</th>
+			<th>Point AGIRC</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php echo $this->escape($periode->Date_debut);?></td>
+			<td><?php echo $this->escape($periode->Date_fin);?></td>
+			<td><?php echo $this->escape($periode->Nom_Entreprise);?></td>
+			<td><?php echo $this->escape($periode->Salaire_percu);?></td>
+			<td><?php echo $this->escape($periode->Points_ARRCO);?></td>
+			<td><?php echo $this->escape($periode->Points_AGIRC);?></td>
+		</tr>
+	</tbody>
+	</table>
+	<?php 
+
+	//appel de l'action demande du controller AfficherDocuments
+	echo $this->action('document', 'AfficherDocuments', null, array('id' => ($periode->Id_periode))); 
+	?>
+	<table>
+		<thead>
+  			<tr>
+	    		<th>Nom du document</th>
+    			<th>Date d'ajout</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  		<?php 
+			$j=0;
+  			foreach($this->Documents as $document){ 
+  				if($document->Id_periode == $periode->Id_periode){?>
+  				<tr>
+		    		<td><?php echo $this->escape($document->Nom_document);?></td>
+    				<td><?php echo $this->escape($document->Date_ajout);?></td>
+  				</tr>
+  			<?php 
+  				}
+				$j++;
+			 } 
+			 ?>
+  		</tbody>
+	</table>
+
+	
+<br />
+
+<script>
+		$(function () {
+			tableToGrid("#periode_<?php echo $i ?>", {height:'auto'});;
+		});
+</script>
+	
+
+<?php 
+$i++;
+
+endforeach; ?>

@@ -1,19 +1,36 @@
 <div id="view-profil-content">
 	<div id='profilinfos' >
 		<div id='profilinfos-content'>
-		<h3>Vos informations</h3>
-		<?php 
+			<h3>Vos informations</h3>
+			<?php 
 			$this->title = "Mon Profil";
 			$this->headTitle($this->title);
 			echo $this->form;
-			
-		?>
+			?>
 		</div>
 	
 	</div>
-	<div id='profildemandes' >demandes
-	<?php echo $this->action('index', 'ListeDemandes', null, array('id' => ($this->id))); ?>
+	<?php 
+		//on cherche l'instance de connexion
+		$auth=Zend_Auth::getInstance();
+		//on récupère son niveau de droit
+		//pour chaque niveau on définit l'affichage du menu / restriction d'acccès aux actions/vues
+		$profil = $auth->getIdentity();
+		$droits = $profil->Droits;
+		if($droits != 3){
+	?>
+	<div id='profildemandes' >
+		<div id='profildemandes-content'>
+			<h3>Vos demandes</h3>
+			<?php echo $this->action('index', 'ListeDemandes', null, array('id' => ($this->id))); ?>
+		</div>
 	</div>
-	<div id='profilcarriere' >carriere</div>
+	<div id='profilcarriere' >
+		<div id='profildemandes-content'>
+			<h3>Votre carrière</h3>
+			
+		</div>
+	</div>
+	<?php }?>
 	 <!-- -->
 </div>

@@ -265,6 +265,7 @@ label.required{
 	margin-left: 1%;
 	margin-top: 1%;
 	margin-right: 1%;
+	-moz-border-radius: 10px 10px;
 }
 #profilinfos-content{
 	margin-left: 2%;
@@ -280,7 +281,14 @@ label.required{
 	max-height: 600px;
 	margin-left: 1%;
 	margin-right: 1%;
+	-moz-border-radius: 10px 10px;
 	
+}
+#profilcarriere-content{
+	margin-left: 2%;
+	margin-top: 2%;
+	margin-right: 2%;
+	margin-bottom: 2%;
 }
 #profildemandes{
 	width:98%;
@@ -290,5 +298,12 @@ label.required{
 	margin-top: 1%;
 	margin-right: 1%;
 	margin-left: 1%;
+	-moz-border-radius: 10px 10px;
+}
+#profildemandes-content{
+	margin-left: 2%;
+	margin-top: 2%;
+	margin-right: 2%;
+	margin-bottom: 2%;
 }
 
