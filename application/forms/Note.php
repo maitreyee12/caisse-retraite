@@ -9,6 +9,7 @@ class Application_Form_Note extends Zend_Form
     {
 		//Titre du formulaire
 		$this->setName('Déposer une note');
+		$this->setAttrib('enctype', 'multipart/form-data');
 				
 		//NOTE
 		$note = new Zend_Form_Element_Textarea('Note');
@@ -19,6 +20,15 @@ class Application_Form_Note extends Zend_Form
 				->setAttrib('cols', '40')
 				->setAttrib('rows', '4')
 				->setErrorMessages(array('Vous devez compléter la note avant de l\'envoyer'));	
+			
+		//FICHER
+        $file = new Zend_Form_Element_File('file');
+        $file
+				->setLabel('Fichier')
+				->setRequired(true)
+				->addValidator('NotEmpty')
+				->addValidator('Extension', false, 'csv')
+				->addValidator('Size', false, 20097152);
 				
 		//ENVOYER		
 		$envoyer = new Zend_Form_Element_Submit('envoyer');
@@ -28,6 +38,7 @@ class Application_Form_Note extends Zend_Form
 				
 		$this->addElements(array(
 									$note,
+									$file,
 									$envoyer
 								));
 			

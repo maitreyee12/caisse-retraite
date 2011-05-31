@@ -7,7 +7,7 @@ $i=0;
 foreach($this->afficherNote as $demande) : ?>
 	<table <?php echo "id='afficher_note_$i'"; ?>>
 		<tr>
-			<th>Posté par <?php echo $this->escape($demande->Id_utilisateur)." le ".$this->escape($demande->Date_soumission);?></th>
+			<th>#<?php echo $this->escape($demande->Id_note)?></th>
 		</tr>
 		<tr>
 			<td><?php echo $this->escape($demande->Contenu);?></td>
@@ -17,7 +17,7 @@ foreach($this->afficherNote as $demande) : ?>
 
 <script>
 		$(function () {
-			tableToGrid("#afficher_note_<?php echo $i ?>", {height:'100'});;
+			tableToGrid("#afficher_note_<?php echo $i ?>", {height: "auto", caption: "<?php echo "Posté par ".$this->escape($demande->Login)." le ".$this->escape($demande->Date_soumission);?>"});
 		});
 </script>
 	
