@@ -1,5 +1,4 @@
-﻿
-<table id='afficher_demande' border="1">
+﻿<table id='afficher_demande' border="1">
 	<thead>
 		<tr>
 			<th>ID</th>
@@ -27,7 +26,7 @@
 <table id='afficher_demande_commentaire' >
 	<thead>
 		<tr>
-			<th>Commentaire</th>
+			<th>Commentaire sur la demande</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -41,7 +40,7 @@
 
 <script>
 	$(function () {
-		tableToGrid("#afficher_demande", {height:'22'});
-		tableToGrid("#afficher_demande_commentaire", {});
+		tableToGrid("#afficher_demande", {height:"auto", caption: "Informations sur la demande"});
+		tableToGrid("#afficher_demande_commentaire", {height:"auto"});
 	});
 </script>
