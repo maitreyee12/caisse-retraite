@@ -61,6 +61,9 @@
 	//appel de l'action demande du controller AfficherLesDemandes
 	//formulaire pour ajouter une note
 	echo $this->action('ajouter-note', 'Note', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
+	
+	//on ajoute un doc
+	echo $this->action('ajouter-document', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
 	?>
 	
 	</div>
