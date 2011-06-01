@@ -78,6 +78,7 @@
         <controllerFile controllerName="Document">
           <actionMethod actionName="index"/>
           <actionMethod actionName="afficherDocuments"/>
+          <actionMethod actionName="ajouterDocument"/>
         </controllerFile>
         <controllerFile controllerName="Carriere">
           <actionMethod actionName="index"/>
@@ -99,6 +100,7 @@
         <formFile formName="ProfilEmployeCaisse"/>
         <formFile formName="ProfilCaisse"/>
         <formFile formName="Note"/>
+        <formFile formName="Document"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -265,6 +267,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Carriere">
             <viewScriptFile forActionName="afficherCarriere"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Document">
+            <viewScriptFile forActionName="ajouterDocument"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
