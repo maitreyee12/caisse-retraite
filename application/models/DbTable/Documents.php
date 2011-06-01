@@ -11,11 +11,10 @@ class Application_Model_DbTable_Documents extends Zend_Db_Table_Abstract
 			'Id_courrier' => $Id_courrier,
             'Id_demande' => $Id_demande,
             'Nom_document' => $Nom_document,
+			'Date_ajout' => date("Y-m-d H:i:s"),
             'Lien' => $Lien
 			);
 			$this->insert($data);
 		}
-
-
 }
 

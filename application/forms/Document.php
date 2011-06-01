@@ -16,13 +16,12 @@ class Application_Form_Document extends Zend_Form
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
 				->addValidator('StringLength', false, array(3, 200))
-				->addValidator('Alnum', false, array('allowWhiteSpace' => true))
 				->setRequired(true)
 				//->setDescription('Minimum de 3 caractères')
-				->addErrorMessages(array('Le nom du document doit comprendre au moins 3 caractères', 'Ne peut pas comprendre de caractères spéciaux'));
+				->addErrorMessages(array('Le nom du document doit comprendre au moins 3 caractères'));
 		 
 		 // creating object for Zend_Form_Element_File
-		 $doc_file = new Zend_Form_Element_File('doc_path');
+		 $doc_file = new Zend_Form_Element_File('Doc');
 		 $doc_file->setLabel('Document : ')
 				  ->setRequired(true);
 
