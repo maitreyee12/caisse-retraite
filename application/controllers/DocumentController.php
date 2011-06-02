@@ -15,7 +15,10 @@ class DocumentController extends Zend_Controller_Action
 
     public function afficherDocumentsAction()
     {
-        // action body
+		$id_demande =  $this->_getParam("id");
+	
+        $documents = new Application_Model_DbTable_Documents();
+		$this->view->listeDocuments = $documents->afficherDocumentsParDemande($id_demande);
     }
 
     public function ajouterDocumentAction()
@@ -24,8 +27,8 @@ class DocumentController extends Zend_Controller_Action
 		$this->view->form = $form_Demande;
 		if ($this->getRequest()->isPost()) 
 			{
-				$BLABLA = $this->getRequest()->getPost();
-				if ($form_Demande->isValid($BLABLA)) 
+				$formData = $this->getRequest()->getPost();
+				if ($form_Demande->isValid($formData)) 
 					{
 					
 						$id_demande =  $this->_getParam("id");
@@ -55,7 +58,7 @@ class DocumentController extends Zend_Controller_Action
 				else 
 					{
 						// this line will be called if data was not submited
-						$form_Demande->populate($BLABLA);
+						$form_Demande->populate($formData);
 					}
 			}
     }

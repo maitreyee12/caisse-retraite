@@ -1,4 +1,37 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Document</b> and script/action name <b>afficherDocuments</b></p>
-</div>
+﻿<h2>Documents joints</h2>
+
+<table id="afficher_documents">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Numéro de courrier</th>
+			<th>Date</th>
+			<th>Nom</th>
+			<th>Télécharger</th>
+		</tr>
+	</thead>
+<?php 
+foreach($this->listeDocuments as $documents) : 
+?>
+	<tbody>
+		<tr>
+			<td><?php echo $this->escape($documents->Id_document);?></td>
+			<td><?php echo $this->escape($documents->Id_courrier);?></td>
+			<td><?php echo $this->escape($documents->Date_ajout);?></td>
+			<td><?php echo $this->escape($documents->Nom_document);?></td>
+			<td><?php echo $this->escape($documents->Lien);?></td>
+		</tr>
+	</tbody>
+<?php 
+endforeach;
+?>
+
+</table>
+<br />
+
+<script>
+		$(function () {
+			tableToGrid("#afficher_documents", {height: "auto", caption: "Liste des documents"});
+		});
+</script>
+	

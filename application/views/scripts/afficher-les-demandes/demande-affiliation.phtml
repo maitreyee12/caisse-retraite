@@ -58,11 +58,14 @@
 	//lister les notes de cette demande et les afficher
 	echo $this->action('afficher-notes', 'Note', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
 
+	//afficher la liste des documents
+	echo $this->action('afficher-documents', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
+	
 	//appel de l'action demande du controller AfficherLesDemandes
 	//formulaire pour ajouter une note
 	echo $this->action('ajouter-note', 'Note', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
 	
-	//on ajoute un doc
+	//on ajoute un document
 	echo $this->action('ajouter-document', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
 	?>
 	
