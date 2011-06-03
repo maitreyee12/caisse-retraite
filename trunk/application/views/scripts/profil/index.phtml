@@ -21,14 +21,17 @@
 	?>
 	<div id='profildemandes' >
 		<div id='profildemandes-content'>
-			<h3>Vos demandes</h3>
+			
 			<?php echo $this->action('index', 'ListeDemandes', null, array('id' => ($this->id))); ?>
 		</div>
 	</div>
 	<div id='profilcarriere' >
 		<div id='profildemandes-content'>
-			<h3>Votre carrière</h3>
 			
+			<?php 
+				//On affiche la carrière de l'adhérent
+				echo $this->action('afficher-Carriere', 'Carriere', null, array('id' => ($this->id))); 
+			?>
 		</div>
 	</div>
 	<?php }?>

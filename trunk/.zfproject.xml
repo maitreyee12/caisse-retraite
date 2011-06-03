@@ -270,11 +270,11 @@
           <viewControllerScriptsDirectory forControllerName="Carriere">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Carriere">
-            <viewScriptFile forActionName="afficherCarriere"/>
-          </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Document">
             <viewScriptFile forActionName="ajouterDocument"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Carriere">
+            <viewScriptFile forActionName="afficherCarriere"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Demande">
             <viewScriptFile forActionName="modifierEtatDemande"/>

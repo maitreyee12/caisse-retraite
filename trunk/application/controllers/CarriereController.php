@@ -15,11 +15,18 @@ class CarriereController extends Zend_Controller_Action
 
     public function afficherCarriereAction()
     {
-        // action body
+        $id_utilisateur = $this->_getParam('id');
+        
+        $carriere = new Application_Model_DbTable_Carriere();
+        $this->view->carriere = $carriere->getCarriere($id_utilisateur);
     }
 
 
 }
+
+
+
+
 
 
 
