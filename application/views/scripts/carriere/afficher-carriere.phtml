@@ -1,4 +1,29 @@
-<br /><br />
+<h3>Carrière</h3>
 <div id="view-content">
-	<p>View script for controller <b>Carriere</b> and script/action name <b>afficherCarriere</b></p>
+
+	<table id='carriere' >
+		<thead>
+			<tr>
+				<th>Trimestres Cumulés</th>
+				<th>Points cumulés</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?php echo $this->escape($this->carriere->Trimestre_cumul);?></td>
+				<td><?php echo $this->escape($this->carriere->Points_cumul);?></td>
+				</tr>
+		</tbody>
+	</table>
+	
+	
+	<?php
+		//On affiche la carrière de l'adhérent
+		echo $this->action('afficher-Periode', 'Periode', null, array('id' => ($this->carriere->Id_carriere))); 
+	?>
 </div>
+<script>
+		$(function () {
+			tableToGrid("#carriere", {height:"auto", caption: "Informations sur la carrière"});
+		});
+	</script>

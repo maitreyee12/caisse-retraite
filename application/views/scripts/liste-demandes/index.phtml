@@ -2,7 +2,7 @@
 	$this->title = 'Listes des demandes';
 	$this->headTitle($this->title);
 ?>
-
+	<h3>Vos demandes</h3>
 	<table id='listedemandes'>
 		<thead>
 			<tr>
@@ -20,14 +20,9 @@
 			<tr>
 				<td><?php echo $this->escape($demande->Id_demande);?></td>
 				<td><?php echo $this->escape($demande->Type);?></td>
-				<td>
-				<?php
-					$date = explode(" ",$this->escape($demande->Date_demande)); 
-					echo $date[0];
-				?>
-				</td>
-				<td>
-				<?php $etat = $this->escape($demande->Etat);
+				<td><?php $date = explode(" ",$this->escape($demande->Date_demande)); 
+					      echo $date[0];?></td>
+				<td><?php $etat = $this->escape($demande->Etat);
 						  if($etat == 0){
 						  	echo "En attente";
 						  }elseif ($etat == 1){
@@ -35,39 +30,12 @@
 						  }else {
 						  	echo "Traité";
 						  }
-				?>
-				</td>
-				<td>
-					<?php
-						$utilisateur = new Application_Model_DbTable_Utilisateur();
-						if($utilisateur->exist($demande->Id_utilisateur)){
-						
-					?>
-					<a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index', 'id'=>$demande->Id_utilisateur));?>">Voir</a>
-					<?php } ?>
-					
-				</td>
-				<td>
-				<?php
-					$type = $this->escape($demande->Type);
-					
-					  if($type == "demande affiliation")
-						{
-				?>
-							<a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes',
-								'action'=>'demande-affiliation', 'id'=>$demande->Id_demande));?>">Voir</a>
-				<?php
-						}
-					  else if($type == "demande informations")
-						{
-				?>
-							<a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes',
-								'action'=>'demande-informations', 'id'=>$demande->Id_demande));?>">Voir</a>
-				<?php
-						}
-				?>
-					
-				</td>
+				?></td>
+				<td><?php $utilisateur = new Application_Model_DbTable_Utilisateur();
+						  if($utilisateur->exist($demande->Id_utilisateur)){?><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index', 'id'=>$demande->Id_utilisateur));?>">Voir</a><?php }?></td>
+				<td><?php $type = $this->escape($demande->Type);
+					  	  if($type == "demande affiliation"){?><a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-affiliation', 'id'=>$demande->Id_demande));?>">Voir</a>
+				<?php }else if($type == "demande informations"){?><a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-informations', 'id'=>$demande->Id_demande));?>">Voir</a><?php }?></td>
 			</tr>
 			<?php 
 			}
@@ -76,7 +44,7 @@
 	</table>
 
 <script>
-	//$(function () {
-		//tableToGrid("#listedemandes", {});
-	//});
+	$(function () {
+		tableToGrid("#listedemandes", {height:"auto", caption: "Liste des demandes"});
+	});
 </script>

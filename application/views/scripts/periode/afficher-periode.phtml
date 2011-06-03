@@ -1,71 +1,41 @@
-<h2>Périodes</h2>
+<h3>Périodes</h3>
 
-<?php 
-$i=0;
-
-foreach($this->Periodes as $periode) : ?>
-	<table <?php echo "id='periode_$i'"; ?>>
+	<table id='periode'>
 	<thead>
 		<tr>
-			<th>Débute le:</th>
-			<th>S'achève le:</th>
 			<th>Entreprise</th>
 			<th>Salaire</th>
 			<th>Point ARRCO</th>
 			<th>Point AGIRC</th>
+			<th>Documents liés</th>
 		</tr>
 	</thead>
 	<tbody>
+	<?php 
+		$i=0;
+		foreach($this->Periodes as $periode) : ?>
 		<tr>
-			<td><?php echo $this->escape($periode->Date_debut);?></td>
-			<td><?php echo $this->escape($periode->Date_fin);?></td>
 			<td><?php echo $this->escape($periode->Nom_Entreprise);?></td>
 			<td><?php echo $this->escape($periode->Salaire_percu);?></td>
 			<td><?php echo $this->escape($periode->Points_ARRCO);?></td>
 			<td><?php echo $this->escape($periode->Points_AGIRC);?></td>
+			<td><a href="<?php echo $this->url(array('controller'=>'Document','action'=>'afficher-Documents', 'id_periode'=>$periode->Id_periode));?>">Voir</a></td>
 		</tr>
-	</tbody>
+		<?php 
+			$i++;
+			endforeach; ?>
+		</tbody>
+	
 	</table>
-	<?php 
-
-	//appel de l'action demande du controller AfficherDocuments
-	echo $this->action('document', 'AfficherDocuments', null, array('id' => ($periode->Id_periode))); 
-	?>
-	<table>
-		<thead>
-  			<tr>
-	    		<th>Nom du document</th>
-    			<th>Date d'ajout</th>
-  			</tr>
-  		</thead>
-  		<tbody>
-  		<?php 
-			$j=0;
-  			foreach($this->Documents as $document){ 
-  				if($document->Id_periode == $periode->Id_periode){?>
-  				<tr>
-		    		<td><?php echo $this->escape($document->Nom_document);?></td>
-    				<td><?php echo $this->escape($document->Date_ajout);?></td>
-  				</tr>
-  			<?php 
-  				}
-				$j++;
-			 } 
-			 ?>
-  		</tbody>
-	</table>
-
 	
 <br />
 
 <script>
 		$(function () {
-			tableToGrid("#periode_<?php echo $i ?>", {height:'auto'});;
+			tableToGrid("#periode", {height:'auto',caption: 'Période du <?php $datedeb = explode(" ",$this->escape($periode->Date_debut)); 
+					  echo trim($datedeb[0]);?> au <?php $datefin = explode(" ",$this->escape($periode->Date_fin)); 
+					  echo trim($datefin[0]);?>'});;
 		});
 </script>
 	
 
-<?php 
-$i++;
-
-endforeach; ?>
