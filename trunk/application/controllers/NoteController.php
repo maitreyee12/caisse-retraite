@@ -15,30 +15,42 @@ class NoteController extends Zend_Controller_Action
 
     public function ajouterNoteAction()
     {
-        $form_Note = new Application_Form_Note();
-		$this->view->form = $form_Note;
-		if ($this->getRequest()->isPost()) 
+		$id =  $this->_getParam("id");
+		
+		$model_Demande = new Application_Model_DbTable_Demande();
+		$this->getDemande = $model_Demande->getDemande($id);
+	
+		if($this->getDemande->Etat == 2)
 			{
-				$formData = $this->getRequest()->getPost();
-				if ($form_Note->isValid($formData)) 
-					{
-						 
-						$auth = Zend_Auth::getInstance();
-						$id_utilisateur = $auth->getIdentity()->Id_utilisateur;
-						$id =  $this->_getParam("id");
-						$date_soumission = date("Y-m-d H:i:s");
-						$note = $form_Note->getValue('Note');
-						
-						$model_Note = new Application_Model_DbTable_Note();
-						$model_Note->ajouterDemande($id, $id_utilisateur, $date_soumission, $note);
-						
-						$this->_helper->redirector('demande-affiliation','AfficherLesDemandes', null, array('id' => ($id)));
-					} 
-				else 
-					{
-						$form_Note->populate($formData);
-					}
+				$this->render('note-verouille');
 			}
+		else
+			{
+				$form_Note = new Application_Form_Note();
+				$this->view->form = $form_Note;
+				if ($this->getRequest()->isPost()) 
+					{
+						$formData = $this->getRequest()->getPost();
+						if ($form_Note->isValid($formData)) 
+							{
+								 
+								$auth = Zend_Auth::getInstance();
+								$id_utilisateur = $auth->getIdentity()->Id_utilisateur;
+								$date_soumission = date("Y-m-d H:i:s");
+								$note = $form_Note->getValue('Note');
+							
+								$model_Note = new Application_Model_DbTable_Note();
+								$model_Note->ajouterDemande($id, $id_utilisateur, $date_soumission, $note);
+								
+								$this->_helper->redirector('demande-affiliation','AfficherLesDemandes', null, array('id' => ($id)));
+									
+							} 
+						else 
+							{
+								$form_Note->populate($formData);
+							}
+					}
+			}      
     }
 
     public function afficherNotesAction()
@@ -49,8 +61,15 @@ class NoteController extends Zend_Controller_Action
 		$this->view->afficherNote = $notes->afficherNote($id_demande);
     }
 
+    public function noteVerouilleAction()
+    {
+        // action body
+    }
+
 
 }
+
+
 
 
 

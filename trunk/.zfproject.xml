@@ -21,6 +21,8 @@
           <actionMethod actionName="rachatTrimestres"/>
           <actionMethod actionName="informations"/>
           <actionMethod actionName="accepte"/>
+          <actionMethod actionName="modifierEtatDemande"/>
+          <actionMethod actionName="getDemande"/>
         </controllerFile>
         <controllerFile controllerName="Transfert">
           <actionMethod actionName="index"/>
@@ -70,6 +72,7 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="ajouterNote"/>
           <actionMethod actionName="afficherNotes"/>
+          <actionMethod actionName="noteVerouille"/>
         </controllerFile>
         <controllerFile controllerName="Periode">
           <actionMethod actionName="index"/>
@@ -79,6 +82,7 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="afficherDocuments"/>
           <actionMethod actionName="ajouterDocument"/>
+          <actionMethod actionName="documentVerouille"/>
         </controllerFile>
         <controllerFile controllerName="Carriere">
           <actionMethod actionName="index"/>
@@ -101,6 +105,7 @@
         <formFile formName="ProfilCaisse"/>
         <formFile formName="Note"/>
         <formFile formName="Document"/>
+        <formFile formName="DemandeModifierEtat"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -270,6 +275,18 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Document">
             <viewScriptFile forActionName="ajouterDocument"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="modifierEtatDemande"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Demande">
+            <viewScriptFile forActionName="getDemande"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Note">
+            <viewScriptFile forActionName="noteVerouille"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Document">
+            <viewScriptFile forActionName="documentVerouille"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

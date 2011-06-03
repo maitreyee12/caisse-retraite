@@ -123,8 +123,41 @@ class DemandeController extends Zend_Controller_Action
         // action body
     }
 
+    public function modifierEtatDemandeAction()
+    {
+		$form_modifierEtatDemande = new Application_Form_DemandeModifierEtat();
+		$this->view->form = $form_modifierEtatDemande;
+		if ($this->getRequest()->isPost())
+			{
+				$formData = $this->getRequest()->getPost();
+				if ($form_modifierEtatDemande->isValid($formData))
+					{
+						$id_demande =  $this->_getParam("id");
+						$etat = $form_modifierEtatDemande->getValue('Etat');
+						
+						$model_Demande = new Application_Model_DbTable_Demande();
+						$model_Demande->modifierEtatDemande($id_demande, $etat);
+	
+						$this->_helper->redirector('demande-affiliation','AfficherLesDemandes', null, array('id' => ($id_demande)));
+					} 
+				else 
+					{
+						$form_modifierEtatDemande->populate($formData);
+					}
+			}
+    }
+
+    public function getDemandeAction()
+    {
+        // action body
+    }
+
 
 }
+
+
+
+
 
 
 
