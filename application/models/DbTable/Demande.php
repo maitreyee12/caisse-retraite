@@ -41,5 +41,13 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
 								);
 		return $row->Id_demande;
 	}
+	
+	public function modifierEtatDemande($id_demande, $etat)
+	{
+		$data = array(
+            'Etat' => $etat,
+        );
+        $this->update($data, 'Id_demande = '. (int)$id_demande);
+	}
 }
 
