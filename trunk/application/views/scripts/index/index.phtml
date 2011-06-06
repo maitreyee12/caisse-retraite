@@ -1,6 +1,467 @@
 ﻿<?php
-	$this->title = 'controller -> Index | action -> index';
+	$this->title = 'Bienvenu sur le site de la CRC';
 	$this->headTitle($this->title);
 ?>
 
-<P>SALUT</P>
+<script>
+$(function() {
+	$( "#tabs" ).tabs();
+});
+
+</script>
+
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Particuliers salariés</a></li>
+		<li><a href="#tabs-2">Particuliers retraités</a></li>
+		<li><a href="#tabs-3">Entreprises</a></li>
+		<li><a href="#tabs-4">Notre groupe</a></li>
+		<li><a href="#tabs-5">Nous contacter</a></li>
+	</ul>
+	<div id="tabs-1">
+	<h2>Particuliers salariés</h2>
+		<ul>
+			<li><a href="#tabs-1-1">Retraite complémentaire Agirc et Arrco : les droits des actifs et retraités confortés</a></li>
+			<li><a href="#tabs-1-2">Comprendre mes cotisations sociales</a></li>
+			<li><a href="#tabs-1-3">M'informer sur la réforme des retraites</a></li>
+		</ul>
+		<h3 id="tabs-1-1">&raquo;Retraite complémentaire Agirc et Arrco : les droits des actifs et retraités confortés</h3>
+			<p class="news_intro">
+				Âges de la retraite unifiés, conditions de départ pérennisées, rendements stabilisés, majorations familiales harmonisées, et versementsmensualisés : revue de détail sur ce qui change, pour les actifs et les retraités, avec la mise en oeuvre de l’accord du 18 mars 2011 sur les retraites complémentaires.
+			</p>
+			<?php echo "<img src='".$this->baseUrl()."/images/site/AgircArrcoActu.gif' />"; ?>
+			<p class="news_content">
+				Des conditions de départ unifiées et sécurisées
+				Les salariés qui obtiendront leur retraite au taux plein auprès des régimes de base pourront également obtenir leur retraite complémentaire sans minoration. A compter du 1er juillet 2011, l’âge d’ouverture des droits avec condition de durée d’activité passe progressivement de 60 à 62 ans et sans condition de durée d’activité de 65 à 67 ans.
+				L’AGFF1 est reconduite jusqu’au 31 décembre 2018. Ce dispositif finance le surcoût des retraites liquidées avant l’âge de 65 ans. Cette pérennisation de l’AGFF met fin aux pratiques antérieures de reconduction du dispositif pour de courtes périodes qui pouvaient avoir un caractère anxiogène ; elle permet aux seniors d’envisager sereinement leur départ à la retraite.
+			</p>
+			<p class="news_content">
+				Des rendements harmonisés et stabilisés
+				Le rendement d’un régime de retraite est la pension obtenue en contrepartie du montant des cotisations versées. Actuellement, en contrepartie de 100 € de cotisations versés à l’Agirc, on obtient 6,70 € de pension pour chaque année passée en retraite, et à l’Arrco, 6,59 € de pension. Le rendement2 Arrco est donc inférieur à celui de l’Agirc alors même que la situation financière de l’Agirc est moins favorable.
+			</p>
+			<p class="news_content">
+				Le 1er objectif de l’accord est l’harmonisation des rendements entre les deux régimes. Pour y parvenir, le rendement de l’Agirc est progressivement aligné sur celui de l’Arrco. C’est pour cette raison que la progression de la valeur du point Agirc (+0,41 %) est cette année plus faible que celle du point Arrco (+2,11 %).
+			</p>
+			<p class="news_content">
+				Le 2e objectif de l’accord est de stabiliser ce rendement, en décroissance depuis environ 15 ans pour préserver la situation des bénéficiaires des régimes. Dès 2012, les points de retraite Arrco et Agirc seront indexés, au minimum sur l’augmentation des prix. Si l’évolution du salaire moyen des cotisants des régimes Arrco et Agirc, moins 1,5 point excédait l’indice des prix c’est cet indice qui serait retenu. Cette mesure améliore le pouvoir d’achat des retraités en leur faisant potentiellement profiter des gains de pouvoir d’achat des actifs.
+			</p>
+			<p class="news_content">
+				Cette année, les prix d’achat des points Arrco et Agirc sont restés indexés sur l’évolution du montant du salaire moyen des cotisants des régimes Arrco et Agirc, soit une augmentation de 2,2 % pour les deux régimes. La rigueur de ce principe sera assouplie dès 2012, puisque selon la règle évoquée plus haut, le salaire de référence évoluera comme l’inflation (sauf si l’évolution moyenne des salaires diminuée de 1,5 point excédait l’indice des prix). Cette règle est favorable au cotisant qui pourra acquérir un nombre de points supérieur.
+			</p>
+			<p class="news_content">
+				Des majorations familiales modernisées et harmonisées
+				Soucieux de prendre en compte les évolutions sociologiques - moins de familles de plus de trois enfants et de nombreux jeunes entrant tardivement dans la vie active - et d’harmoniser la règlementation des deux régimes, les partenaires sociaux ont adopté de nouvelles règles sur les majorations familiales. Ainsi, pour les périodes d’activité postérieures au 1er janvier 2012, les pensions des salariés seront majorées de 10 % s’ils ont eu ou élevé au moins trois enfants. Ces majorations s’élèvent actuellement à 5 % dans le régime Arrco et à 8 % dans le régime Agirc3. Un plafonnement des majorations est instauré dans chacun des régimes4 pour les droits liquidés à compter du 1er janvier 2012. Enfin, une majoration pour enfant à charge de 5 % est créée.
+				Cette dernière n’est pas cumulable avec les majorations pour enfants nés ou élevés.
+			</p>
+			<p class="news_content">
+				Des paiements mensualisés
+				Les retraites complémentaires sont actuellement versées au début de chaque trimestre. A partir de 2014, elles seront versées d’avance selon un rythme désormais mensuel. Réclamée depuis longtemps par les retraités, cette mesure facilitera la gestion de leur budget.
+			</p>
+			<p class="news_content">
+				1 L’Association pour la gestion du fonds de financement de l’Agirc et de l’Arrco <br />
+				2 Il s’agit techniquement du rendement brut effectif <br />
+				3 A l’Agirc, la majoration pour enfant s’élève à 8 % pour 3 enfants : s’ajoute 4 % par enfant supplémentaire dans la limite de 24 %. <br />
+				4 Le plafond s’établit à 1000 euros par régime. <br />
+			</p>
+		<br />
+		<br />
+		<br />
+		<h3 id="tabs-1-2">&raquo;Comprendre mes cotisations sociales</h3>
+		<p class="news_intro">
+			Les salariés du secteur privé cotisent obligatoirement à une retraite de base et à une retraite complémentaire.
+			Les cotisations sont prélévées par l'URSSAF pour la retraite de base et par des organismes de protection sociale pour la retraite complémentaire.
+		</p>
+		<p class="news_content">
+			L’organisation de la retraite complémentaire des salariés
+			Il existe 2 régimes complémentaires pour les travailleurs salariés :
+		</p>
+		<ul>
+			<li>Le régime Arrco pour tous les salariés</li>
+			<li>Le régime Agirc pour les salariés cadres.</li>
+		</ul>
+		<p class="news_content">
+			Vous êtes salarié non cadre :
+			Vous êtes affilié, par votre employeur, à une institution Arrco. Vos cotisations sont prélevées sur la totalité de votre salaire, dans la limite de 3 plafonds de la Sécurité sociale (sauf cas particuliers).
+		</p>
+		<p class="news_content">
+			Vous êtes cadre :
+			Vous êtes affilié à la fois à une institution Arrco et à une institution Agirc. Vous cotisez au régime Arrco sur la fraction de salaire comprise entre le 1er euro et le plafond de la Sécurité sociale et au régime Agirc sur la partie de votre salaire supérieure à ce plafond dans la limite de 8 plafonds.
+		</p>
+		<table id="info">
+			<thead>
+				<th>Salarié</th>
+				<th>Arrco</th>
+				<th>Agirc</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Ouvriers, employés, agents de maîtrise</td>
+					<td>X</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Cadres</td>
+					<td>X</td>
+					<td>X</td>
+				</tr>
+			</tbody>
+		</table>
+		<script>
+			$(function () {
+				tableToGrid("#info", {height:"auto"});
+			});
+		</script>
+		<p class="news_content">
+			A chaque tranche de salaire sa cotisation
+			Votre salaire se décompose en plusieurs tranches à partir desquelles sont calculées vos cotisations.
+		</p>
+		<p class="news_content">
+			Les limites inférieure et supérieure de chaque tranche sont calculées en fonction du plafond de la Sécurité sociale (ou PMSS, plafond mensuel de la sécurité sociale)..
+			Les cotisations sociales Arrco sont réparties entre l’employeur (60%) et le salarié (40 %).
+			Les cotisations sociales Agirc sont réparties entre l'employeur (37,93 %) et le salarié (62,8 %)
+			Régime Arrco
+			Tranche A : tranche de salaire brut limitée au plafond de la Sécurité sociale
+		</p>
+		<p class="news_content">
+			Tranche 2 : tranche de salaire brut comprise entre 1 et 3 plafonds de la Sécurité sociale
+		</p>
+		<p class="news_content">
+			Régime Agirc
+			Les cotisations sociales sont réparties entre l'employeur (62,5 %) et le salarié (37,5 %)
+		</p>
+		<p class="news_content">
+			Tranche A : tranche de salaire brut limitée au plafond de la Sécurité sociale
+		</p>
+		<p class="news_content">
+			Tranche B : tranche de salaire brut comprise entre 1 et 4 plafonds de la Sécurité sociale
+		</p>
+		<p class="news_content">
+			Tranche C : tranche de salaire brut comprise entre 4 et 8 plafonds de la Sécurité sociale
+		</p>
+		<p class="news_content">
+			* Pour certaines entreprises créées avant le 1er janvier 1999, la répartition entre employeur et salarié est spécifique.
+		</p>
+		<p class="news_content">
+			A quoi servent vos cotisations retraite
+		</p>
+		<p class="news_content">
+			En contrepartie des cotisations prélevées sur votre salaire, vous obtenez des points pris en compte pour le calcul de votre future retraite.
+		</p>
+		<p class="news_content">
+			Ces cotisations servent à financer les pensions des retraités.
+		</p>
+		<p class="news_content">
+			Au moment de votre départ en retraite, vous bénéficierez ainsi du versement d’une pension de retraite.
+			Comprendre votre relevé actualisé de points
+		</p>
+		<p class="news_content">
+			Le relevé récapitule les points provenant des cotisations patronales et salariales, versées par votre employeur à votre institution de retraite Arrco et Agirc (si vous êtes cadre). Ainsi au fil de votre carrière, vous cumulerez des points de retraite complémentaire.
+			Vous pourrez consulter prochainement sur notre Espace membre, 24h sur 24, en toute confidentialité, votre relevé actualisé de points de retraite complémentaire en ligne. Ce relevé récapitulera année après année, entreprise par entreprise, le nombre de points obtenus depuis le début de la carrière au sein des régimes Agirc Arrco.
+			Dispositif commun à l'ensemble des groupes de retraite, le relevé actualisé de points remplacera l'envoi annuel de points, effectué jusqu'à présent annuellement par courrier.
+		</p>
+		<br />
+		<br />
+		<br />
+		<h3 id="tabs-1-3">&raquo;M'informer sur la réforme des retraites</h3>
+		<p class="news_intro">
+			Le droit à l'information vise à apporter une information globale et régulière à chaque assuré sur ses droits à retraite. 
+		</p>
+		<p class="news_content">
+			Il est renforcé par la mise en place :
+		</p>
+		<p class="news_content">
+		<ul>
+			<li>d'un document d'information générale sur la retraite pour les personnes qui entrent dans la vie active délivré dans l’année suivant celle au cours de laquelle ils ont validé deux trimestres dans un régime de retraite obligatoire;</li>
+			<li>d'un "point d'étape retraite" effectué avec l'assuré à partir de 45 ans. Ce point d'étape permet à l'assuré de disposer d'informations générale et individuelle sur sa retraite;</li>
+			<li>d'un relevé de carrière disponible par internet dans tous les régimes de retraite;</li>
+			<li>d’une information personnalisée pour les expatriée sur les règles particulières d’acquisition de ses droits de pension et l’impact de l’exercice de son activité à l’étranger sur son futur droit à la retraite;</li>
+			<li>d’une estimation indicative globale du montant de la pension en cas de divorce ou de séparation de corps.</li>
+		</ul>
+		</p>
+		<p class="news_content">
+			Les conditions d’application
+		</p>
+		<p class="news_content">
+			Le point d’étape à partir de 45 ans concerne tous les assurés qui en formuleront la demande, qu’ils résident en France ou à l’étranger.
+		</p>
+		<p class="news_content">
+			L’information personnalisée aux expatriés sera accessible sur demande sous la forme d’un entretien en amont du projet d’expatriation.
+		</p>
+		<p class="news_content">
+			L’estimation en cas de divorce concerne les assurés engagés dans une procédure de divorce ou de séparation de corps qui en formuleront la demande.
+		</p>
+	</div>
+	<div id="tabs-2">
+		<h2>Particuliers retraités</h2>
+		<ul>
+			<li><a href="#tabs-2-1">Prémunir mes proches en cas de décès</a></li>
+			<li><a href="#tabs-2-2">Découvrir la retraite</a></li>
+		</ul>
+		<h3 id="tabs-2-1">&raquo;Prémunir mes proches en cas de décès</h3>
+			<p class="news_intro">
+				Vous souhaitez assurer la sérénité de vos proches au moment de votre décès.
+			</p>
+			<p class="news_content">
+				Préobsia, notre garantie obsèques, répond à ce besoin et permet de garantir le versement d'un capital aux bénéficiaires de votre choix (conjoint, enfant, parent, entreprise de pompes funèbres, …).
+				Ils sont ainsi dégagés de tout souci matériel ou financier : frais d’obsèques, droits de succession, démarches administratives… 
+			</p>
+			<?php echo "<img src='".$this->baseUrl()."/images/site/preobsiapromo.gif' />"; ?>
+			<p class="news_content">
+				Les + de Préobsia
+			</p>
+			<p class="news_content">
+				<ul>
+					<li>La possibilité de souscrire jusqu’à vos 80 ans sans formalité médicale</li>
+					<li>Une cotisation fixée à l’adhésion qui n’évoluera donc pas en fonction de votre âge ou de votre état de santé</li>
+					<li>La possibilité d’opter pour un capital pouvant atteindre 10 000 €</li>
+					<li>Des services d’assistance adaptés pour vos proches : transport et rapatriement du corps, assistance et soutien psychologique, ….</li>
+					<li>Une réduction de 10% sur l’un des 2 contrats en cas d’adhésion simultanée pour les couples</li>
+				</ul>
+			</p>
+			<p class="news_content">
+				Le choix entre plusieurs formules de cotisation
+			</p>
+			<p class="news_content">
+				<ul>
+					<li>Une cotisation viagère : vous étalez vos cotisations tout au long de votre vie (paiement mensuel ou trimestriel).</li>
+					<li>Une cotisation temporaire : vous financez votre capital sur une durée déterminée (5, 10 ou 15 ans).</li>
+					<li>Une cotisation unique que vous réglez dès votre adhésion : vous effectuez un seul versement pour un capital garanti.</li>
+				</ul>
+			</p>
+		<br />
+		<br />
+		<br />
+		<h3 id="tabs-2-2">&raquo;Découvrir la retraite</h3>
+			<p class="news_intro">
+				Vous êtes retraité et à ce titre, vous bénéficiez d’une retraite du régime de base (régime général) ainsi que d’une retraite complémentaire Arrco, et d’une retraite complémentaire Agirc si vous étiez cadre.
+			</p>
+			<p class="news_content">
+				Comment est calculée votre retraite ? 
+			</p>
+			<p class="news_content">
+				Montant de la retraite = Nombre total de points acquis durant la carrière X Valeur du point de retraite 
+			</p>
+			<p class="news_content">
+				Si vous êtes imposable, des prélèvements sociaux sont effectués.
+			<ul>
+				<li>Cotisation d'assurance maladie</li>
+				<li>CSG</li>
+				<li>CRDS</li>
+			</ul>
+				Si votre situation fiscale change, vous devez avertir vos différentes institutions de retraite qui vous versent une allocation.
+			</p>
+			<p class="news_content">
+				Qu'est ce que le point de retraite ?<br />
+				Le point est une "monnaie" de compte. Tout au long de votre carrière, vous avez acquis des points, proportionnellement aux cotisations versées à votre institution de retraite complémentaire et le cas échéant des points acquis sans contrepartie de cotisations. 
+			</p>
+			</p>
+			<p class="news_content">			
+				Quand s’effectue le paiement de votre retraite ?<br />
+				Il a lieu au début de chaque trimestre civil : début janvier, avril, juillet et octobre.
+			</p>
+			</p>
+			<p class="news_content">			
+				Comment vous constituer une épargne de précaution ou transmettre un capital ?<br />
+				Pour vous constituer une épargne de précaution ou transmettre un capital, l’assurance vie multisupports vous offre une solution pour améliorer vos revenus.
+			</p>
+			<p class="news_content">	
+				Les contrats d’assurance vie multisupports sont des placements qui permettent de répartir les versements sur différents supports d’investissement et d’en modifier la répartition.<br />
+				Vous pouvez donc investir votre argent sur un ou plusieurs supports financiers : du plus dynamique au plus sécuritaire. C’est vous qui décidez de la répartition de votre argent.<br />
+				Vos versements n'ouvrent droit à aucune déduction fiscale mais votre capital est disponible au fur et à mesure de vos besoins.<br />
+				Si vous le souhaitez, vous pouvez aussi le convertir en rente viagère (une partie seulement sera imposable). L'assurance-vie offre également des avantages en matière de succession. En cas de décès et si le contrat n'a pas été dénoué en rente viagère, les bénéficiaires désignés recevront le capital hors droits de succession (dans les limites de la législation en vigueur).
+			</p>
+	</div>
+	<div id="tabs-3">
+		<h2>Entreprises</h2>
+		<ul>
+			<li><a href="#tabs-3-1">Connaître la protection sociale</a></li>
+			<li><a href="#tabs-3-2">Affilier de nouveaux salariés</a></li>
+			<li><a href="#tabs-3-3">Déclarer un arrêt de travail ou le décès d'un salarié</a></li>
+		</ul>
+		<h3 id="tabs-3-1">&raquo;Connaître la protection sociale</h3>
+			<p class="news_intro">
+				Vous êtes dirigeant d'entreprise et vous désirez connaître les grands principes de la retraite et vos obligations en prévoyance. Voici quelques informations utiles.
+			</p>
+			<?php echo "<img src='".$this->baseUrl()."/images/site/Metiersretraite.gif' />"; ?>
+			<p class="news_content">
+				Chaque salarié et son entreprise versent des cotisations (charge salariales / charges patronales ), pour se constituer une retraite de base et une retraite complémentaire, et pour financer celles des générations précédentes. C’est le principe de la répartition.
+			</p>
+			<p class="news_content">
+				A NOTER
+				En adhérant aux institutions du Groupe CRC, vous bénéficiez de l'action sociale de notre groupe.
+			</p>
+			<p class="news_content">
+				L’équipe de l’action sociale du groupe CRC est composée de professionnels dont la mission est d'accompagner à chaque étape de la vie, vos salariés, à titre personnel et professionnel, afin de répondre au mieux à leurs besoins et leur proposer des solutions adaptées.
+			</p>
+			<p class="news_content">
+				Elle intervient en complément des politiques sociales publiques et s'inscrit dans la démarche d'Ecoute de Conseil et d'Orientation. Selon que votre entreprise adhère en retraite et/ou en prévoyance, des actions peuvent être menées.
+				Par exemple : des aides individuelles (soutien financier pour faire face aux situations difficiles - handicap - difficultés budgétaires) ou des actions collectives (maintien à domicile - hébergement en établissements spécialisés).
+			</p>
+			<p class="news_content">
+				Versement d’une allocation au moment du départ en retraite de vos salariés
+			</p>
+			<p class="news_content">
+				Vos salariés bénéficieront au moment de leur départ à la retraite, en plus du versement du régime vieillesse de la Sécurité sociale, du versement, par les institutions du Groupe CRC d’une allocation calculée selon les points acquis tout au long de leur carrière.
+			</p>
+			<p class="news_content">
+				La Prévoyance : une couverture en cas d’arrêt de travail ou de décès de vos salariés
+			</p>
+			<p class="news_content">
+				Mettre en place un régime de prévoyance pour vos salariés vous permet de leur assurer une couverture contre les risques de perte de revenus à la suite d’un arrêt de travail temporaire (incapacité) ou permanent (linvalidité) ou suite au décès d’un salarié.
+			</p>
+		<br />
+		<br />
+		<br />
+		<h3 id="tabs-3-2">&raquo;Affilier de nouveaux salariés</h3>
+			<p class="news_intro">
+				Vous êtes dirigeant d’une entreprise et vous souhaitez adhérer à l’une des institutions du groupe CRC.Quelles démarches allez-vous devoir accomplir pour affilier vos salariés.
+			</p>
+			<p class="news_content">
+				Chaque salarié et son entreprise versent des cotisations (charge salariales / charges patronales ), pour se constituer une retraite de base et une retraite complémentaire, et pour financer celles des générations précédentes. C’est le principe de la répartition.
+			</p>
+			<p class="news_content">
+				Auprès de l'URSSAF ou de la Caisse mutualité agricole (MSA) 
+			</p>
+			<p class="news_content">	
+				Pour embaucher un salarié, vous devez obligatoirement l’inscrire auprès des organismes de protection sociale dont il dépend territorialement. Cette formalité est à réaliser auprès de l’URSSAF ou de la Caisse de mutualité agricole au moyen de la déclaration unique d’embauche (DUE) via Net-entreprises.fr.
+			</p>
+			<p class="news_content">
+				Auprès de nos institutions de retraite et/ou de prévoyance
+			</p>
+			<p class="news_content">
+				Affilier vos salariés en retraite
+			</p>
+			<p class="news_content">
+				Il n’est pas nécessaire de nous déclarer nominativement les personnes embauchées. Leur affiliation s’effectuera par le biais des déclarations nominatives annuelles que vous nous fournirez à l’issue de l’année civile.
+				N’hésitez pas à nous contacter si vous désirez des précisions sur la mise en oeuvre des critères d’affiliation résultant des classifications professionnelles applicables à votre secteur d’activité.
+			</p>
+			<p class="news_content">
+				Affilier vos salariés en prévoyance et santé
+			</p>
+			<p class="news_content">
+				Vous devez affilier vos nouveaux salariés, individuellement. Prenez contact avec votre conseiller pour connaître la marche à suivre.
+			</p>
+		<br />
+		<br />
+		<br />
+		<h3 id="tabs-3-3">&raquo;Déclarer un arrêt de travail ou le décès d'un salarié</h3>
+			<p class="news_intro">
+				Avec CRC, vous avez choisi de protéger vos salariés et leur famille. Les garanties de votre contrat en prévoyance assurent à vos salariés le maintien d'un certain niveau de salaire en cas d’arrêt de travail : si l’un de vos salariés est victime d’un accident de travail, d’un accident de trajet ou d’une maladie professionnelle.
+			</p>
+			<p class="news_content">
+				Après avoir effectué vos démarches auprès de la Sécurité sociale, voici celles que vous devrez effectuer auprès de nos services.  
+			</p>
+			<p class="news_content">
+				CRC vous accompage dans vos démarches pour déclarer un arrêt de travail
+			</p>
+			<p class="news_content">
+				En cas d’incapacité temporaire, vous devez fournir à votre Institution de Prévoyance : 
+			</p>
+			<p class="news_content">
+				<ul>
+					<li>La déclaration d’arrêt de travail dûment remplie (formulaire de l’institution)</li>
+					<li>Les décomptes d’indemnités journalières de la Sécurité sociale</li>
+					<li>Le certificat médical initial d’arrêt de travail et le certificat d’hospitalisation lorsque les garanties le nécessitent</li>
+					<li>Les photocopies des bulletins de salaires correspondant à la période de référence servant au calcul des prestations</li>
+					<li>En cas de rechute, reconnue comme telle par la Sécurité sociale, un certificat médical précisant qu’il s’agit de la même affection</li>
+				</ul>
+			</p>
+			<p class="news_content">
+				En cas d’invalidité permanente, vous devez fournir à votre Institution de Prévoyance :
+			</p>
+			<p class="news_content">
+				<ul>
+					<li>La déclaration d’arrêt de travail (formulaire de l’Institution)</li>
+					<li>La notification d’attribution de pension ou de rente d’invalidité permanente émanant de la Sécurité sociale au moment de l’ouverture des droits</li>
+					<li>Le justificatif de paiement de la rente de la Sécurité sociale</li>
+					<li>Les photocopies de bulletins de salaires correspondant à la période de référence servant au calcul des prestations</li>
+					<li>Un relevé d’identité bancaire ou postale ou de caisse d’épargne du bénéficiaire</li>
+				</ul>
+			</p>
+	</div>
+	<div id="tabs-4">
+		<h2>Notre groupe</h2>
+		<ul>
+			<li><a href="#tabs-4-1">Nos engagements</a></li>
+			<li><a href="#tabs-4-2">Notre équipe dirigeante</a></li>
+		</ul>
+		<h3 id="tabs-4-1">&raquo;Nos engagements</h3>
+			<p class="news_intro">
+				Avec son réseau de professionnels répartis sur l’ensemble du territoire français, CRC s'engage à répondre à vos attentes et vous propose des offres et services innovants.
+			</p>
+			<p class="news_content">
+				L’expertise : le savoir-faire d’une équipe professionnelle
+			</p>
+			<p class="news_content">
+				<ul>
+					<li>une analyse approfondie de vos besoins</li>
+					<li>la mise en place d’une couverture sociale personnalisée</li>
+					<li>une assistance lors des négociations sociales</li>
+					<li>la mise en conformité de vos obligations conventionnelles</li>
+					<li>un suivi régulier des dispositifs</li>
+					<li>un conseiller dédié, proche de vous</li>
+				</ul>
+			</p>
+			<p class="news_content">
+				La réactivité
+			</p>
+			<p class="news_content">
+				<ul>
+					<li>une équipe de consultants à votre écoute</li>
+					<li>une adaptation permanente des dispositifs</li>
+					<li>une maîtrise de tous les paramètres juridiques et techniques</li>
+					<li>une vraie proximité, à travers un réseau national de professionnels</li>
+				</ul>
+			</p>
+			<p class="news_content">
+				La qualité de service
+			</p>
+			<p class="news_content">
+				<ul>
+					<li>un souci permanent de rigueur</li>
+					<li>des services clients tournés vers un objectif prioritaire : votre satisfaction</li>
+					<li>un suivi des résultats de gestion de vos contrats</li>
+					<li>un système d'information mis en place et maintenu efficacement par notre filiale informatique Systalians certifiée ISO 9001</li>
+				</ul>
+			</p>
+			<p class="news_content">
+				La souplesse
+			</p>
+			<p class="news_content">
+				<ul>
+					<li>des contrats sur mesure</li>
+					<li>des garanties adaptées et évolutives</li>
+					<li>une modularité des prestations</li>
+					<li>des services personnalisés</li>
+					<li></li>
+				</ul>
+			</p>
+			<p class="news_content">
+				La performance
+			</p>
+			<p class="news_content">
+				<ul>
+					<li>des équipes techniques et des outils de gestion et de pilotage performants pour une maîtrise efficace des garanties de prévoyance et des risques (tarification, gestion des cotisations et des prestations…)</li>
+					<li>un service d'actuariat dédié : réalisation d’études techniques spécifiques et participation à la conception de nouveaux produits</li>
+				</ul>
+			</p>
+		<br />
+		<br />
+		<br />
+		<h3 id="tabs-4-2">&raquo;Notre équipe dirigeante</h3>
+			<p class="news_content">
+				CHAPEL Jean-Philippe
+			</p>
+			<p class="news_content">
+				DOMINGUES Nicolas
+			</p>
+			<p class="news_content">
+				SANTUS Brice
+			</p>
+	</div>
+	<div id="tabs-5">
+		<h2>Nous contacter</h2>
+	</div>
+</div>
+

@@ -10,6 +10,11 @@
       <controllersDirectory>
         <controllerFile controllerName="Index">
           <actionMethod actionName="index"/>
+          <actionMethod actionName="mainAdherentRetraite"/>
+          <actionMethod actionName="mainEntreprise"/>
+          <actionMethod actionName="mainEmployeCaisse"/>
+          <actionMethod actionName="mainAutreCaisse"/>
+          <actionMethod actionName="mainCnav"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
         <controllerFile controllerName="Demande">
@@ -287,6 +292,21 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Document">
             <viewScriptFile forActionName="documentVerouille"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="mainAdherentRetraite"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="mainEntreprise"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="mainEmployeCaisse"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="mainAutreCaisse"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="mainCnav"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
