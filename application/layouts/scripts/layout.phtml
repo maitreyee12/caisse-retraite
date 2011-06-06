@@ -9,6 +9,7 @@
 
 			//CSS
 			$this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); 
+			$this->headLink()->prependStylesheet($this->baseUrl().'/css/cadre.css'); 
 			$this->headLink()->prependStylesheet($this->baseUrl().'/css/carousel.css'); 
 			$this->headLink()->prependStylesheet($this->baseUrl().'/css/ui.jqgrid.css'); 
 			$this->headLink()->prependStylesheet($this->baseUrl().'/css/ui-lightness/jquery-ui-1.8.12.custom.css'); 
@@ -21,6 +22,7 @@
 			$this->headScript()->appendFile($this->baseUrl().'/js/JQueryCarousel/carousel.js');
 			$this->headScript()->appendFile($this->baseUrl().'/js/Jqgrid/i18n/grid.locale-fr.js');
 			$this->headScript()->appendFile($this->baseUrl().'/js/Jqgrid/jquery.jqGrid.min.js');
+			$this->headScript()->appendFile($this->baseUrl().'/js/Jquery/js/jquery-ui-1.8.13.custom.min.js');
 			
 			//appel des librairies / affichage
 			echo $this->headLink();	

@@ -1,0 +1,26 @@
+.cadre{
+	background-color: #8CBEEF;
+}
+
+.cadre_hg, .cadre_hd,
+.cadre_bg, .cadre_bd{
+	width: 11px;
+	height: 11px;
+	background-repeat: no-repeat;
+	font-size: 1px;
+}
+
+.cadre_hg{
+	background: url('cadre/cadre_rounded.png') 0 0;
+}
+.cadre_hd{
+	background: url('cadre/cadre_rounded.png') 11px 0;
+	float: right;
+}
+.cadre_bg{
+	background: url('cadre/cadre_rounded.png') 0 11px;
+}
+.cadre_bd{
+	background: url('cadre/cadre_rounded.png') 11px 11px;
+	float: right;
+}

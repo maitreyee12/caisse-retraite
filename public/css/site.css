@@ -307,3 +307,11 @@ label.required{
 	margin-bottom: 2%;
 }
 
+p.news_intro{
+	font-style:italic;
+	text-align: justify;
+}
+
+p.news_content{
+	text-align: justify;
+}
