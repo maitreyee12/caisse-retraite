@@ -1,0 +1,9 @@
+<?php
+	$this->title = 'Demandeaccepté';
+	$this->headTitle($this->title);
+?>
+
+<div id="view-content">
+	<p>Les modifications effectués sur votre profil ont été enregistrés</p>
+	<p><a href="<?php echo $this->url(array('controller'=>'profil','action'=>'afficher-profil','id'=>$this->Id_utilisateur));?>">Retour</a></p>
+</div>
