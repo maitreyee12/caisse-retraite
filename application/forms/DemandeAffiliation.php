@@ -100,7 +100,7 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 				->setLabel('Adresse')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
-				->addValidator('StringLength', false, array(30))
+				->addValidator('StringLength', false, array(5))
 				->setRequired(true)
 				->setAttrib('cols', '40')
 				->setAttrib('rows', '4')

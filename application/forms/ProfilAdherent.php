@@ -8,12 +8,12 @@ class Application_Form_ProfilAdherent extends Zend_Form
         //Titre du formulaire
 		$this->setName('profiladherent');
 		
-		$id = new Zend_Form_Element_Hidden('id');
-		$id->addFilter('Int');
+		$Id_utilisateur = new Zend_Form_Element_Hidden('Id_utilisateur');
+		$Id_utilisateur->addFilter('Int');
 	
 		//NOM
-		$nom = new Zend_Form_Element_Text('Nom');
-		$nom
+		$Nom = new Zend_Form_Element_Text('Nom');
+		$Nom
 				->setLabel('Nom : ')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
@@ -24,8 +24,8 @@ class Application_Form_ProfilAdherent extends Zend_Form
 				->addErrorMessages(array('Nom invalide'));
 		
 		//PRENOM
-		$prenom = new Zend_Form_Element_Text('Prenom');
-		$prenom
+		$Prenom = new Zend_Form_Element_Text('Prenom');
+		$Prenom
 				->setLabel('Prénom : ')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
@@ -36,8 +36,8 @@ class Application_Form_ProfilAdherent extends Zend_Form
 				->addErrorMessages(array('Prénom invalide'));
 		
 		//NUM SECURITE SOCIALE
-		$numSS= new Zend_Form_Element_Text('NumSS');
-		$numSS
+		$NumSS= new Zend_Form_Element_Text('NumSS');
+		$NumSS
 				->setLabel('Numéro S.S. : ')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
@@ -48,8 +48,8 @@ class Application_Form_ProfilAdherent extends Zend_Form
 				->addErrorMessages(array('Numéro de sécurité sociale invalide'));
 		
 		//TEL
-		$telephone = new Zend_Form_Element_Text('Telephone');
-		$telephone
+		$Telephone = new Zend_Form_Element_Text('Telephone');
+		$Telephone
 				->setLabel('Numéro de téléphone : ')
 				->addFilter('StripTags')
 				->addValidator('regex', false, array('([0-9]{10})'))
@@ -60,8 +60,8 @@ class Application_Form_ProfilAdherent extends Zend_Form
 		
 				
 		//ADRESSE
-		$adresse = new Zend_Form_Element_Textarea('Adresse');
-		$adresse
+		$Adresse = new Zend_Form_Element_Textarea('Adresse');
+		$Adresse
 				->setLabel('Adresse :')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
@@ -72,8 +72,8 @@ class Application_Form_ProfilAdherent extends Zend_Form
 				->setErrorMessages(array('Adresse invalide'));	
 				
 		//E_MAIL
-		$e_mail = new Zend_Form_Element_Text('E_mail');
-		$e_mail
+		$E_mail = new Zend_Form_Element_Text('E_mail');
+		$E_mail
 				->setLabel('Adresse email : ')
 				->addFilter('StripTags')
 				->addValidator('regex', false, array('/^[-_a-z0-9\'+*$^&%=~!?{}]++(?:\.[-_a-z0-9\'+*$^&%=~!?{}]+)*+@(?:(?![-.])[-a-z0-9.]+(?<![-.])\.[a-z]{2,6}|\d{1,3}(?:\.\d{1,3}){3})(?::\d++)?$/iD'))
@@ -82,20 +82,20 @@ class Application_Form_ProfilAdherent extends Zend_Form
 				->addErrorMessages(array('Adresse email invalide'));
 		
 		
-		$modifier = new Zend_Form_Element_Submit('modifier');
-		$modifier
+		$Modifier = new Zend_Form_Element_Submit('modifier');
+		$Modifier
 					->setAttrib('id', 'boutonmodifier')
 					->setLabel('Enregistrer les modifications');;
 	
 		$this->addElements(array(
-									$id,
-									$nom,
-									$prenom,
-									$numSS,
-									$telephone,
-									$adresse,
-									$e_mail,
-									$modifier)
+									$Id_utilisateur,
+									$Nom,
+									$Prenom,
+									$NumSS,
+									$Telephone,
+									$Adresse,
+									$E_mail,
+									$Modifier)
 								);
     }
 

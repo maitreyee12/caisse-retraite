@@ -10,42 +10,65 @@ class ProfilController extends Zend_Controller_Action
 
     public function indexAction()
     {
-    	// Chargmenent du formulaire profil Adherent
-		$form = new Application_Form_ProfilAdherent();
-		$this->view->form = $form;
-		
-		//Récupération des droits de l'utilisateur
-		$droits = Zend_Auth::getInstance ()->getIdentity()->Droits;
+    			
+    }
+
+    public function afficherProfilAction()
+    {
+   		//Récupération des droits de l'utilisateur connecté
+		$droit_user = Zend_Auth::getInstance ()->getIdentity()->Droits;
 		
 		//Si le formulaire est validé en post
 		if ($this->getRequest()->isPost()) {
 			
-			//Récupération des valeurs POST
-			$formData = $this->getRequest()->getPost();
-			
-			//Si les valeurs sont valides
-			if ($form->isValid($formData)) {
+			//On récupère l'id du profil consulté
+			$id = $this->_getParam('id', -1);
+			if ($id > -1) {
+				//récupération des droist du profil consulté
+				$utilisateur = new Application_Model_DbTable_Utilisateur();
+				$droits = $utilisateur->obtenirDroits($id);
 				
-				//Cas d'un Adhérent
-				if($droits == 1){
-					$id = $form->getValue('Id_utilisateur');
-					$nom = $form->getValue('nom');
-					$prenom = $form->getValue('prenom');
-					$num_SS = $form->getValue('numSS');
-					$telephone = $form->getValue('telephone');
-					$adresse = $form->getValue('adresse');
-					$e_mail = $form->getValue('e_mail');
+				//Choix du formulaire en fonction du type de profil consulté
+				
+				if($droits == 0 || $droits ==1)
+					$form = new Application_Form_ProfilAdherent();
+				if($droits == 2)
+					$form = new Application_Form_ProfilEntreprise();
+				if($droits == 3)
+					$form = new Application_Form_ProfilEmployeCaisse();
+				if($droits == 4)
+					$form = new Application_Form_ProfilCaisse();
 
-					//Mise à jour des données de l'Adhérent
-					$albums = new Application_Model_DbTable_Albums();
-					$albums->modifierAlbum($id, $artiste, $titre);
+				$this->view->form = $form;
+								
+				//Récupération des valeurs POST
+				$formData = $this->getRequest()->getPost();
 				
-					$this->_helper->redirector('index');
+				//Si les valeurs sont valides
+				if ($form->isValid($formData)) {
+					//Cas d'un Salarié / retraité
+					if($droits == 0 || $droits == 1){
+						$id = $form->getValue('Id_utilisateur');
+						$nom = $form->getValue('Nom');
+						$prenom = $form->getValue('Prenom');
+						$num_SS = $form->getValue('NumSS');
+						$telephone = $form->getValue('Telephone');
+						$adresse = $form->getValue('Adresse');
+						$e_mail = $form->getValue('E_mail');
+
+						
+						//Mise à jour des données du Salarié
+						$salarie = new Application_Model_DbTable_Adherent();
+						$salarie->modifierAdhérent($id, $nom, $prenom, $num_SS, $telephone, $adresse, $e_mail);
+				
+						//Mise à jour de ses informations de connexion
+						$this->_helper->redirector('accepte','profil',null,array('id' => $id));
+												
+					}			
+				} else {
+					echo "form invalid";
+					$form->populate($formData);
 				}
-				
-				
-			} else {
-				$form->populate($formData);
 			}
 		} else {
 			$id = $this->_getParam('id', -1);
@@ -54,6 +77,7 @@ class ProfilController extends Zend_Controller_Action
 				$utilisateur = new Application_Model_DbTable_Utilisateur();
 				$droits = $utilisateur->obtenirDroits($id);
 				$this->view->id =$id;
+				$this->view->droit_profil =$droits;
 				//Affichage du formulaire correspondant au type d'utilisateur
 				if($droits == 0){
 					//Si l'utilisateur est un adhérent
@@ -81,9 +105,23 @@ class ProfilController extends Zend_Controller_Action
 					$form->populate($caisse->obtenirCaisse($id));
 				}
 			}
-		}
+   		
+   		 }
+    }
+
+    public function accepteAction()
+    {
+    	$id = $this->_getParam('id', -1);
+    	
+			if ($id > -1) {
+				$this->view->Id_utilisateur = $id;
+			}
     }
 
 
 }
+
+
+
+
 

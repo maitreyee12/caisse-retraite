@@ -32,7 +32,7 @@
 						  }
 				?></td>
 				<td><?php $utilisateur = new Application_Model_DbTable_Utilisateur();
-						  if($utilisateur->exist($demande->Id_utilisateur)){?><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'index', 'id'=>$demande->Id_utilisateur));?>">Voir</a><?php }?></td>
+						  if($utilisateur->exist($demande->Id_utilisateur)){?><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'afficher-profil', 'id'=>$demande->Id_utilisateur));?>">Voir</a><?php }?></td>
 				<td><?php $type = $this->escape($demande->Type);
 					  	  if($type == "demande affiliation"){?><a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-affiliation', 'id'=>$demande->Id_demande));?>">Voir</a>
 				<?php }else if($type == "demande informations"){?><a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-informations', 'id'=>$demande->Id_demande));?>">Voir</a><?php }?></td>

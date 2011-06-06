@@ -1,0 +1,43 @@
+
+<div id="view-profil-content">
+	<div id='profilinfos' >
+		<div id='profilinfos-content'>
+			<h3>Vos informations</h3>
+			<?php 
+			$this->title = "Mon Profil";
+			$this->headTitle($this->title);
+			echo $this->form;
+			?>
+		</div>
+	
+	</div>
+	<?php 
+		//on cherche l'instance de connexion
+		$auth=Zend_Auth::getInstance();
+		//on récupère son niveau de droit
+		//pour chaque niveau on définit l'affichage du menu / restriction d'acccès aux actions/vues
+		$profil = $auth->getIdentity();
+		$droits = $profil->Droits;
+		if($droits !=3 || ($droits != $this->droit_profil && $droits == 3)){
+	?>
+	<div id='profildemandes' >
+		<div id='profildemandes-content'>
+			
+			<?php echo $this->action('index', 'ListeDemandes', null, array('id' => ($this->id))); ?>
+		</div>
+	</div>
+	<?php if($droits == 0 || $droits == 1 || ($droits != $this->droit_profil && $droits == 3)){ ?>
+	
+	<div id='profilcarriere' >
+		<div id='profildemandes-content'>
+			
+			<?php 
+				//On affiche la carrière de l'adhérent
+				echo $this->action('afficher-Carriere', 'Carriere', null, array('id' => ($this->id))); 
+			?>
+		</div>
+	</div>
+	<?php }	}
+	?>
+	 <!-- -->
+</div>

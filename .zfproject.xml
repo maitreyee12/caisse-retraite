@@ -63,6 +63,8 @@
         </controllerFile>
         <controllerFile controllerName="Profil">
           <actionMethod actionName="index"/>
+          <actionMethod actionName="afficherProfil"/>
+          <actionMethod actionName="accepte"/>
         </controllerFile>
         <controllerFile controllerName="AfficherLesDemandes">
           <actionMethod actionName="index"/>
@@ -293,6 +295,9 @@
           <viewControllerScriptsDirectory forControllerName="Document">
             <viewScriptFile forActionName="documentVerouille"/>
           </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="afficherProfil"/>
+          </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="mainAdherentRetraite"/>
           </viewControllerScriptsDirectory>
@@ -307,6 +312,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="mainCnav"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="accepte"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
