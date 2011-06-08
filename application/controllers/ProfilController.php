@@ -64,6 +64,25 @@ class ProfilController extends Zend_Controller_Action
 						//Mise à jour de ses informations de connexion
 						$this->_helper->redirector('accepte','profil',null,array('id' => $id));
 												
+					}
+					
+					if($droits == 2){
+						$id = $form->getValue('Id_utilisateur');
+						$num_siret = $form->getValue('Num_siret');
+						$nom_entreprise = $form->getValue('Nom_entreprise');
+						$nombre_salarie = $form->getValue('Nombre_salarie');
+						$nombre_cadre = $form->getValue('Nombre_cadre');
+						$adresse = $form->getValue('Adresse');
+						$telephone = $form->getValue('Telephone');
+						$e_mail = $form->getValue('E_mail');
+						
+						//Mise à jour des données du Salarié
+						$entreprise = new Application_Model_DbTable_Entreprise();
+						$entreprise->modifierEntreprise($id, $num_siret, $nom_entreprise, $nombre_salarie, $nombre_cadre, $adresse, $telephone, $e_mail);
+				
+						//Mise à jour de ses informations de connexion
+						$this->_helper->redirector('accepte','profil',null,array('id' => $id));
+												
 					}			
 				} else {
 					echo "form invalid";
