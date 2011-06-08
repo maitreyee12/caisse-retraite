@@ -20,9 +20,9 @@ foreach($this->afficherNote as $demande) : ?>
 			tableToGrid("#afficher_note_<?php echo $i ?>", {height: "auto", caption: "<?php echo "Posté par ".$this->escape($demande->Login)." le ".$this->escape($demande->Date_soumission);?>"});
 		});
 </script>
-	
 
-<?php 
+
+<?php
 $i++;
 
 endforeach; ?>

@@ -1,4 +1,25 @@
-﻿<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Recherche</b> and script/action name <b>index</b></p>
+﻿
+<script>
+$(function() {
+	$( "#tabs" ).tabs();
+});
+
+</script>
+
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Recherche adhérent</a></li>
+		<li><a href="#tabs-2">Recherche entreprise</a></li>
+	</ul>
+	<div id="tabs-1">	
+		<?php 
+			echo $this->action('liste-adherents', 'Recherche', null, array()); 
+		?>
+	</div>
+	<div id="tabs-2">
+		<?php 
+			echo $this->action('liste-entreprises', 'Recherche', null, array()); 
+		?>
+	</div>
 </div>

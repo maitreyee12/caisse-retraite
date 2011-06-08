@@ -1,4 +1,58 @@
-﻿<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Recherche</b> and script/action name <b>listeAdherents</b></p>
-</div>
+﻿<h2>Recherche par adhérents : salariés | retraités</h2>
+
+<?php
+echo $this->form;
+?>
+
+<h2>Résultats de la recherche :</h2>
+
+
+<?php
+if(sizeof($this->listeAdherents) <= 0)
+	{
+		echo "Aucun enregistrement trouvé.";
+	}
+else
+	{
+?>
+		<table <?php echo "id='afficher_adh'"; ?>>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Num SS</th>
+					<th>Téléphone</th>
+					<th>Email</th>
+					<th>Adresse</th>
+					<th>Statut</th>
+				</tr>
+			</thead>
+
+<?php
+		foreach($this->listeAdherents as $adhernt) : 
+?>
+			<tbody>
+				<tr>
+					<td><?php echo $this->escape($adhernt->Id_utilisateur);?></td>
+					<td><?php echo $this->escape($adhernt->Nom);?></td>
+					<td><?php echo $this->escape($adhernt->Prenom);?></td>
+					<td><?php echo $this->escape($adhernt->NumSS);?></td>
+					<td><?php echo $this->escape($adhernt->Telephone);?></td>
+					<td><?php echo $this->escape($adhernt->E_mail);?></td>
+					<td><?php echo $this->escape($adhernt->Adresse);?></td>
+					<td><?php echo $this->escape($adhernt->Statut);?></td>
+				</tr>
+			</tbody>
+		</table>	
+<?php
+		endforeach; 
+	}
+?>
+
+
+<script>
+		$(function () {
+			tableToGrid("#afficher_adh", {width: "900" ,height: "auto", caption: "Résultats de la recherche :"});
+		});
+</script>
