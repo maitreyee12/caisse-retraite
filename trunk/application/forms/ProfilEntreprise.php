@@ -8,7 +8,7 @@ class Application_Form_ProfilEntreprise extends Zend_Form
         //Titre du formulaire
 		$this->setName('profilentreprise');
 		
-		$id = new Zend_Form_Element_Hidden('id');
+		$id = new Zend_Form_Element_Hidden('Id_utilisateur');
 		$id->addFilter('Int');
 	
 		//NUMERO DE SIRET
@@ -41,8 +41,7 @@ class Application_Form_ProfilEntreprise extends Zend_Form
 				->setLabel('Nombre de salariés : ')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
-				->addValidator('StringLength', false, array(3, 200))
-				->addValidator('regex', false, array('([0-9]{10})'))
+				->addValidator('Alnum', false, array('allowWhiteSpace' => true))
 				->setRequired(true)
 				->addErrorMessages(array('Nombre de salariés invalide'));
 		
@@ -52,8 +51,7 @@ class Application_Form_ProfilEntreprise extends Zend_Form
 				->setLabel('Nombre de cadres : ')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
-				->addValidator('StringLength', false, array(3, 200))
-				->addValidator('regex', false, array('([0-9]{10})'))
+				->addValidator('Alnum', false, array('allowWhiteSpace' => true))
 				->setRequired(true)
 				->addErrorMessages(array('Nombre de cadres invalide'));
 		

@@ -14,7 +14,19 @@ class Application_Model_DbTable_Entreprise extends Zend_Db_Table_Abstract
 		}
 		return $row->toArray();
 	}
-	
+	public function modifierEntreprise($Id_utilisateur, $num_siret, $nom_entreprise, $nombre_salarie, $nombre_cadre, $adresse, $telephone, $e_mail){
+		$data = array(
+		'Num_siret' => $num_siret,
+		'Nom_entreprise' => $nom_entreprise,
+		'Nombre_salarie' => $nombre_salarie,
+		'Nombre_cadre' => $nombre_cadre,
+		'Telephone' => $telephone,
+		'Adresse' => $adresse,
+		'E_mail' => $e_mail,
+		);
+		
+		$this->update($data, 'Id_utilisateur = '. (int)$Id_utilisateur);
+	}
 	public function rechercheEntreprise($id, $num_siret, $nom_ent, $adresse, $mail, $tel)
 		{
 			$query = $this->select(); 
