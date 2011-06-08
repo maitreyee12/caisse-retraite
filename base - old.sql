@@ -1,13 +1,19 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mer 08 Juin 2011 à 20:11
--- Version du serveur: 5.1.36
--- Version de PHP: 5.3.1
+-- Généré le : Mer 08 Juin 2011 à 20:13
+-- Version du serveur: 5.1.53
+-- Version de PHP: 5.3.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données: `caisse-retraite`
@@ -24,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `adherent` (
   `Id_carriere` int(11) DEFAULT NULL,
   `Nom` varchar(254) DEFAULT NULL,
   `Prenom` varchar(254) DEFAULT NULL,
-  `NumSS` int(15) DEFAULT NULL,
-  `Telephone` int(11) DEFAULT NULL,
+  `NumSS` varchar(15) DEFAULT NULL,
+  `Telephone` varchar(10) DEFAULT NULL,
   `E_mail` varchar(254) DEFAULT NULL,
   `Adresse` varchar(254) DEFAULT NULL,
   `Statut` varchar(254) DEFAULT NULL,
@@ -37,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `adherent` (
 --
 
 INSERT INTO `adherent` (`Id_utilisateur`, `Id_carriere`, `Nom`, `Prenom`, `NumSS`, `Telephone`, `E_mail`, `Adresse`, `Statut`) VALUES
-(4, 1, 'Tilendier', 'Pierre', 2147483647, 674320263, 'pierre_tilendier@bro.org', '3 rue Claude Bernard 77000 LA ROCHETTE', 'salarie');
+(4, 1, 'Tilendier', 'Pierre', '188099400011127', '0164578329', 'pierre_tilendier@bro.org', '3 rue Claude Bernard 77000 LA ROCHETTE', 'salarie');
 
 -- --------------------------------------------------------
 
@@ -77,6 +83,8 @@ CREATE TABLE IF NOT EXISTS `carriere` (
 -- Contenu de la table `carriere`
 --
 
+INSERT INTO `carriere` (`Id_carriere`, `Id_utilisateur`, `Trimestre_cumul`, `Points_cumul`, `Droit_depart`) VALUES
+(1, 4, 42, 45987, 'non');
 
 -- --------------------------------------------------------
 
@@ -136,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `demande` (
 --
 
 INSERT INTO `demande` (`Id_demande`, `Id_courrier`, `Id_utilisateur`, `Commentaires`, `Date_demande`, `Etat`, `Type`) VALUES
-(1, NULL, NULL, '', '2011-05-28 11:49:42', 0, 'demande affiliation');
+(1, 15, 1, 'LA DEMANNNDEEEEEEE DE MERDEEEEEEEEEEEEE', '2011-06-08 21:59:54', 0, 'demande informations');
 
 -- --------------------------------------------------------
 
@@ -160,8 +168,6 @@ CREATE TABLE IF NOT EXISTS `demande_affiliation` (
 -- Contenu de la table `demande_affiliation`
 --
 
-INSERT INTO `demande_affiliation` (`Id_demande`, `Nom`, `Num_siret`, `E_mail`, `Password`, `Adresse`, `Telephone`, `Nombre_employes`) VALUES
-(1, 'BPRD', 2147483647, 'intendance@bprd.fr', 'c2c978831301ebad4838d62b2c13b20e', '42 avenue des champs elysee 75016 PAris', 123456789, 14);
 
 -- --------------------------------------------------------
 
@@ -225,14 +231,14 @@ CREATE TABLE IF NOT EXISTS `demande_reversion` (
 --
 
 CREATE TABLE IF NOT EXISTS `documents` (
-  `Id_document` int(11) NOT NULL,
-  `Id_courrier` int(11) NOT NULL,
-  `Id_periode` int(11) NOT NULL,
+  `Id_document` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_courrier` int(11) DEFAULT NULL,
   `Id_demande` int(11) DEFAULT NULL,
   `Nom_document` varchar(254) DEFAULT NULL,
   `Date_ajout` datetime DEFAULT NULL,
+  `Lien` varchar(512) NOT NULL,
   PRIMARY KEY (`Id_document`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `documents`
@@ -274,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `entreprise` (
   `Nombre_salarie` int(11) DEFAULT NULL,
   `Nombre_cadre` int(11) DEFAULT NULL,
   `Adresse` varchar(254) DEFAULT NULL,
-  `Num_tel` int(11) DEFAULT NULL,
+  `Telephone` varchar(10) DEFAULT NULL,
   `E_mail` varchar(254) DEFAULT NULL,
   PRIMARY KEY (`Id_utilisateur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -283,8 +289,8 @@ CREATE TABLE IF NOT EXISTS `entreprise` (
 -- Contenu de la table `entreprise`
 --
 
-INSERT INTO `entreprise` (`Id_utilisateur`, `Num_siret`, `Nom_entreprise`, `Nombre_salarie`, `Nombre_cadre`, `Adresse`, `Num_tel`, `E_mail`) VALUES
-(5, '12342536782351', 'Entreprise test', 5, 3, 'adresse de l''entreprise', 123627381, 'entreprise@mail.com');
+INSERT INTO `entreprise` (`Id_utilisateur`, `Num_siret`, `Nom_entreprise`, `Nombre_salarie`, `Nombre_cadre`, `Adresse`, `Telephone`, `E_mail`) VALUES
+(5, '12342536782351', 'Entreprise test', 4, 3, 'adresse de l''entreprise', '0142179352', 'entreprise@mail.com');
 
 -- --------------------------------------------------------
 
@@ -297,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `note` (
   `Id_demande` int(11) NOT NULL,
   `Id_utilisateur` int(11) NOT NULL,
   `Date_soumission` datetime NOT NULL,
-  `Contenu` text NOT NULL,
+  `Contenu` text,
   PRIMARY KEY (`Id_note`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -328,6 +334,9 @@ CREATE TABLE IF NOT EXISTS `periode` (
 -- Contenu de la table `periode`
 --
 
+INSERT INTO `periode` (`Id_periode`, `Id_carriere`, `Date_debut`, `Date_fin`, `Nom_Entreprise`, `Salaire_percu`, `Points_ARRCO`, `Points_AGIRC`) VALUES
+(1, 1, '2001-06-01 13:50:41', '2002-06-01 13:50:49', 'SOGEA Materiel', 1765, 124, 15),
+(2, 1, '2002-06-02 13:50:41', '2006-06-02 13:50:41', 'Mairie de Paris', 3456, 1234, 345);
 
 -- --------------------------------------------------------
 
