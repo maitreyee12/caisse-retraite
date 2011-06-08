@@ -104,8 +104,6 @@
         <formFile formName="DemandeReversion"/>
         <formFile formName="DemandeModificationDossier"/>
         <formFile formName="DemandeDepartRetraite"/>
-        <formFile formName="RechercheEntreprises"/>
-        <formFile formName="RechercheAdherents"/>
         <formFile formName="ProfilAdherent"/>
         <formFile formName="ProfilEntreprise"/>
         <formFile formName="ProfilEmployeCaisse"/>
@@ -113,6 +111,8 @@
         <formFile formName="Note"/>
         <formFile formName="Document"/>
         <formFile formName="DemandeModifierEtat"/>
+        <formFile formName="RechercheAdherent"/>
+        <formFile formName="RechercheEntreprise"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
