@@ -48,6 +48,7 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
             'Etat' => $etat,
         );
         $this->update($data, 'Id_demande = '. (int)$id_demande);
+		
 	}
 }
 

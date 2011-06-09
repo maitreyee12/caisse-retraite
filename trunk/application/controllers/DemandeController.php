@@ -125,20 +125,37 @@ class DemandeController extends Zend_Controller_Action
 
     public function modifierEtatDemandeAction()
     {
+		//recupération de l'id dans l'url
+		$id_demande =  $this->_getParam("id");
+	
+		//on affiche le formulaire de modification d'état de la demande
 		$form_modifierEtatDemande = new Application_Form_DemandeModifierEtat();
 		$this->view->form = $form_modifierEtatDemande;
+		
+		//on va chercher l'état de la demande en cours
+		$get_etat_demande = new Application_Model_DbTable_Demande();
+		$etat_demande = $get_etat_demande->getDemande($id_demande);
+		//puis en fonction de son etat on definit quelle est la selection par defaut dans la liste
+		$data = array(
+								'Etat' => $etat_demande->Etat
+						); 
+		//on pousse dans le formulaire
+		$form_modifierEtatDemande->populate($data);
+						
+		//si on reçoit une requete de type post
 		if ($this->getRequest()->isPost())
 			{
+				//si le formulaire respecte tout les filtres
 				$formData = $this->getRequest()->getPost();
 				if ($form_modifierEtatDemande->isValid($formData))
 					{
-						$id_demande =  $this->_getParam("id");
+						//on récupère le ou les arguments
 						$etat = $form_modifierEtatDemande->getValue('Etat');
 						
+						//on met a jour en base
 						$model_Demande = new Application_Model_DbTable_Demande();
 						$model_Demande->modifierEtatDemande($id_demande, $etat);
-	
-						$this->_helper->redirector('demande-affiliation','AfficherLesDemandes', null, array('id' => ($id_demande)));
+						
 					} 
 				else 
 					{

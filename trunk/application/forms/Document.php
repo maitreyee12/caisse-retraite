@@ -26,7 +26,7 @@ class Application_Form_Document extends Zend_Form
 				  ->setRequired(true);
 
 		 // creating object for submit button
-		 $submit = new Zend_Form_Element_Submit('submit');
+		 $submit = new Zend_Form_Element_Submit('envoyer_document');
 		 $submit->setLabel('Ajouter')
 				 ->setAttrib('id', 'submitbutton');
 

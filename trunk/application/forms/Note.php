@@ -9,6 +9,7 @@ class Application_Form_Note extends Zend_Form
     {
 		//Titre du formulaire
 		$this->setName('Déposer une note');
+		$this->setMethod('post');
 		
 				
 		//NOTE
@@ -22,7 +23,7 @@ class Application_Form_Note extends Zend_Form
 				->setErrorMessages(array('Vous devez compléter la note avant de l\'envoyer'));	
 			
 		//ENVOYER		
-		$envoyer = new Zend_Form_Element_Submit('envoyer');
+		$envoyer = new Zend_Form_Element_Submit('envoyer_note');
 		$envoyer
 					->setAttrib('id', 'boutonenvoyer')
 					->setLabel('Ajouter la note');
