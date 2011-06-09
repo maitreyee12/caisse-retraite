@@ -48,9 +48,9 @@ class NoteController extends Zend_Controller_Action
 						else 
 							{
 								$form_Note->populate($formData);
-							}
+							}	
 					}
-			}      
+			}
     }
 
     public function afficherNotesAction()
