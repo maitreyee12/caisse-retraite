@@ -1,0 +1,95 @@
+﻿<?php
+	$this->title = 'Fiche demande réversion';
+	$this->headTitle($this->title);
+?>
+<div id="view-content">
+
+
+<?php 
+
+	//appel de l'action demande du controller AfficherLesDemandes
+	echo $this->action('demande', 'AfficherLesDemandes', null, array('id' => ($this->afficher_demande_reversion->Id_demande), 'prov' => (md5("demandeReversion")))); 
+?>
+
+	<table id='listedemandes_reversion_1' >
+		<thead>
+			<tr>
+				<th>Nom du défunt</th>
+				<th>Prénom du défunt</th>
+				<th>Numéro de sécurité sociale du défunt</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?php echo $this->escape($this->afficher_demande_reversion->Nom_utilisateur_dec);?></td>
+				<td><?php echo $this->escape($this->afficher_demande_reversion->Prenom_utilisateur_dec);?></td>
+				<td><?php echo $this->escape($this->afficher_demande_reversion->Num_SS_utilisateur_dec);?></td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+	<table id='listedemandes_reversion_2' >
+		<thead>
+			<tr>
+				<th>Nom du demandeur</th>
+				<th>Prénom du demandeur</th>
+				<th>Numéro de sécurité sociale du demandeur</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?php echo $this->escape($this->afficher_demande_reversion->Nom_beneficiare);?></td>
+				<td><?php echo $this->escape($this->afficher_demande_reversion->Prenom_beneficiare);?></td>
+				<td><?php echo $this->escape("0".$this->afficher_demande_reversion->Num_SS_beneficiare 	);?></td>
+				
+			</tr>
+		</tbody>
+	</table>
+	<br />
+	<table id='listedemandes_reversion_3' >
+		<thead>
+			<tr>
+				<th>Lien_parente</th>
+				<th>Adresse</th>
+				<th>Email</th>
+				<th>Téléphone</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?php echo $this->escape($this->afficher_demande_reversion->Lien_parente);?></td>
+				<td><?php echo $this->escape($this->afficher_demande_reversion->Adresse);?></td>
+				<td><?php echo $this->escape($this->afficher_demande_reversion->Telephone);?></td>
+				<td><?php echo $this->escape($this->afficher_demande_reversion->E_mail);?></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<script>
+		$(function () {
+			tableToGrid("#listedemandes_reversion_1", {height:"auto", caption: "Informations sur le défunt"});
+			tableToGrid("#listedemandes_reversion_2", {height:"auto", caption: "Information sur le demandeur"});
+			tableToGrid("#listedemandes_reversion_3", {height:"auto", caption: "Coordonnées du demandeur"});
+		});
+	</script>
+	
+	<?php 
+
+	//lister les notes de cette demande et les afficher
+	echo $this->action('afficher-notes', 'Note', null, array('id' => ($this->afficher_demande_reversion->Id_demande))); 
+
+	//afficher la liste des documents
+	echo $this->action('afficher-documents', 'Document', null, array('id' => ($this->afficher_demande_reversion->Id_demande))); 
+	
+	//appel de l'action demande du controller AfficherLesDemandes
+	//formulaire pour ajouter une note
+	echo $this->action('ajouter-note', 'Note', null, array('id' => ($this->afficher_demande_reversion->Id_demande), 'prov' => (md5("demandeReversion")))); 
+	
+	//on ajoute un document
+	echo $this->action('ajouter-document', 'Document', null, array('id' => ($this->afficher_demande_reversion->Id_demande), 'prov' => (md5("demandeReversion")))); 
+	?>
+	
+</div>
+
+
+

@@ -13,8 +13,8 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 		$id
 				->addFilter('Int');
 				
-		$auth = Zend_Auth::getInstance();
-		if($auth->getIdentity())
+		$droit_user = Zend_Auth::getInstance ()->getIdentity()->Droits;
+		if($droit_user == 3)
 			{
 				//NUM_COURRIER
 				$num_courrier = new Zend_Form_Element_Text('Id_courrier');
@@ -97,7 +97,7 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 		//ADRESSE
 		$adresse = new Zend_Form_Element_Textarea('Adresse');
 		$adresse
-				->setLabel('Adresse')
+				->setLabel('Adresse :')
 				->addFilter('StripTags')
 				->addFilter('StringTrim')
 				->addValidator('StringLength', false, array(5))
@@ -145,7 +145,7 @@ class Application_Form_DemandeAffiliation extends Zend_Form
 					->setLabel('Envoyer la demande');
 		
 		
-		if($auth->getIdentity())
+		if($droit_user == 3)
 			{	
 				$this->addElements(array(
 											$id, 

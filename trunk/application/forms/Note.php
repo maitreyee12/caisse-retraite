@@ -25,7 +25,7 @@ class Application_Form_Note extends Zend_Form
 		//ENVOYER		
 		$envoyer = new Zend_Form_Element_Submit('envoyer_note');
 		$envoyer
-					->setAttrib('id', 'boutonenvoyer')
+					->setAttrib('id', 'envoyer_note')
 					->setLabel('Ajouter la note');
 				
 		$this->addElements(array(
