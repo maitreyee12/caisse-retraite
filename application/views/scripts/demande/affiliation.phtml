@@ -1,5 +1,60 @@
 ﻿<?php
-$this->title = "Demande affiliation";
+$this->title = "Adhérer à nos institutions de retraite et prévoyance";
 $this->headTitle($this->title);
-echo $this->form;
 ?>
+
+<p class="news_intro">
+	Vous êtes dirigeant d’une entreprise, voici quelques conseils pour vous aider à concrétiser votre adhésion à nos institutions de retraite et/ou de prévoyance.
+	<br />
+	Prenez contact avec un conseiller CRC afin de finaliser votre adhésion.
+</p>
+<p class="news_content">
+	Vos avantages :
+	<ul>
+		<li>un dossier d’adhésion simplifié</li>
+		<li>une ligne téléphonique directe avec nos services de gestion</li>
+		<li>l’information de vos remboursements santé par SMS ou e-mail</li>
+		<li>vos frais de santé remboursés en 48 heures</li>
+	</ul>
+</p>
+
+
+<h2>Faire une demande d'affiliation</h2>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">En ligne</a></li>
+		<li><a href="#tabs-2">Par courrier</a></li>
+		<li><a href="#tabs-3">Par téléphone</a></li>
+	</ul>
+	<div id="tabs-1">
+		<?php
+			echo $this->form;
+		?>
+	</div>
+	<div id="tabs-2">
+		<p class="news_content">
+			Télécharger la demande (<?php echo "<a href='/caisse-retraite/storage/Fiche_demande_affiliation.docx'>ici</a>";?>) puis envoyer la à l'adresse suivante :
+			<br />
+			<br />
+			Service adhésion<br />
+			131 Boulevard de la cotisation<br />
+			75012 Paris<br />
+		</p>
+	</div>
+	<div id="tabs-3">
+		<p class="news_content">
+			Appeler un de nos conseiller au 01.03.46.84.12 de 8h à 20h, du Lundi au Samedi
+		</p>
+	</div>
+</div>
+
+	
+
+
+
+<script>
+$(function() {
+	$( "#tabs" ).tabs();
+});
+
+</script>

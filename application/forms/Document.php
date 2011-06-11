@@ -28,7 +28,7 @@ class Application_Form_Document extends Zend_Form
 		 // creating object for submit button
 		 $submit = new Zend_Form_Element_Submit('envoyer_document');
 		 $submit->setLabel('Ajouter')
-				 ->setAttrib('id', 'submitbutton');
+				 ->setAttrib('id', 'envoyer_document');
 
 		// adding elements to form Object
 		$this->addElements(array($description, $doc_file, $submit));

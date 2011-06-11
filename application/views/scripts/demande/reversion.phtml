@@ -1,5 +1,67 @@
 ﻿<?php
-$this->title = "Demande rachat trimestres";
+$this->title = "Percevoir une pension de réversion";
 $this->headTitle($this->title);
-echo $this->form;
 ?>
+
+
+<p class="news_intro">
+	Vous avez perdu votre conjoint, votre ex-conjoint.
+	<br >
+	Une pension de réversion peut vous être versée par le régime général et/ou par les régimes complémentaires en fonction de votre situation. 
+</p>
+<p class="news_content">
+	<b>Définition</b><br />
+	La pension de réversion est une allocation perçue sous conditions en cas de décès de l’assuré actif ou retraité.
+	Les veuves, veufs, ex-conjoint(e)s, divorcé(e)s, non remarié(e)s et orphelins de père et de mère peuvent bénéficier de la pension de réversion Arrco. Si les personnes décédées ont été cadres, les bénéficiaires ont également droit à la pension de réversion Agirc.
+</p>
+<p class="news_content">
+	Il faut obligatoirement en faire la demande pour en bénéficier.
+</p>
+<p class="news_content">
+	<b>Délai et date d’effet</b><br />
+	La demande doit être déposée dans un délai d’un an suivant le décès pour bénéficier de la réversion au 1er jour du trimestre suivant la date du décès. Sinon, le point de départ des versements est fixé au 1er jour du mois qui suit la demande.
+</p>
+<p class="news_content">
+	<b>Cumul</b><br />
+	A l’inverse du régime général, vous pouvez cumuler, sans condition de ressources, une pension de réversion Arrco et Agirc et un emploi salarié ou une retraite personnelle.
+</p>
+
+<h2>Faire une demande d'information</h2>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">En ligne</a></li>
+		<li><a href="#tabs-2">Par courrier</a></li>
+		<li><a href="#tabs-3">Par téléphone</a></li>
+	</ul>
+	<div id="tabs-1">
+		<?php
+			echo $this->form;
+		?>
+	</div>
+	<div id="tabs-2">
+		<p class="news_content">
+			Télécharger la demande (<?php echo "<a href='/caisse-retraite/storage/Fiche_demande_informations.docx'>ici</a>";?>) puis envoyer la à l'adresse suivante :
+			<br />
+			<br />
+			Service adhésion<br />
+			131 Boulevard de la cotisation<br />
+			75012 Paris<br />
+		</p>
+	</div>
+	<div id="tabs-3">
+		<p class="news_content">
+			Appeler un de nos conseiller au 01.03.46.84.12 de 8h à 20h, du Lundi au Samedi
+		</p>
+	</div>
+</div>
+
+
+
+<script>
+$(function() {
+	$( "#tabs" ).tabs();
+});
+
+</script>
+
+	

@@ -16,7 +16,10 @@
 		</thead>
 		<tbody>
 			<?php foreach($this->demandes as $demande) : 
-			if(!isset($this->id) || (isset($this->id) && $this->id == $demande->Id_utilisateur)){?>
+			if(!isset($this->id) || (isset($this->id) && $this->id == $demande->Id_utilisateur))
+				{
+				$type = $this->escape($demande->Type);
+			?>
 			<tr>
 				<td><?php echo $this->escape($demande->Id_demande);?></td>
 				<td><?php echo $this->escape($demande->Type);?></td>
@@ -33,15 +36,30 @@
 				?></td>
 				<td><?php $utilisateur = new Application_Model_DbTable_Utilisateur();
 						  if($utilisateur->exist($demande->Id_utilisateur)){?><a href="<?php echo $this->url(array('controller'=>'Profil','action'=>'afficher-profil', 'id'=>$demande->Id_utilisateur));?>">Voir</a><?php }?></td>
-				<td><?php $type = $this->escape($demande->Type);
-					  	  if($type == "demande affiliation"){?><a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-affiliation', 'id'=>$demande->Id_demande));?>">Voir</a>
-				<?php }else if($type == "demande informations"){?><a href="<?php echo $this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-informations', 'id'=>$demande->Id_demande));?>">Voir</a><?php }?></td>
+				<td><?php if($type == "demande affiliation")
+							{
+								echo "<a href='".$this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-affiliation', 'id'=>$demande->Id_demande))."'>Voir</a>";
+							}
+						  if($type == "demande reversion")
+							{
+								echo "<a href='".$this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-reversion', 'id'=>$demande->Id_demande))."'>Voir</a>";
+							}
+						  else if($type == "demande informations")
+							{
+								echo "<a href='".$this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-informations', 'id'=>$demande->Id_demande))."'>Voir</a>";
+							}
+					?></td>
 			</tr>
 			<?php 
 			}
 			endforeach; ?>
 		</tbody>
 	</table>
+<br />	
+<h3>Outils de traitement de documents</h3>
+<ul>
+	<li><a href="<?php echo $this->url(array('controller'=>'Document','action'=>'traiter-dads'));?>">Traiter DADS</a></li>
+</ul>
 
 <script>
 	$(function () {

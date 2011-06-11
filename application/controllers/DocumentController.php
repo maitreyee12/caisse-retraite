@@ -24,6 +24,7 @@ class DocumentController extends Zend_Controller_Action
     public function ajouterDocumentAction()
     {
 		$id =  $this->_getParam("id");
+		$prov =  $this->_getParam("prov");
 		
 		$model_Demande = new Application_Model_DbTable_Demande();
 		$this->getDemande = $model_Demande->getDemande($id);
@@ -62,10 +63,27 @@ class DocumentController extends Zend_Controller_Action
 								$id_courrier = $form_Demande->getValue('Id_courrier');
 									
 								
+								//redirection  en fonction de la provenance
 								$model_Document = new Application_Model_DbTable_Documents();
 								$model_Document->ajouterDocument($id_courrier, $id_demande, $description, $lien);
 								
-								$this->_helper->redirector('demande-affiliation','AfficherLesDemandes', null, array('id' => ($id_demande)));
+								if(md5("Application_Form_DemandeReversion") == $prov)
+									{
+										$this->_helper->redirector('accepte','Demande', null, array());
+									}
+								else if(md5("demandeAffiliation") == $prov)
+									{
+										$this->_helper->redirector('demande-affiliation','AfficherLesDemandes', null, array('id' => ($id_demande)));
+									}
+								else if(md5("demandeInformations") == $prov)
+									{
+										$this->_helper->redirector('demande-informations','AfficherLesDemandes', null, array('id' => ($id_demande)));
+									}
+								else if(md5("demandeReversion") == $prov)
+									{
+										$this->_helper->redirector('demande-reversion','AfficherLesDemandes', null, array('id' => ($id_demande)));
+									}
+								
 							} 
 						else 
 							{
@@ -81,8 +99,15 @@ class DocumentController extends Zend_Controller_Action
         // action body
     }
 
+    public function traiterDadsAction()
+    {
+        // action body
+    }
+
 
 }
+
+
 
 
 

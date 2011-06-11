@@ -74,6 +74,7 @@
           <actionMethod actionName="demanderachatTrimestres"/>
           <actionMethod actionName="demandeRachatTrimestres"/>
           <actionMethod actionName="demande"/>
+          <actionMethod actionName="demandeReversion"/>
         </controllerFile>
         <controllerFile controllerName="Note">
           <actionMethod actionName="index"/>
@@ -90,6 +91,7 @@
           <actionMethod actionName="afficherDocuments"/>
           <actionMethod actionName="ajouterDocument"/>
           <actionMethod actionName="documentVerouille"/>
+          <actionMethod actionName="traiterDads"/>
         </controllerFile>
         <controllerFile controllerName="Carriere">
           <actionMethod actionName="index"/>
@@ -315,6 +317,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Profil">
             <viewScriptFile forActionName="accepte"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Document">
+            <viewScriptFile forActionName="traiterDads"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="AfficherLesDemandes">
+            <viewScriptFile forActionName="demandeReversion"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
