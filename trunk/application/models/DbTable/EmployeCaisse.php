@@ -14,5 +14,14 @@ class Application_Model_DbTable_EmployeCaisse extends Zend_Db_Table_Abstract
 		}
 		return $row->toArray();
 	}
+	public function modifierEmploye($Id_utilisateur, $nom ,$prenom){
+		
+		$data = array(
+			'Nom' => $nom,
+			'Prenom' => $prenom,
+		);
+		
+		$this->update($data, 'Id_utilisateur = '. (int)$Id_utilisateur);
+	}
 }
 

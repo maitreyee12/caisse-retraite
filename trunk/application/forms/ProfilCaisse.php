@@ -7,7 +7,7 @@ class Application_Form_ProfilCaisse extends Zend_Form
     {
         $this->setName('profilcaisse');
 		
-		$id = new Zend_Form_Element_Hidden('id');
+		$id = new Zend_Form_Element_Hidden('Id_utilisateur');
 		$id->addFilter('Int');
 	
 		//NOM
@@ -22,7 +22,7 @@ class Application_Form_ProfilCaisse extends Zend_Form
 				//->setDescription('Minimum de 3 caractères')
 				->addErrorMessages(array('Nom invalide'));
 				//TEL
-		$telephone = new Zend_Form_Element_Text('Num_tel');
+		$telephone = new Zend_Form_Element_Text('Telephone');
 		$telephone
 				->setLabel('Numéro de téléphone : ')
 				->addFilter('StripTags')

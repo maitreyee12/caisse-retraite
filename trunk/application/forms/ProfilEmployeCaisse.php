@@ -7,7 +7,7 @@ class Application_Form_ProfilEmployeCaisse extends Zend_Form
     {
         $this->setName('profilemployecaisse');
 		
-		$id = new Zend_Form_Element_Hidden('id');
+		$id = new Zend_Form_Element_Hidden('Id_utilisateur');
 		$id->addFilter('Int');
 	
 		//NOM

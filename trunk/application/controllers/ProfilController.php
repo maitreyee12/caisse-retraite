@@ -83,7 +83,34 @@ class ProfilController extends Zend_Controller_Action
 						//Mise à jour de ses informations de connexion
 						$this->_helper->redirector('accepte','profil',null,array('id' => $id));
 												
-					}			
+					}
+					if($droits == 3){
+						$id = $form->getValue('Id_utilisateur');
+						$nom = $form->getValue('Nom');
+						$prenom = $form->getValue('Prenom');
+												
+						//Mise à jour des données du Salarié
+						$employeCaisse = new Application_Model_DbTable_EmployeCaisse();
+						$employeCaisse->modifierEmploye($id, $nom, $prenom);
+				
+						//Mise à jour de ses informations de connexion
+						$this->_helper->redirector('accepte','profil',null,array('id' => $id));
+												
+					}
+					if($droits == 4){
+						$id = $form->getValue('Id_utilisateur');
+						$nom = $form->getValue('Nom_caisse');
+						$adresse = $form->getValue('Adresse');
+						$telephone = $form->getValue('Telephone');
+												
+						//Mise à jour des données du Salarié
+						$caisse = new Application_Model_DbTable_Caisse();
+						$caisse->modifierCaisse($id, $nom, $adresse, $telephone);
+				
+						//Mise à jour de ses informations de connexion
+						$this->_helper->redirector('accepte','profil',null,array('id' => $id));
+												
+					}					
 				} else {
 					echo "form invalid";
 					$form->populate($formData);
