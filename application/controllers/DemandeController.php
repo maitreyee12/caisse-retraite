@@ -15,7 +15,8 @@ class DemandeController extends Zend_Controller_Action
 
     public function departRetraiteAction()
     {
-        // action body
+        $form = new Application_Form_DemandeDepartRetraite();
+		$this->view->form = $form;
     }
 
     public function affiliationAction()
