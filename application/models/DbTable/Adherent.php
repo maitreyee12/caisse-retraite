@@ -56,12 +56,12 @@ class Application_Model_DbTable_Adherent extends Zend_Db_Table_Abstract
 	public function modifierAdhérent($Id_utilisateur, $nom, $prenom, $num_SS, $telephone, $adresse, $e_mail){
 		
 		$data = array(
-		'Nom' => $nom,
-		'Prenom' => $prenom,
-		'NumSS' => $num_SS,
-		'Telephone' => $telephone,
-		'Adresse' => $adresse,
-		'E_mail' => $e_mail,
+			'Nom' => $nom,
+			'Prenom' => $prenom,
+			'NumSS' => $num_SS,
+			'Telephone' => $telephone,
+			'Adresse' => $adresse,
+			'E_mail' => $e_mail,
 		);
 		
 		$this->update($data, 'Id_utilisateur = '. (int)$Id_utilisateur);

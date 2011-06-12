@@ -3,7 +3,9 @@
 	<table id='periode'>
 	<thead>
 		<tr>
-			<th>Entreprise</th>
+			<th>Situation</th>
+			<th>Date début</th>
+			<th>Date fin</th>
 			<th>Salaire</th>
 			<th>Point ARRCO</th>
 			<th>Point AGIRC</th>
@@ -16,6 +18,10 @@
 		foreach($this->Periodes as $periode) : ?>
 		<tr>
 			<td><?php echo $this->escape($periode->Nom_Entreprise);?></td>
+			<td><?php $datedeb = explode(" ",$this->escape($periode->Date_debut)); 
+					  echo trim($datedeb[0]);?></td>
+			<td><?php $datefin = explode(" ",$this->escape($periode->Date_fin)); 
+					  echo trim($datefin[0]);?></td>
 			<td><?php echo $this->escape($periode->Salaire_percu);?></td>
 			<td><?php echo $this->escape($periode->Points_ARRCO);?></td>
 			<td><?php echo $this->escape($periode->Points_AGIRC);?></td>
@@ -32,9 +38,7 @@
 
 <script>
 		$(function () {
-			tableToGrid("#periode", {height:'auto',caption: 'Période du <?php $datedeb = explode(" ",$this->escape($periode->Date_debut)); 
-					  echo trim($datedeb[0]);?> au <?php $datefin = explode(" ",$this->escape($periode->Date_fin)); 
-					  echo trim($datefin[0]);?>'});;
+			tableToGrid("#periode", {height:'auto',width:"auto",caption: 'Liste des périodes composant votre carrière'});;
 		});
 </script>
 	

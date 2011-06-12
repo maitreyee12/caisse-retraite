@@ -1,43 +1,73 @@
-
-<div id="view-profil-content">
-	<div id='profilinfos' >
-		<div id='profilinfos-content'>
-			<h3>Vos informations</h3>
-			<?php 
-			$this->title = "Mon Profil";
-			$this->headTitle($this->title);
-			echo $this->form;
-			?>
-		</div>
-	
-	</div>
-	<?php 
+<?php 
 		//on cherche l'instance de connexion
 		$auth=Zend_Auth::getInstance();
 		//on récupère son niveau de droit
 		//pour chaque niveau on définit l'affichage du menu / restriction d'acccès aux actions/vues
 		$profil = $auth->getIdentity();
 		$droits = $profil->Droits;
+		
+		?>
+
+<script>
+$(function() {
+	$( "#tabs" ).tabs();
+});
+
+</script>
+<p class="news_intro">
+		Bienvenue dans la section Profil :
+</p>
+<p class="news_content">
+	Vous trouverez ici l'ensemble des informations concernant votre dossier, vous avez ainsi la possibilité de les modifier.
+	<?php 
 		if($droits !=3 || ($droits != $this->droit_profil && $droits == 3)){
-	?>
-	<div id='profildemandes' >
-		<div id='profildemandes-content'>
-			
-			<?php echo $this->action('index', 'ListeDemandes', null, array('id' => ($this->id))); ?>
-		</div>
-	</div>
+	?> 
+	<br><br>Vous trouverez dans l'onglet 'Vos demandes' la liste des demandes que vous avez effectué auprès de nos services.
 	<?php if($droits == 0 || $droits == 1 || ($droits != $this->droit_profil && $droits == 3)){ ?>
-	
-	<div id='profilcarriere' >
-		<div id='profildemandes-content'>
-			
+	<br><br>L'onglet 'Votre carrière' réuni l'ensemble des informations relatives à votre carrière détaillée par période ainsi que l'ensemble des documents justificatif que vous nous avez fournis.
+	<?php }	}?>
+</p>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Vos informations</a></li>
 			<?php 
-				//On affiche la carrière de l'adhérent
-				echo $this->action('afficher-Carriere', 'Carriere', null, array('id' => ($this->id))); 
+				if($droits !=3 || ($droits != $this->droit_profil && $droits == 3)){
 			?>
+			<li><a href="#tabs-2">Vos demandes</a></li>
+			<?php if($droits == 0 || $droits == 1 || ($droits != $this->droit_profil && $droits == 3)){ ?>
+		
+			<li><a href="#tabs-3">Votre carrière</a></li>
+			<?php }	}?>
+		</ul>
+		
+		<div id='tabs-1' >
+				<?php 
+					$this->title = "Mon Profil";
+					$this->headTitle($this->title);
+					echo $this->form;
+				?>
+		
 		</div>
+		<?php 
+				if($droits !=3 || ($droits != $this->droit_profil && $droits == 3)){
+			?>
+		<div id='tabs-2' >
+			
+				<?php 
+					//On affiche les demandes de l'utilisateur
+					echo $this->action('index', 'ListeDemandes', null, array('id' => ($this->id))); 
+				?>
+			
+		</div>
+		<?php if($droits == 0 || $droits == 1 || ($droits != $this->droit_profil && $droits == 3)){ ?>
+		
+		<div id='tabs-3' >
+				<?php 
+					//On affiche la carrière de l'adhérent
+					echo $this->action('afficher-Carriere', 'Carriere', null, array('id' => ($this->id))); 
+				?>
+		</div>
+		<?php }	}?>
+		
 	</div>
-	<?php }	}
-	?>
-	 <!-- -->
-</div>
