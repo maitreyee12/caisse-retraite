@@ -1,4 +1,44 @@
-﻿<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Demande</b> and script/action name <b>departRetraite</b></p>
+﻿<?php
+$this->title = "La retraite en toute simplicité";
+$this->headTitle($this->title);
+?>
+<p class="news_intro">
+	Vous souhaitez demander votre départ en retraite? Rien de plus facile:
+
+</p>
+<p class="news_content">
+	Il vous suffit de remplir ce formulaire. Pour plus de commodité et de simplicité à l'égard de nos adhérents, nous avons simplifié au maximum les démarches de départ en retraite.
+	Nous nous chargeons de tout pour vous, vous n'avez qu'à nous spécifier la date souhaité de départ.
+
+	La démarche :
+	<ul>
+		<li>Remplissez ce formulaire et effectuez votre demande</li>
+		<li>Nos services étudieront celle-ci sous 36 jours maximum</li>
+		<li>Si vos droits vous le permette, un plan de liquidation de retraite vous sera proposé</li>
+		<li>Vous pourrez ainsi profiter de votre retraite en toute sérénité</li>
+	</ul>	
+</p>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Votre demande</a></li>
+		<li><a href="#tabs-2">Conditions de validité</a></li>
+		<li><a href="#tabs-3">Renseignements</a></li>
+	</ul>
+	<div id="tabs-1">
+		<?php
+			echo $this->form;
+		?>
+	</div>
+	<div id="tabs-2">
+	
+	</div>
+	<div id="tabs-3">
+	
+	</div>
 </div>
+<script>
+$(function() {
+	$( "#tabs" ).tabs();
+});
+
+</script>
