@@ -50,5 +50,10 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
         $this->update($data, 'Id_demande = '. (int)$id_demande);
 		
 	}
+	public function getDemandeDepart($Id_utilisateur)
+    {
+    	$type = 'demande depart';
+		return $this->fetchRow($this->select()->where('Id_utilisateur = ?', $Id_utilisateur)->where('Type = ?',$type));
+	}
 }
 

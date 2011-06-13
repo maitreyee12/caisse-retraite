@@ -1,0 +1,43 @@
+<p class="news_intro">
+		Le droit au départ se valide selon les conditions suivantes :
+</p>
+<p class="news_content">
+	<ul>
+		<li>L'adhérent a validé l'ensemble des trimestres nécessaires</li>
+		<li>L'éadhérent atteint l'âge minimum légal</li>
+		<li>L'adhérent a effectué une demande de départ</li>
+	</ul>
+
+	<br><br>Si le dossier de l'adhérent remplis l'ensemble des conditions suivantes, il sera procédé à une évaluation d'un plan de liquidation de retraite qui lui sera soumis.
+	Si l'adhérent valide le plan, sa retraite lui sera alors liquidé.
+	
+</p>
+
+<h3>Statut de l'adhérent</h3>
+	<table id='statut'>
+		<thead>
+			<tr>
+				<th>Nombre de trimestres</th>
+				<th>Age minimum légal</th>
+				<th>Demande départ</th>
+				<th>Date de demande</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?php if($this->validTrim){ echo "<img src='".$this->baseUrl()."/images/boutons/Icone-OK.png' height='40px' width='40px' />";} ?></td>
+				<td><?php if($this->validAge){ echo "<img src='".$this->baseUrl()."/images/boutons/Icone-OK.png' height='40px' width='40px' />";} ?></td>
+				<td><?php if($this->validDemande){ echo "<img src='".$this->baseUrl()."/images/boutons/Icone-OK.png' height='40px' width='40px' />";} ?></td>
+				<td><?php $date = explode(" ",$this->escape($this->dateDemande)); 
+					      echo $date[0];?></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+<script>
+	$(function () {
+		tableToGrid("#statut", {height:"auto", width:"650", caption: "Situation du droit au départ"});
+		$("#statut").jqGrid('gridResize',{minWidth:300,maxWidth:600,minHeight:100, maxHeight:800});
+	});
+</script>

@@ -17,6 +17,33 @@ class DemandeController extends Zend_Controller_Action
     {
         $form = new Application_Form_DemandeDepartRetraite();
 		$this->view->form = $form;
+		
+		if ($this->getRequest()->isPost()) 
+		{
+			$formData = $this->getRequest()->getPost();
+			if ($form->isValid($formData)) 
+			{
+				$date = $form->getValue('date');
+				$commentaires  = $form->getValue('Commentaires');
+
+				$commentaires = "Date départ souhaitée : ".$date+" /n".$commentaires;
+				
+				$auth = Zend_Auth::getInstance();
+				$id_utilisateur = $auth->getIdentity()->Id_utilisateur;
+				$date_demande = date("Y-m-d H:i:s");
+				$etat = 0;
+				$type = "demande depart";
+				
+				$model_Demande = new Application_Model_DbTable_Demande();
+				$model_Demande->ajouterDemande($id_courrier, $id_utilisateur, $commentaires, $date_demande, $etat, $type);
+
+				$this->_helper->redirector('accepte');
+			} 
+			else 
+			{
+				$form->populate($formData);
+			}
+		}
     }
 
     public function affiliationAction()

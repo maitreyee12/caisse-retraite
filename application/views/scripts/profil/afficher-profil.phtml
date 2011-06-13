@@ -39,6 +39,13 @@ $(function() {
 		
 			<li><a href="#tabs-3">Votre carrière</a></li>
 			<?php }	}?>
+			
+			<?php 
+				if($droits != $this->droit_profil && $droits == 3){
+			?>
+			<li><a href="#tabs-4">Droits</a></li>
+			<li><a href="#tabs-5">Plan de retraite</a></li>
+			<?php }	?>
 		</ul>
 		
 		<div id='tabs-1' >
@@ -69,5 +76,18 @@ $(function() {
 				?>
 		</div>
 		<?php }	}?>
+		<?php 
+				if($droits != $this->droit_profil && $droits == 3){
+			?>
+		<div id='tabs-4'>
+			<?php 
+					//On affiche la carrière de l'adhérent
+					echo $this->action('afficher-Droit', 'Carriere', null, array('id' => ($this->id))); 
+			?>
+		</div>
+		<div id='tabs-5'>
+			Plan retraite + liquider retraite
+		</div>
+		<?php }	?>
 		
 	</div>

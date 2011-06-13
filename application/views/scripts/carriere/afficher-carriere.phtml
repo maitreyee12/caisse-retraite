@@ -25,5 +25,6 @@
 <script>
 		$(function () {
 			tableToGrid("#carriere", {height:"auto", width:"auto", caption: "Informations sur la carrière"});
+			$("#carriere").jqGrid('gridResize',{minWidth:300,maxWidth:600,minHeight:100, maxHeight:800});
 		});
 	</script>

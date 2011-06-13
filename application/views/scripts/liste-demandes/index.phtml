@@ -63,6 +63,7 @@
 
 <script>
 	$(function () {
-		tableToGrid("#listedemandes", {height:"auto", width:"auto", caption: "Liste des demandes"});
+		tableToGrid("#listedemandes", {height:"auto", width:"650", caption: "Liste des demandes"});
+		$("#listedemandes").jqGrid('gridResize',{minWidth:300,maxWidth:600,minHeight:100, maxHeight:800});
 	});
 </script>

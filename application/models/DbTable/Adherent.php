@@ -66,5 +66,20 @@ class Application_Model_DbTable_Adherent extends Zend_Db_Table_Abstract
 		
 		$this->update($data, 'Id_utilisateur = '. (int)$Id_utilisateur);
 	}
+	public function getAge($Id_utilisateur){
+		
+		$Id_utilisateur = (int)$Id_utilisateur;
+		$row = $this->fetchRow('Id_utilisateur = ' . $Id_utilisateur);
+		if (!$row) {
+			throw new Exception("Impossible de trouver l'enregistrement $Id_utilisateur");
+		}
+		$value = $row->toArray();
+		
+		$datetime1 = new DateTime($value['Date_naissance']);
+		$datetime2 = new DateTime();
+		$interval = $datetime1->diff($datetime2);
+  
+		return $interval->format('%y');
+	}
 }
 

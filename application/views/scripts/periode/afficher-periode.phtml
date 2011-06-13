@@ -4,12 +4,12 @@
 	<thead>
 		<tr>
 			<th>Situation</th>
-			<th>Date début</th>
-			<th>Date fin</th>
+			<th>Début</th>
+			<th>Fin</th>
 			<th>Salaire</th>
-			<th>Point ARRCO</th>
-			<th>Point AGIRC</th>
-			<th>Documents liés</th>
+			<th>ARRCO</th>
+			<th>AGIRC</th>
+			<th>Documents</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -38,7 +38,8 @@
 
 <script>
 		$(function () {
-			tableToGrid("#periode", {height:'auto',width:"auto",caption: 'Liste des périodes composant votre carrière'});;
+			tableToGrid("#periode", {height:'auto',width:'650', colsize:'auto',caption: 'Liste des périodes composant votre carrière'});;
+			$("#periode").jqGrid('gridResize',{minWidth:300,maxWidth:800,minHeight:100, maxHeight:800});
 		});
 </script>
 	

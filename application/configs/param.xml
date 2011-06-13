@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<points>
+		<point type="ARRCO">14,7216</point>
+		<point type="AGIRC">5,1354</point>
+	</points>
+	<carriere>
+		<trimestre>173</trimestre>
+		<agemin>62</agemin>
+	</carriere>
+</config>
