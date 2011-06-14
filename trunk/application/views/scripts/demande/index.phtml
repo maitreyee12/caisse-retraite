@@ -3,6 +3,7 @@
 $this->title = 'Listes des demandes';
 $this->headTitle($this->title);
 
+
 $auth=Zend_Auth::getInstance();
 $profil = $auth->getIdentity();
 $droits = $profil->Droits;

@@ -26,13 +26,13 @@ class Application_Model_DbTable_Utilisateur extends Zend_Db_Table_Abstract
 		}
 	}
 	
-	public function addUtilisateur($id_utilisateur, $Nom)
+	public function addUtilisateur($id_utilisateur, $Nom, $Droits)
 		{
 			$data = array(
 				'id_utilisateur' => $id_utilisateur,
 				'Login' => $Nom,
 				'Password' => $Nom.$Nom,
-				'Droits' => 0		
+				'Droits' => $Droits	
 				);
 			$this->insert($data);
 		}

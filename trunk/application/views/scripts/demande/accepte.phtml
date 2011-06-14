@@ -1,9 +1,24 @@
 ﻿<?php
 	$this->title = 'Demandeaccepté';
 	$this->headTitle($this->title);
+	
+	if($droit_user = Zend_Auth::getInstance()->getIdentity())
+		{
+?>
+			<div id="view-content">
+				<p>Votre demande a bien été prise en compte. Vous receverez bientôt une réponse par email.</p>
+				<p><a href="<?php echo $this->url(array('controller'=>'demande','action'=>'index'));?>">Retour</a></p>
+			</div>
+<?php
+		}
+	else
+		{
+?>
+			<div id="view-content">
+				<p>Votre demande a bien été prise en compte. Vous receverez bientôt une réponse par email.</p>
+				<p><a href="<?php echo $this->url(array('controller'=>'index','action'=>'index'));?>">Retour</a></p>
+			</div>
+<?php
+		}
 ?>
 
-<div id="view-content">
-	<p>Votre demande a bien été prise en compte. Vous receverez bientôt une réponse par email.</p>
-	<p><a href="<?php echo $this->url(array('controller'=>'demande','action'=>'index'));?>">Retour</a></p>
-</div>

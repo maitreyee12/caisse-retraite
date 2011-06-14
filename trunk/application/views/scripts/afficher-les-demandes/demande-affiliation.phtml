@@ -56,16 +56,34 @@
 	
 	<?php 
 	
-	//triter le fichier de dads
-	//echo $this->action('traiter-dads', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
+	$auth=Zend_Auth::getInstance();
+	$profil = $auth->getIdentity();   
+	$droits = $profil->Droits;
+
+	if($droits == 3)
+		{
+			//lien pour creer l'entreprise
+			echo "<br /><a href='".$this->url(array('controller'=>'Entreprise',
+													'action'=>'ajouter-entreprise', 
+													'Num_siret'=>($this->afficher_demande_affiliation->Num_siret), 
+													'Nom_entreprise'=>($this->afficher_demande_affiliation->Nom), 
+													'Adresse'=>($this->afficher_demande_affiliation->Adresse), 
+													'Num_tel'=>($this->afficher_demande_affiliation->Telephone), 
+													'Nombre_employes'=>($this->afficher_demande_affiliation->Nombre_employes), 
+													'E_mail'=>($this->afficher_demande_affiliation->E_mail)
+													))."'>Valider l'affiliation de l'entreprise</a>";
+		}
 	
 	//lister les notes de cette demande et les afficher
 	echo $this->action('afficher-notes', 'Note', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
 
-	//afficher la liste des documents
+	//afficher la liste des documents + traiter la DADS
 	echo $this->action('afficher-documents', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
-	echo "<a href='".$this->url(array('controller'=>'Document','action'=>'traiter-dads', 'id'=>($this->afficher_demande_affiliation->Id_demande)))."'>Traiter le fichier de DADS</a>";
-	
+	if($droits == 3)
+		{
+			echo "<a href='".$this->url(array('controller'=>'Document','action'=>'traiter-dads', 'id'=>($this->afficher_demande_affiliation->Id_demande)))."'>Traiter le fichier de DADS</a>";
+		}
+		
 	//appel de l'action demande du controller AfficherLesDemandes
 	//formulaire pour ajouter une note
 	echo $this->action('ajouter-note', 'Note', null, array('id' => ($this->afficher_demande_affiliation->Id_demande), 'prov' => (md5("demandeAffiliation")))); 

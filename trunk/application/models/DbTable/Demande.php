@@ -11,10 +11,10 @@ class Application_Model_DbTable_Demande extends Zend_Db_Table_Abstract
 		return $this->fetchRow($this->select()->where('Id_demande = ?', $id_demande));
 	}
 
-	public function modifierDemande()
+	public function modifierDemande($id_demandeur, $id_demande)
 	{
-		//$data = array('artiste' => $artiste,'titre' => $titre,);
-		//$this->update($data, 'id = '. (int)$id);
+		$data = array('Id_utilisateur' => $id_demandeur);
+		$this->update($data, 'Id_demande = '. (int)$id_demande);
 	}
 	public function supprimerDemande()
 	{

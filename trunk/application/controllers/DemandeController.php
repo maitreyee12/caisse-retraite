@@ -201,7 +201,7 @@ class DemandeController extends Zend_Controller_Action
 
     public function accepteAction()
     {
-        // action body
+	
     }
 
     public function modifierEtatDemandeAction()
