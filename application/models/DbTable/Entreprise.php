@@ -58,8 +58,24 @@ class Application_Model_DbTable_Entreprise extends Zend_Db_Table_Abstract
 		}
 		
 	public function getEntreprise($id_entreprise)
-    {
-		return $this->fetchRow($this->select()->where('Id_utilisateur  = ?', $id_entreprise));
-	}
+		{
+			return $this->fetchRow($this->select()->where('Id_utilisateur  = ?', $id_entreprise));
+		}
+	
+	function ajouterEntreprise($id_utilisateur, $Num_siret, $Nom_entreprise, $Adresse, $Num_tel, $E_mail, $Nombre_employes)
+		{
+
+			$data = array(
+				'Id_utilisateur' => $id_utilisateur,
+				'Num_siret' => $Num_siret,
+				'Nom_entreprise' => $Nom_entreprise,
+				'Nombre_salarie' =>$Nombre_employes, 
+				'Nombre_cadre' =>null, 
+				'Adresse' => $Adresse,
+				'Num_tel' => $Num_tel,
+				'E_mail' => $E_mail
+			);
+			$this->insert($data);
+		}
 }
 

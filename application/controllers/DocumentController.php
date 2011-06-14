@@ -177,7 +177,7 @@ class DocumentController extends Zend_Controller_Action
 													//ajout dans la table Utilisateur
 													$model_Utilisateur = new Application_Model_DbTable_Utilisateur();
 													$id_utilisateur = $model_Utilisateur->getDerniereId();
-													$model_Utilisateur->addUtilisateur(($id_utilisateur+1), $tab_all_adh[$i]["NOM"]);
+													$model_Utilisateur->addUtilisateur(($id_utilisateur+1), $tab_all_adh[$i]["NOM"], 0);
 													$id_utilisateur = $model_Utilisateur->getDerniereId();
 													
 													array_push($tab_utilisateur_add, $id_utilisateur);

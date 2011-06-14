@@ -101,6 +101,11 @@
           <actionMethod actionName="afficherCarriere"/>
           <actionMethod actionName="afficherDroit"/>
         </controllerFile>
+        <controllerFile controllerName="Entreprise">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="ajouterEntreprise"/>
+          <actionMethod actionName="afficherEntreprise"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="DemandeAffiliation"/>
@@ -340,6 +345,15 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Carriere">
             <viewScriptFile forActionName="afficherDroit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Entreprise">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Entreprise">
+            <viewScriptFile forActionName="ajouterEntreprise"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Entreprise">
+            <viewScriptFile forActionName="afficherEntreprise"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
