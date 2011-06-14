@@ -56,12 +56,9 @@
 		</tbody>
 	</table>
 <br />	
-<h3>Outils de traitement de documents</h3>
-<ul>
-	<li><a href="<?php echo $this->url(array('controller'=>'Document','action'=>'traiter-dads'));?>">Traiter DADS</a></li>
-</ul>
 
-<script>
+
+<script type="text/javascript"> 
 	$(function () {
 		tableToGrid("#listedemandes", {height:"auto", width:"650", caption: "Liste des demandes"});
 		$("#listedemandes").jqGrid('gridResize',{minWidth:300,maxWidth:600,minHeight:100, maxHeight:800});

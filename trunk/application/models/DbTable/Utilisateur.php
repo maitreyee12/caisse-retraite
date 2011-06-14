@@ -25,6 +25,36 @@ class Application_Model_DbTable_Utilisateur extends Zend_Db_Table_Abstract
 			return false;
 		}
 	}
+	
+	public function addUtilisateur($id_utilisateur, $Nom)
+		{
+			$data = array(
+				'id_utilisateur' => $id_utilisateur,
+				'Login' => $Nom,
+				'Password' => $Nom.$Nom,
+				'Droits' => 0		
+				);
+			$this->insert($data);
+		}
+		
+	public function getDerniereId()
+		{
+			$row =  $this->fetchRow(
+									$this->select(array('MAX(Id_utilisateur)'))
+											->order('Id_utilisateur DESC')
+								);
+			return $row->Id_utilisateur;
+		}
+		
+	public function getUtilisateur($Id_utilisateur)
+		{
+			$Id_utilisateur = (int)$Id_utilisateur;
+			$row = $this->fetchRow('Id_utilisateur = ' . $Id_utilisateur);
+			if (!$row) {
+				throw new Exception("Impossible de trouver l'enregistrement $Id_utilisateur");
+			}
+			return $row->toArray();
+		}
 
 
 }

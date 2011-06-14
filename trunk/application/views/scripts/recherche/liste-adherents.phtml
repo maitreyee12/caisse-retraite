@@ -51,8 +51,12 @@ else
 ?>
 
 
-<script>
-		$(function () {
-			tableToGrid("#afficher_adh", {width: "900" ,height: "auto", caption: "Résultats de la recherche :"});
-		});
+<script type="text/javascript"> 
+	$(function () {
+		tableToGrid("#afficher_adh", {width: "650" ,height: "auto", caption: "Résultats de la recherche :"});
+	});
+	
+	$(function () {
+		$("#afficher_adh").jqGrid('gridResize',{minWidth:650,maxWidth:1000,minHeight:100, maxHeight:800});
+	});
 </script>

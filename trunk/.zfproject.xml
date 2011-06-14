@@ -92,6 +92,9 @@
           <actionMethod actionName="ajouterDocument"/>
           <actionMethod actionName="documentVerouille"/>
           <actionMethod actionName="traiterDads"/>
+          <actionMethod actionName="getDocument"/>
+          <actionMethod actionName="afficherDads"/>
+          <actionMethod actionName="dadsAccepte"/>
         </controllerFile>
         <controllerFile controllerName="Carriere">
           <actionMethod actionName="index"/>
@@ -116,6 +119,7 @@
         <formFile formName="DemandeModifierEtat"/>
         <formFile formName="RechercheAdherent"/>
         <formFile formName="RechercheEntreprise"/>
+        <formFile formName="TraiterDads"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -139,7 +143,7 @@
           <dbTableFile dbTableName="Retraites"/>
           <dbTableFile dbTableName="Reversion"/>
           <dbTableFile dbTableName="Rib"/>
-          <dbTableFile dbTableName="Salaire"/>
+          <dbTableFile dbTableName="Salarie"/>
           <dbTableFile dbTableName="Utilisateur"/>
           <dbTableFile dbTableName="Versement"/>
           <dbTableFile dbTableName="Note"/>
@@ -324,6 +328,15 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="AfficherLesDemandes">
             <viewScriptFile forActionName="demandeReversion"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Document">
+            <viewScriptFile forActionName="getDocument"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Document">
+            <viewScriptFile forActionName="afficherDads"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Document">
+            <viewScriptFile forActionName="dadsAccepte"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Carriere">
             <viewScriptFile forActionName="afficherDroit"/>

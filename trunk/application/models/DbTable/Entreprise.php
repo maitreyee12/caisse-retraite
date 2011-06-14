@@ -56,5 +56,10 @@ class Application_Model_DbTable_Entreprise extends Zend_Db_Table_Abstract
 					}				
 			return $this->fetchAll($query);
 		}
+		
+	public function getEntreprise($id_entreprise)
+    {
+		return $this->fetchRow($this->select()->where('Id_utilisateur  = ?', $id_entreprise));
+	}
 }
 

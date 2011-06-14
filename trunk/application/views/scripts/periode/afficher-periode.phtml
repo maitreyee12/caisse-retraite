@@ -36,10 +36,14 @@
 	
 <br />
 
-<script>
+<script type="text/javascript"> 
 		$(function () {
 			tableToGrid("#periode", {height:'auto',width:'650', colsize:'auto',caption: 'Liste des périodes composant votre carrière'});;
 			$("#periode").jqGrid('gridResize',{minWidth:300,maxWidth:800,minHeight:100, maxHeight:800});
+		});
+		
+		$(function () {
+			$("#periode").jqGrid('gridResize',{minWidth:650,maxWidth:1000,minHeight:100, maxHeight:800});
 		});
 </script>
 	

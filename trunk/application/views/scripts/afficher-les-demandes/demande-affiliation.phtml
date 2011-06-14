@@ -9,6 +9,7 @@
 
 	//appel de l'action demande du controller AfficherLesDemandes
 	echo $this->action('demande', 'AfficherLesDemandes', null, array('id' => ($this->afficher_demande_affiliation->Id_demande), 'prov' => (md5("demandeAffiliation")))); 
+	
 ?>
 
 	<table id='listedemandes_affiliation_1' >
@@ -46,7 +47,7 @@
 		</tbody>
 	</table>
 	
-	<script>
+	<script type="text/javascript"> 
 		$(function () {
 			tableToGrid("#listedemandes_affiliation_1", {height:"auto", caption: "Informations sur l'entreprise"});
 			tableToGrid("#listedemandes_affiliation_2", {height:"auto", caption: "Coordonnées de l'entreprise"});
@@ -54,12 +55,16 @@
 	</script>
 	
 	<?php 
-
+	
+	//triter le fichier de dads
+	//echo $this->action('traiter-dads', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
+	
 	//lister les notes de cette demande et les afficher
 	echo $this->action('afficher-notes', 'Note', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
 
 	//afficher la liste des documents
 	echo $this->action('afficher-documents', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
+	echo "<a href='".$this->url(array('controller'=>'Document','action'=>'traiter-dads', 'id'=>($this->afficher_demande_affiliation->Id_demande)))."'>Traiter le fichier de DADS</a>";
 	
 	//appel de l'action demande du controller AfficherLesDemandes
 	//formulaire pour ajouter une note
