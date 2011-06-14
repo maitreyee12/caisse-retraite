@@ -26,5 +26,11 @@ class Application_Model_DbTable_Documents extends Zend_Db_Table_Abstract
 			);
 			$this->insert($data);
 		}
+		
+	 public function getDdocument($id_document)
+    {
+		return $this->fetchRow($this->select()->where('Id_document = ?', $id_document));
+	}
+
 }
 

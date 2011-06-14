@@ -33,179 +33,37 @@
 	</head>
 	<body>
 		<div id="main">
-		<!-- header begins -->
-			<div id="header">
-				<div id="buttons">
-					<?php  
-					
-						//on cherche l'instance de connexion
-						$auth=Zend_Auth::getInstance();
-						
-						//si non connecté
-						if(!$auth->hasIdentity())
-							{
-								 echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Accueil</a></div>";
-								 echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'affiliation'))."' class='but' title=''>S'affilier</a></div>";
-								 echo "<div ><a href='".$this->url(array('controller'=>'Contact','action'=>'index'))."' class='but' title=''>Contact</a></div>";
-							}
-						//connecté
-						else
-							{
-								//on récupère son niveau de droit
-								//pour chaque niveau on définit l'affichage du menu / restriction d'acccès aux actions/vues
-								$profil = $auth->getIdentity();
-								$droits = $profil->Droits;
-								//Si c'est un salarié
-								if($droits==0)
-									{
-										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'afficher-profil','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Contact','action'=>'index'))."' class='but' title=''>Contact</a></div>";
-									}
-								//Si c'est un retraité
-								if($droits==1)
-									{
-										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'afficher-profil','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
-									}
-								//Si c'est une entreprise
-								if($droits==2)
-									{
-										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'afficher-profil','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'dads'))."' class='but' title=''>DADS</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
-									}
-								//Si c'est un employé caisse
-								if($droits==3)
-									{
-										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'afficher-profil','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Liste-demandes','action'=>'index'))."' class='but' title=''>Liste demandes</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Recherche','action'=>'index'))."' class='but' title=''>Recherche</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
-									}
-								//Si c'est une autre caisse
-								if($droits==4)
-									{
-										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'afficher-profil','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Transfert','action'=>'dossier'))."' class='but' title=''>Transfert dossier</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
-									}
-								//Si c'est la CNAV
-								if($droits==5)
-									{
-										echo "<div ><a href='".$this->url(array('controller'=>'Index','action'=>'index'))."' class='but' title=''>Acceuil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Profil','action'=>'afficher-profil','id'=>$profil->Id_utilisateur))."' class='but' title=''>Mon profil</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Transfert','action'=>'autorisation-depart'))."' class='but' title=''>Autoriser départ</a></div>";
-										echo "<div ><a href='".$this->url(array('controller'=>'Demande','action'=>'index'))."' class='but' title=''>Demande</a></div>";
-									}
-							}
-					?>
-					
-				</div>
-				<!-- Carousel jQuery -->
-				<div class="wrap">
-				<div id="slide-holder">
-					<div id="slide-runner">
-						<a href=""><img id="slide-img-1" src="<?php echo $this->baseUrl() ?>/images/carousel/nature-photo.png" 	class="slide" alt="" /></a>
-						<a href=""><img id="slide-img-2" src="<?php echo $this->baseUrl() ?>/images/carousel/nature-photo1.png" class="slide" alt="" /></a>
-						<a href=""><img id="slide-img-3" src="<?php echo $this->baseUrl() ?>/images/carousel/nature-photo2.png" class="slide" alt="" /></a>
-						<a href=""><img id="slide-img-4" src="<?php echo $this->baseUrl() ?>/images/carousel/nature-photo3.png" class="slide" alt="" /></a>
-						<a href=""><img id="slide-img-5" src="<?php echo $this->baseUrl() ?>/images/carousel/nature-photo4.png" class="slide" alt="" /></a>
-						<a href=""><img id="slide-img-6" src="<?php echo $this->baseUrl() ?>/images/carousel/nature-photo5.png" class="slide" alt="" /></a>
-						<a href=""><img id="slide-img-7" src="<?php echo $this->baseUrl() ?>/images/carousel/nature-photo6.png" class="slide" alt="" /></a> 
-						<div id="slide-controls">
-							<p id="slide-client" class="text"><strong>post: </strong><span></span></p>
-							<p id="slide-desc" class="text"></p>
-							<p id="slide-nav"></p>
-						</div>
-					</div>
-				<!--galleries d'images -->
-				</div>
-				<script type="text/javascript">
-					if(!window.slider) 
-						var slider={};
-					slider.data=[
-									{"id":"slide-img-1",
-									"client":"CRC - Caisse de Retraite Complémentaire",
-									"desc":"nature beauty photography"},
-									{"id":"slide-img-2",
-									"client":"nature beauty",
-									"desc":"add your description here"},
-									{"id":"slide-img-3",
-									"client":"nature beauty",
-									"desc":"add your description here"},
-									{"id":"slide-img-4",
-									"client":"nature beauty",
-									"desc":"add your description here"},
-									{"id":"slide-img-5",
-									"client":"nature beauty",
-									"desc":"add your description here"},
-									{"id":"slide-img-6",
-									"client":"nature beauty",
-									"desc":"add your description here"},
-									{"id":"slide-img-7",
-									"client":"nature beauty",
-									"desc":"add your description here"}
-								];
-				</script>
-			</div>
-		</div>
-			<!-- header ends -->
-			<!-- content begins -->
+			<!-- HEADER -->
+			<!-- MENU + CAROUSEL -->
+			<?php echo $this->render('header.phtml') ?>
+			<!-- END GEADER -->
+			
+			<!-- CONTENT -->
 			<div id="content">
 				<div class="top">
-				
+					<!-- MENU ON RIGHT -->
 					<div id="right">
-					<?php
-					$auth=Zend_Auth::getInstance();
-					//if(!$auth->hasIdentity())
-						//{
-							echo "
-							<h1>Connexion</h1>
-							<div class='tit_bot'>
-								<div class='right_b'><span class='col_b'>
-									";
-							echo $this->login();
-							echo "</span><br />
-								</div>
-							</div>
-							<br />";
-						//}
-					?>
-					<h1>Aide en ligne</h1>
-						<div class="tit_bot">
-							<div class="right_b"><span class="col_b">Titre Aide</span><br />
-								Texte aide<?php echo $this->layout()->aide; ?>
-							</div>
-							<div class="read">
-	
-							</div>
-						 </div>
-						 <br />
+						<!-- MODULE CONNEXION -->
+						<?php echo $this->render('connexion.phtml') ?>
+						<!-- MODULE AIDE -->
+						<?php echo $this->render('aide.phtml') ?>
 					</div>  
-					
+					<!-- END MENU ON RIGHT -->
+					<!-- MAIN PAGE -->
 					<div id="left">
-							<h2><?php echo $this->escape($this->title); ?></h2>
-							<div class="text">
-								<?php echo $this->layout()->content; ?>
-							</div>        
+						<?php echo $this->render('content.phtml') ?>
 					</div>
-				   <br />
-            <div style="clear: both"></div>
-        </div>
-        <div class="bot"></div>
-        </div>
-    <!-- content ends -->
-    <!-- footer begins -->
-    <div id="footer">
-		Copyright  2011. CRC - Caisse Retraite Complémentaire<br />
-		CHAPEL Jean-Philippe | SANTUS Brice | DOMINGUES Nicolas
-	</div>
-</div>
-</body>
+					<!-- END MAIN PAGE -->
+					<br />
+					<div style="clear: both"></div>
+				</div>
+				<div class="bot"></div>
+			</div>
+			<!-- END CONTENT -->
+ 
+		<!-- FOOTER -->
+		<?php echo $this->render('footer.phtml') ?>
+		<!-- END FOOTER -->
+		</div>
+	</body>
 </html>

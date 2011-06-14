@@ -1,0 +1,16 @@
+<?php
+$auth=Zend_Auth::getInstance();
+//if(!$auth->hasIdentity())
+	//{
+		echo "
+		<h1>Connexion</h1>
+		<div class='tit_bot'>
+			<div class='right_b'><span class='col_b'>
+				";
+		echo $this->login();
+		echo "</span><br />
+			</div>
+		</div>
+		<br />";
+	//}
+?>
