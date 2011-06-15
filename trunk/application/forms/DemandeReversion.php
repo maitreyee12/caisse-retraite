@@ -5,7 +5,14 @@ class Application_Form_DemandeReversion extends Zend_Form
 
     public function init()
     {
-		$droit_user = Zend_Auth::getInstance ()->getIdentity()->Droits;
+		if($droit_user = Zend_Auth::getInstance()->getIdentity())
+			{
+				$droit_user = Zend_Auth::getInstance()->getIdentity()->Droits;
+			}
+		else
+			{
+				$droit_user = 0;
+			}
 		if($droit_user == 3)
 			{
 				//NUM_COURRIER
