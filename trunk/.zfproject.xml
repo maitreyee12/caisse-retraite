@@ -131,6 +131,7 @@
         <formFile formName="RechercheEntreprise"/>
         <formFile formName="TraiterDads"/>
         <formFile formName="News"/>
+        <formFile formName="Rib"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
