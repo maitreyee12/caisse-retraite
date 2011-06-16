@@ -55,7 +55,10 @@ class Application_Model_DbTable_Utilisateur extends Zend_Db_Table_Abstract
 			}
 			return $row->toArray();
 		}
-
-
+		
+	public function getUtilisateurByName($name)
+		{
+			return $this->fetchRow($this->select()->where('Login  = ?', $name));
+		}
 }
 

@@ -97,5 +97,10 @@ class Application_Model_DbTable_Adherent extends Zend_Db_Table_Abstract
 				);
 			$this->insert($data);
 		}
+		
+	public function getAdherent($id_utilisateur)
+		{
+			return $this->fetchRow($this->select()->where('Id_utilisateur  = ?', $id_utilisateur));
+		}
 }
 
