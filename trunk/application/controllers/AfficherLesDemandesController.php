@@ -21,7 +21,11 @@ class AfficherLesDemandesController extends Zend_Controller_Action
 		
 		//puis on récupére les infos de la demande_affiliation dans afficher_demande_affiliation
         $afficher_demande_affiliation = new Application_Model_DbTable_DemandeAffiliation();
+		$demande = $afficher_demande_affiliation->getDemande($id);
 		$this->view->afficher_demande_affiliation = $afficher_demande_affiliation->getDemande($id);
+		
+		$model_entreprise = new Application_Model_DbTable_Entreprise();
+		$this->view->entrepriseExiste = $model_entreprise->getEntrepriseByName($demande->Nom);
 		
     }
 

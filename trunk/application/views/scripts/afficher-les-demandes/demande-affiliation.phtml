@@ -60,7 +60,7 @@
 	$profil = $auth->getIdentity();   
 	$droits = $profil->Droits;
 
-	if($droits == 3)
+	if(($droits == 3) && (!isset($this->entrepriseExiste->Nom_entreprise)))
 		{
 			//lien pour creer l'entreprise
 			echo "<br /><a href='".$this->url(array('controller'=>'Entreprise',
@@ -79,7 +79,7 @@
 
 	//afficher la liste des documents + traiter la DADS
 	echo $this->action('afficher-documents', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
-	if($droits == 3)
+	if(($droits == 3) && (isset($this->entrepriseExiste->Nom_entreprise)))
 		{
 			echo "<a href='".$this->url(array('controller'=>'Document','action'=>'traiter-dads', 'id'=>($this->afficher_demande_affiliation->Id_demande)))."'>Traiter le fichier de DADS</a>";
 		}

@@ -158,13 +158,17 @@ class DocumentController extends Zend_Controller_Action
 														{
 															$tab_adh["ADRESSE"] = $ligne[$occurence+1];
 														}	
-													else if($ligne[$occurence] == "SALARIE")
+													else if($ligne[$occurence] == "SALAIRE")
 														{
-															$tab_adh["SALARIE"] = $ligne[$occurence+1];
+															$tab_adh["SALAIRE"] = $ligne[$occurence+1];
 														}
-													else if($ligne[$occurence] == "NOMBRE TRIMESTRES")
+													else if($ligne[$occurence] == "DATE DEBUT")
 														{
-															$tab_adh["NB_TRIMESTRES"] = $ligne[$occurence+1];
+															$tab_adh["DATE_DEBUT"] = $ligne[$occurence+1];
+														}
+													else if($ligne[$occurence] == "DATE FIN")
+														{
+															$tab_adh["DATE_FIN"] = $ligne[$occurence+1];
 														}
 												}
 												$row ++;
@@ -174,8 +178,51 @@ class DocumentController extends Zend_Controller_Action
 											
 											for($i = 0; $i < sizeof($tab_all_adh); $i++)
 												{
-													//ajout dans la table Utilisateur
+													//on regarde si l'utilisateur existe deja
 													$model_Utilisateur = new Application_Model_DbTable_Utilisateur();
+													$utilisateur = $model_Utilisateur->getUtilisateurByName($tab_all_adh[$i]["NOM"]);
+													
+													//existe
+													if(isset($utilisateur->Id_utilisateur))
+														{
+															//on ajoute les nouvelles périodes
+															$model_periode = new Application_Model_DbTable_Periode();
+															//on compare le debut et la fin de la periode et en fonction
+															//on ajoute le bon nombre de trimestres
+															$date_debut = explode("-", $tab_all_adh[$i]["DATE_DEBUT"]);
+															$date_fin = explode("-", $tab_all_adh[$i]["DATE_FIN"]);
+															$nb_mois = $date_fin[1]-$date_debut[1];
+															$nb_trimestres = $nb_mois/4;
+															$nb_trimestres = (int)$nb_trimestres;
+															
+															//on reformate les dates sinon elles ne passent pas...
+															$date_debut = $date_debut[0]."-".$date_debut[1]."-".$date_debut[2];
+															$date_fin = $date_fin[0]."-".$date_fin[1]."-".$date_fin[2];
+
+															//pour ajouter en base
+															//on a besoin de son num de carriere 
+															$model_Carriere = new Application_Model_DbTable_Carriere();
+															$carriere = $model_Carriere->getCarriere($utilisateur->Id_utilisateur);
+															//on a besoin de l'adherent
+															$model_Adherent = new Application_Model_DbTable_Adherent();
+															$adherent = $model_Adherent->getAdherent($utilisateur->Id_utilisateur);
+															//on a besoin de nom de l'entreprise
+															$model_Entreprise = new Application_Model_DbTable_Entreprise();
+															$entreprise = $model_Entreprise->getEntreprise($adherent->Id_entreprise);
+															//finalement on ajoute la periode en base
+															//ICI ON DEVRA CALCULE LES POINTS POUR LA PERIODE C LES DEUX DERNIERS ARGUMENTS DE LA FONCTION addPeriode()
+															$id_periode = $model_periode->getDerniereId();
+															$model_periode->addPeriode(($id_periode+1), $carriere->Id_carriere, $date_debut, $date_fin, $entreprise->Nom_entreprise, $tab_all_adh[$i]["SALAIRE"], "0", "0");
+														}
+													//existe pas
+													else
+														{
+															echo "existe pas";
+														}
+													
+													exit();
+													//ajout dans la table Utilisateur
+													
 													$id_utilisateur = $model_Utilisateur->getDerniereId();
 													$model_Utilisateur->addUtilisateur(($id_utilisateur+1), $tab_all_adh[$i]["NOM"], 0);
 													$id_utilisateur = $model_Utilisateur->getDerniereId();
