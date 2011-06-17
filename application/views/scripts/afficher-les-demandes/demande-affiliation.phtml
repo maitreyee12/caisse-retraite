@@ -15,6 +15,7 @@
 	<table id='listedemandes_affiliation_1' >
 		<thead>
 			<tr>
+				<th>ID</th>
 				<th>Raison sociale</th>
 				<th>numéro de SIRET</th>
 				<th>Nombre employés</th>
@@ -22,6 +23,16 @@
 		</thead>
 		<tbody>
 			<tr>
+				<?php
+				if(isset($this->entrepriseExiste->Nom_entreprise))
+					{
+						echo "<td>".$this->entrepriseExiste->Id_utilisateur."</td>";
+					}
+				else
+					{
+						echo "<td>NULL</td>";
+					}
+				?>
 				<td><?php echo $this->escape($this->afficher_demande_affiliation->Nom);?></td>
 				<td><?php echo $this->escape($this->afficher_demande_affiliation->Num_siret);?></td>
 				<td><?php echo $this->escape($this->afficher_demande_affiliation->Nombre_employes);?></td>
@@ -81,7 +92,7 @@
 	echo $this->action('afficher-documents', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande))); 
 	if(($droits == 3) && (isset($this->entrepriseExiste->Nom_entreprise)))
 		{
-			echo "<a href='".$this->url(array('controller'=>'Document','action'=>'traiter-dads', 'id'=>($this->afficher_demande_affiliation->Id_demande)))."'>Traiter le fichier de DADS</a>";
+			echo "<a href='".$this->url(array('controller'=>'Document','action'=>'traiter-dads', 'id'=>($this->afficher_demande_affiliation->Id_demande), 'id_ent'=>($this->entrepriseExiste->Id_utilisateur)))."'>Traiter le fichier de DADS</a>";
 		}
 		
 	//appel de l'action demande du controller AfficherLesDemandes
