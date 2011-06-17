@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<points>
-		<point type="ARRCO">14,7216</point>
-		<point type="AGIRC">5,1354</point>
-	</points>
+	<regime>
+		<arrco>
+			<point_arrco>1.2135</point_arrco>
+			<taux_cotisation>
+				<tranche type="1">7.5</tranche>
+				<tranche type="2">20</tranche>
+			</taux_cotisation>
+			<taux_acquisition>
+				<tranche type="1">6</tranche>
+				<tranche type="2">16</tranche>
+			</taux_acquisition>
+		</arrco>
+		<agirc>
+			<point_agirc>0.4233</point_agirc>
+			<taux_cotisation>
+				<tranche type="B">20.30</tranche>
+				<tranche type="C">20.30</tranche>
+			</taux_cotisation>
+			<taux_acquisition>
+				<tranche type="B">16.24</tranche>
+				<tranche type="C">16.24</tranche>
+			</taux_acquisition>
+		</agirc>
+	</regime>
+	<securite_sociale>
+		<plafond>2946</plafond>
+	</securite_sociale>
 	<carriere>
 		<trimestre>173</trimestre>
 		<agemin>62</agemin>
