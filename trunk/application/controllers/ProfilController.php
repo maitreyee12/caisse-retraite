@@ -125,7 +125,7 @@ class ProfilController extends Zend_Controller_Action
 				$this->view->id =$id;
 				$this->view->droit_profil =$droits;
 				//Affichage du formulaire correspondant au type d'utilisateur
-				if($droits == 0){
+				if($droits == 0 || $droits ==1){
 					//Si l'utilisateur est un adhérent
 					$form = new Application_Form_ProfilAdherent();
 					$this->view->form = $form;

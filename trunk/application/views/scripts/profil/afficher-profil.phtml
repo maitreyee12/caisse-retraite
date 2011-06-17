@@ -45,6 +45,9 @@ $(function() {
 				if($droits != $this->droit_profil && $droits == 3){
 			?>
 			<li><a href="#tabs-5">Droits</a></li>
+			<?php }
+			if(($droits != $this->droit_profil && $droits == 3) || $droits == 1){
+			?>
 			<li><a href="#tabs-6">Plan de retraite</a></li>
 			<?php }	?>
 		</ul>
@@ -90,13 +93,15 @@ $(function() {
 			?>
 		<div id='tabs-5'>
 			<?php 
-					//On affiche la carrière de l'adhérent
-					echo $this->action('afficher-Droit', 'Carriere', null, array('id' => ($this->id))); 
+					//On affiche le droit à la retraite de l'adhérent
+					echo $this->action('afficher-Droit', 'Carriere', null, array('id' => ($this->id)));
+				 
 			?>
 		</div>
+		<?php } if(($droits != $this->droit_profil && $droits == 3) || $droits == 1){?>
 		<div id='tabs-6'>
 			<?php 
-					//On affiche la carrière de l'adhérent
+					//On affiche le plan de retraite de l'adhérent
 					echo $this->action('afficher-Plan', 'Carriere', null, array('id' => ($this->id))); 
 			?>
 		</div>
