@@ -82,21 +82,25 @@ class Application_Model_DbTable_Adherent extends Zend_Db_Table_Abstract
 		return $interval->format('%y');
 	}
 	
-	public function addAdherent($Id_utilisateur, $Id_carriere, $Nom, $Prenom, $NumSS, $Telephone, $E_mail, $Adresse)
-	{
-		$data = array(
-			'Id_utilisateur' => $Id_utilisateur,
-			'Id_carriere' => $Id_carriere,
-			'Nom' => $Nom,	
-			'Prenom' => $Prenom,	
-			'NumSS' => $NumSS,	
-			'Telephone' => $Telephone,	
-			'E_mail' => $E_mail,	
-			'Adresse' => $Adresse,
-			'Statut' => "salarie"	
-			);
-		$this->insert($data);
-	}
+	public function addAdherent($Id_utilisateur, $Id_carriere, $Id_entreprise, $Nom, $Prenom, $Date_naissance, $NumSS, $Telephone, $E_mail, $Adresse)
+		{
+			$data = array(
+				'Id_utilisateur' => $Id_utilisateur,
+				'Id_carriere' => $Id_carriere,
+				'Id_entreprise' => $Id_entreprise,
+				'Nom' => $Nom,
+				'Prenom' => $Prenom,
+				'Date_naissance' => $Date_naissance,
+				'NumSS' => $NumSS,
+				'Telephone' => $Telephone,
+				'E_mail' => $E_mail,
+				'Adresse' => $Adresse,
+				'Statut' => "salarie"	
+				);
+
+			$this->insert($data);
+		}
+	
 	public function retraiteAdherent($Id_utilisateur)
 	{
 		$data = array(

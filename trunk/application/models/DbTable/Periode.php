@@ -12,7 +12,6 @@ class Application_Model_DbTable_Periode extends Zend_Db_Table_Abstract
 	
 	public function addPeriode($id_periode, $id_carriere, $date_debut, $date_fin, $nom_ent, $Salaire_percu, $Points_ARRCO, $Points_AGIRC)
 		{
-			echo $date_fin;
 			$data = array(
 				'Id_periode' => (int)$id_periode,
 				'Id_carriere' => (int)$id_carriere,
@@ -133,6 +132,11 @@ public function getAnneePlanRetraite($id_carriere)
 											->order('Id_periode DESC')
 								);
 			return $row->Id_periode;
+		}
+		
+	public function getPeriode($id_periode)
+		{
+			return $this->fetchRow($this->select()->where('Id_periode = ?', $id_periode));
 		}
 
 }

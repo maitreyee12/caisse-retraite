@@ -118,6 +118,15 @@
           <actionMethod actionName="afficherRib"/>
           <actionMethod actionName="editerRib"/>
         </controllerFile>
+        <controllerFile controllerName="Adherent">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="afficherAdherentMaj"/>
+          <actionMethod actionName="afficherCarriereMaj"/>
+          <actionMethod actionName="afficherPeriodeAdd"/>
+          <actionMethod actionName="afficherAdherentAdd"/>
+          <actionMethod actionName="afficherCarriereAdd"/>
+          <actionMethod actionName="afficherUtilisateurAdd"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="DemandeAffiliation"/>
@@ -380,13 +389,25 @@
           <viewControllerScriptsDirectory forControllerName="News">
             <viewScriptFile forActionName="accepte"/>
           </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Adherent">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Adherent">
+            <viewScriptFile forActionName="afficherAdherentMaj"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Adherent">
+            <viewScriptFile forActionName="afficherCarriereMaj"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Adherent">
+            <viewScriptFile forActionName="afficherPeriodeAdd"/>
+          </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Carriere">
             <viewScriptFile forActionName="afficherPlan"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Carriere">
             <viewScriptFile forActionName="departRetraite"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Rib">
+       <viewControllerScriptsDirectory forControllerName="Rib">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Rib">
@@ -394,6 +415,15 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Rib">
             <viewScriptFile forActionName="editerRib"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Adherent">
+            <viewScriptFile forActionName="afficherAdherentAdd"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Adherent">
+            <viewScriptFile forActionName="afficherCarriereAdd"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Adherent">
+            <viewScriptFile forActionName="afficherUtilisateurAdd"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

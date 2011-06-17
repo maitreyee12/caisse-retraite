@@ -1,0 +1,26 @@
+﻿<table id="<?php echo "afficher_car".$this->escape($this->afficherCarriere->Id_carriere ); ?>">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Trimestre_cumul</th>
+			<th>Points_cumul</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php echo $this->escape($this->afficherCarriere->Id_carriere);?></td>
+			<td><?php echo $this->escape($this->afficherCarriere->Trimestre_cumul);?></td>
+			<td><?php echo $this->escape($this->afficherCarriere->Points_cumul);?></td>
+		</tr>
+	</tbody>
+</table>	
+
+<script type="text/javascript"> 
+	$(function () {
+		tableToGrid('<?php echo "#afficher_car".$this->escape($this->afficherCarriere->Id_carriere ); ?>', {width: "650" ,height: "auto", caption: "Mise à jour de la carrière pour l'adhérent <?php echo $this->afficherCarriere->Id_utilisateur; ?>:"});
+	});
+	
+	$(function () {
+		$('<?php echo "#afficher_car".$this->escape($this->afficherCarriere->Id_carriere ); ?>').jqGrid('gridResize',{minWidth:650,maxWidth:1000,minHeight:100, maxHeight:800});
+	});
+</script>

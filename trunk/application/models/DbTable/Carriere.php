@@ -20,7 +20,8 @@ class Application_Model_DbTable_Carriere extends Zend_Db_Table_Abstract
 				'Id_utilisateur' => $Id_utilisateur,
 				'Trimestre_cumul' => $Trimestre_cumul,
 				'Points_cumul' => $Points_cumul,
-				'Droit_depart' => null
+				'Date_depart_retraite' => null,
+				'Id_retraite' => null
 			);
 			$this->insert($data);
 		}
@@ -38,6 +39,14 @@ class Application_Model_DbTable_Carriere extends Zend_Db_Table_Abstract
 		$row = $this->fetchRow($this->select(array('Trimestre_cumul'))->where('Id_utilisateur = ?', $Id_utilisateur));
 		return $row->Trimestre_cumul;
 	}
+	public function modifierCarriereEnFonctionDesPerdiodes($id_carriere, $trimestre_cumul, $points_cumul)
+		{
+			$data = array(	'Trimestre_cumul' => (int)$trimestre_cumul,
+							'Points_cumul' => (int)$points_cumul);
+			$this->update($data, 'Id_carriere = '. (int)$id_carriere);
+		}
+
+
 	public function departRetraite($Id_utilisateur, $Date_depart, $Id_retraite)
 	{
 		$data = array(

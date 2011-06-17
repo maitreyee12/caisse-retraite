@@ -104,15 +104,20 @@ class DocumentController extends Zend_Controller_Action
     public function traiterDadsAction()
     {
         $form_dads = new Application_Form_TraiterDads();
+		
+		$id_demande =  $this->_getParam("id");
+		$id_ent =  $this->_getParam("id_ent");
+		
+		$formData['Id_ent'] = $id_ent;
+		$form_dads->populate($formData);
+		
 		$this->view->form = $form_dads;
 		if ($this->getRequest()->isPost()) 
 			{
 				$formData = $this->getRequest()->getPost();
 				if ($form_dads->isValid($formData)) 
 					{
-						$id_demande =  $this->_getParam("id");
 						$id_doc = $form_dads->getValue('Id_doc');
-						$id_ent = $form_dads->getValue('Id_ent');
 						
 						$model_Document = new Application_Model_DbTable_Documents();
 						if($document = $model_Document->getDdocument($id_doc))
@@ -141,6 +146,10 @@ class DocumentController extends Zend_Controller_Action
 													else if($ligne[$occurence] == "PRENOM")
 														{
 															$tab_adh["PRENOM"] = $ligne[$occurence+1];
+														}
+													else if($ligne[$occurence] == "DATE NAISSANCE")
+														{
+															$tab_adh["DATE_NAISSANCE"] = $ligne[$occurence+1];
 														}
 													else if($ligne[$occurence] == "NUMERO SECURITE SOCIALE")
 														{
@@ -185,14 +194,18 @@ class DocumentController extends Zend_Controller_Action
 													//existe
 													if(isset($utilisateur->Id_utilisateur))
 														{
-															//on ajoute les nouvelles périodes
+															//instanciation des modeles
 															$model_periode = new Application_Model_DbTable_Periode();
-															//on compare le debut et la fin de la periode et en fonction
-															//on ajoute le bon nombre de trimestres
+															$model_Carriere = new Application_Model_DbTable_Carriere();
+															$model_Adherent = new Application_Model_DbTable_Adherent();
+															$model_Entreprise = new Application_Model_DbTable_Entreprise();
+															
+															//compare le debut et la fin de la periode
+															//ajoute le bon nombre de trimestres
 															$date_debut = explode("-", $tab_all_adh[$i]["DATE_DEBUT"]);
 															$date_fin = explode("-", $tab_all_adh[$i]["DATE_FIN"]);
 															$nb_mois = $date_fin[1]-$date_debut[1];
-															$nb_trimestres = $nb_mois/4;
+															$nb_trimestres = ($nb_mois+1)/3;
 															$nb_trimestres = (int)$nb_trimestres;
 															
 															//on reformate les dates sinon elles ne passent pas...
@@ -201,59 +214,149 @@ class DocumentController extends Zend_Controller_Action
 
 															//pour ajouter en base
 															//on a besoin de son num de carriere 
-															$model_Carriere = new Application_Model_DbTable_Carriere();
 															$carriere = $model_Carriere->getCarriere($utilisateur->Id_utilisateur);
 															//on a besoin de l'adherent
-															$model_Adherent = new Application_Model_DbTable_Adherent();
 															$adherent = $model_Adherent->getAdherent($utilisateur->Id_utilisateur);
 															//on a besoin de nom de l'entreprise
-															$model_Entreprise = new Application_Model_DbTable_Entreprise();
 															$entreprise = $model_Entreprise->getEntreprise($adherent->Id_entreprise);
-															//finalement on ajoute la periode en base
+															
+															
+															////////////////////////////////////////////////////////////////////////////////////
 															//ICI ON DEVRA CALCULE LES POINTS POUR LA PERIODE C LES DEUX DERNIERS ARGUMENTS DE LA FONCTION addPeriode()
+															$points_arrco = "0";
+															$points_agirc = "0";
+															$nb_points = $points_arrco+$points_agirc;
+															////////////////////////////////////////////////////////////////////////////////////
+															
+															
+															//finalement on ajoute la periode en base
 															$id_periode = $model_periode->getDerniereId();
-															$model_periode->addPeriode(($id_periode+1), $carriere->Id_carriere, $date_debut, $date_fin, $entreprise->Nom_entreprise, $tab_all_adh[$i]["SALAIRE"], "0", "0");
+															$model_periode->addPeriode(($id_periode+1), $carriere->Id_carriere, $date_debut, $date_fin, $entreprise->Nom_entreprise, $tab_all_adh[$i]["SALAIRE"], $points_arrco, $points_agirc);
+															//et on met à jour la carrière
+															$model_Carriere->modifierCarriereEnFonctionDesPerdiodes($carriere->Id_carriere, (($carriere->Trimestre_cumul)+($nb_trimestres)), (($carriere->Points_cumul)+($nb_points)));
+															
+															//stack des vues pour l'affichage
+															
+															
+															//periode
+															$request = clone $this->getRequest();
+															$request->setActionName('afficher-periode-add')
+																	->setControllerName('Adherent')
+																	->setParams(array('id_periode' => ($id_periode+1)));
+															$this->_helper->actionStack($request);
+															
+															//carriere
+															$request = clone $this->getRequest();
+															$request->setActionName('afficher-carriere-maj')
+																	->setControllerName('Adherent')
+																	->setParams(array('id_util' => $utilisateur->Id_utilisateur));
+															$this->_helper->actionStack($request);
+														
+															//adhérent
+															$request = clone $this->getRequest();
+															$request->setActionName('afficher-adherent-maj')
+																	->setControllerName('Adherent')
+																	->setParams(array('id_util' => $utilisateur->Id_utilisateur));
+															$this->_helper->actionStack($request);
+															
+															//Separation
+															$request = clone $this->getRequest();
+															$request->setActionName('afficher-dads')
+																	->setParams(array('nom' => $adherent->Nom, 'prenom' => $adherent->Prenom));
+															$this->_helper->actionStack($request);
+										
 														}
 													//existe pas
 													else
 														{
-															echo "existe pas";
+															//instanciation des modeles
+															$model_periode = new Application_Model_DbTable_Periode();
+															$model_Carriere = new Application_Model_DbTable_Carriere();
+															$model_Adherent = new Application_Model_DbTable_Adherent();
+															$model_Entreprise = new Application_Model_DbTable_Entreprise();
+															
+															//compare le debut et la fin de la periode
+															//ajoute le bon nombre de trimestres
+															$date_debut = explode("-", $tab_all_adh[$i]["DATE_DEBUT"]);
+															$date_fin = explode("-", $tab_all_adh[$i]["DATE_FIN"]);
+															$nb_mois = $date_fin[1]-$date_debut[1];
+															$nb_trimestres = ($nb_mois+1)/3;
+															$nb_trimestres = (int)$nb_trimestres;
+															
+															//on reformate les dates sinon elles ne passent pas...
+															$date_debut = $date_debut[0]."-".$date_debut[1]."-".$date_debut[2];
+															$date_fin = $date_fin[0]."-".$date_fin[1]."-".$date_fin[2];
+															
+															////////////////////////////////////////////////////////////////////////////////////
+															//ICI ON DEVRA CALCULE LES POINTS POUR LA PERIODE C LES DEUX DERNIERS ARGUMENTS DE LA FONCTION addPeriode()
+															$points_arrco = "0";
+															$points_agirc = "0";
+															$nb_points = $points_arrco+$points_agirc;
+															////////////////////////////////////////////////////////////////////////////////////
+															
+															//creation de l'utilisateur
+															$id_utilisateur = $model_Utilisateur->getDerniereId();
+															$model_Utilisateur->addUtilisateur(($id_utilisateur+1), $tab_all_adh[$i]["NOM"], 0);
+															$id_utilisateur = $model_Utilisateur->getDerniereId();
+															
+															//on cherche la dernière id de carrière
+															$id_carriere = $model_Carriere->getDerniereId();
+															
+															$date_naissance = explode("-", $tab_all_adh[$i]["DATE_NAISSANCE"]);
+															$date_naissance = $date_naissance[0]."-".$date_naissance[1]."-".$date_naissance[2];
+															
+															//ajout dans la table Adherent
+															$model_Adherent = new Application_Model_DbTable_Adherent();
+															$model_Adherent->addAdherent($id_utilisateur, ($id_carriere+1),$id_ent, $tab_all_adh[$i]["NOM"], $tab_all_adh[$i]["PRENOM"], $date_naissance, $tab_all_adh[$i]["NUM_SS"], $tab_all_adh[$i]["TELEPHONE"], $tab_all_adh[$i]["EMAIL"], $tab_all_adh[$i]["ADRESSE"]);
+												
+															//ajout de la carriere
+															$model_Carriere->addcarriere(($id_carriere+1), $id_utilisateur, $nb_trimestres, $nb_points);
+															
+															//on a besoin de nom de l'entreprise
+															$entreprise = $model_Entreprise->getEntreprise($adherent->Id_entreprise);
+															
+															//finalement on ajoute la periode en base
+															$id_periode = $model_periode->getDerniereId();
+															$model_periode->addPeriode(($id_periode+1), ($id_carriere+1), $date_debut, $date_fin, $entreprise->Nom_entreprise, $tab_all_adh[$i]["SALAIRE"], $points_arrco, $points_agirc);
+															
+															$adherent = $model_Adherent->getAdherent($id_utilisateur);
+															
+															//periode
+															$request = clone $this->getRequest();
+															$request->setActionName('afficher-periode-add')
+																	->setControllerName('Adherent')
+																	->setParams(array('id_periode' => ($id_periode+1)));
+															$this->_helper->actionStack($request);
+															
+															//carriere
+															$request = clone $this->getRequest();
+															$request->setActionName('afficher-carriere-add')
+																	->setControllerName('Adherent')
+																	->setParams(array('id_util' => $id_utilisateur));
+															$this->_helper->actionStack($request);
+														
+															//adhérent
+															$request = clone $this->getRequest();
+															$request->setActionName('afficher-adherent-add')
+																	->setControllerName('Adherent')
+																	->setParams(array('id_util' => $id_utilisateur));
+															$this->_helper->actionStack($request);
+				
+															//utilisateur
+															$request = clone $this->getRequest();
+															$request->setActionName('afficher-utilisateur-add')
+																	->setControllerName('Adherent')
+																	->setParams(array('id_util' => $id_utilisateur));
+															$this->_helper->actionStack($request);
+															
+															//Separation
+															$request = clone $this->getRequest();
+															$request->setActionName('afficher-dads')
+																	->setParams(array('nom' => $adherent->Nom, 'prenom' => $adherent->Prenom));
+															$this->_helper->actionStack($request);
 														}
-													
-													exit();
-													//ajout dans la table Utilisateur
-													
-													$id_utilisateur = $model_Utilisateur->getDerniereId();
-													$model_Utilisateur->addUtilisateur(($id_utilisateur+1), $tab_all_adh[$i]["NOM"], 0);
-													$id_utilisateur = $model_Utilisateur->getDerniereId();
-													
-													array_push($tab_utilisateur_add, $id_utilisateur);
-													
-													//on cherche la dernière id de carrière
-													$model_Carriere = new Application_Model_DbTable_Carriere();
-													$id_carriere = $model_Carriere->getDerniereId();
-													
-													//ajout dans la table Adherent
-													$model_Adherent = new Application_Model_DbTable_Adherent();
-													$model_Adherent->addAdherent($id_utilisateur, ($id_carriere+1), $tab_all_adh[$i]["NOM"], $tab_all_adh[$i]["PRENOM"], $tab_all_adh[$i]["NUM_SS"], "0".$tab_all_adh[$i]["TELEPHONE"], $tab_all_adh[$i]["EMAIL"], $tab_all_adh[$i]["ADRESSE"]);
-													
-													//ajout dans la table salaire
-													$model_Salarie = new Application_Model_DbTable_Salarie();
-													$model_Salarie->addSalarie($id_utilisateur, $id_ent, $tab_all_adh[$i]["SALARIE"], $tab_all_adh[$i]["NB_TRIMESTRES"]);
-													
-													//ajout de la carriere
-													$model_Carriere->addcarriere(($id_carriere+1), $id_utilisateur, null, null);
-													
 												}
-	
-											for($i = 0; $i < sizeof($tab_utilisateur_add); $i++)
-												{			
-													$request = clone $this->getRequest();
-													$request->setActionName('afficher-dads')
-															->setParams(array('id' => $tab_utilisateur_add[$i]));
-													$this->_helper->actionStack($request);
-												}
-											
+											//retour
 											$request = clone $this->getRequest();
 											$request->setActionName('dads-accepte');
 											$this->_helper->actionStack($request);
@@ -281,10 +384,8 @@ class DocumentController extends Zend_Controller_Action
 
     public function afficherDadsAction()
     {
-		$id = $this->getRequest()->getParam('id');
-	  
-		$model_Adherent = new Application_Model_DbTable_Adherent();
-		$this->view->afficherAdherent = $model_Adherent->obtenirAdherent($id);
+		$this->view->adherentnom = $this->getRequest()->getParam('nom');
+		$this->view->adherentprenom = $this->getRequest()->getParam('prenom');
     }
 
     public function dadsAccepteAction()

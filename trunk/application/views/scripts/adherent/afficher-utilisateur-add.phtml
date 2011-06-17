@@ -1,0 +1,26 @@
+﻿<table id="<?php echo "afficher_util".$this->escape($this->afficherUtilisateur->Id_utilisateur); ?>">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Login</th>
+			<th>Password</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php echo $this->escape($this->afficherUtilisateur->Id_utilisateur);?></td>
+			<td><?php echo $this->escape($this->afficherUtilisateur->Login);?></td>
+			<td><?php echo $this->escape($this->afficherUtilisateur->Password);?></td>
+		</tr>
+	</tbody>
+</table>	
+
+<script type="text/javascript"> 
+	$(function () {
+		tableToGrid('<?php echo "#afficher_util".$this->escape($this->afficherUtilisateur->Id_utilisateur ); ?>', {width: "650" ,height: "auto", caption: "Ajout de l'utilisateur <?php echo $this->afficherUtilisateur->Id_utilisateur; ?>:"});
+	});
+	
+	$(function () {
+		$('<?php echo "#afficher_util".$this->escape($this->afficherUtilisateur->Id_utilisateur ); ?>').jqGrid('gridResize',{minWidth:650,maxWidth:1000,minHeight:100, maxHeight:800});
+	});
+</script>

@@ -1,0 +1,34 @@
+﻿<table id="<?php echo "afficher_per".$this->escape($this->afficherPeriode->Id_periode); ?>">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Date debut</th>
+			<th>Date fin</th>
+			<th>Nom entreprise</th>
+			<th>Salaire perçu</th>
+			<th>Points ARRCO</th>
+			<th>Points AGIRC</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php echo $this->escape($this->afficherPeriode->Id_periode);?></td>
+			<td><?php echo $this->escape($this->afficherPeriode->Date_debut);?></td>
+			<td><?php echo $this->escape($this->afficherPeriode->Date_fin);?></td>
+			<td><?php echo $this->escape($this->afficherPeriode->Nom_Entreprise);?></td>
+			<td><?php echo $this->escape($this->afficherPeriode->Salaire_percu);?></td>
+			<td><?php echo $this->escape($this->afficherPeriode->Points_ARRCO);?></td>
+			<td><?php echo $this->escape($this->afficherPeriode->Points_AGIRC);?></td>
+		</tr>
+	</tbody>
+</table>	
+
+<script type="text/javascript"> 
+	$(function () {
+		tableToGrid('<?php echo "#afficher_per".$this->escape($this->afficherPeriode->Id_periode ); ?>', {width: "650" ,height: "auto", caption: "Ajout de la période pour la carrière <?php echo $this->afficherPeriode->Id_carriere; ?>:"});
+	});
+	
+	$(function () {
+		$('<?php echo "#afficher_per".$this->escape($this->afficherPeriode->Id_periode ); ?>').jqGrid('gridResize',{minWidth:650,maxWidth:1000,minHeight:100, maxHeight:800});
+	});
+</script>

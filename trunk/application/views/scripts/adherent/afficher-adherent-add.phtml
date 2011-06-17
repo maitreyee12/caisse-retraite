@@ -1,0 +1,36 @@
+﻿<table id="<?php echo "afficher_adh_add".$this->escape($this->afficherAdherent["Id_utilisateur"]); ?>">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Num SS</th>
+			<th>Téléphone</th>
+			<th>Email</th>
+			<th>Adresse</th>
+			<th>Statut</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php echo $this->escape($this->afficherAdherent["Id_utilisateur"]);?></td>
+			<td><?php echo $this->escape($this->afficherAdherent["Nom"]);?></td>
+			<td><?php echo $this->escape($this->afficherAdherent["Prenom"]);?></td>
+			<td><?php echo $this->escape($this->afficherAdherent["NumSS"]);?></td>
+			<td><?php echo $this->escape($this->afficherAdherent["Telephone"]);?></td>
+			<td><?php echo $this->escape($this->afficherAdherent["E_mail"]);?></td>
+			<td><?php echo $this->escape($this->afficherAdherent["Adresse"]);?></td>
+			<td><?php echo $this->escape($this->afficherAdherent["Statut"]);?></td>
+		</tr>
+	</tbody>
+</table>	
+
+<script type="text/javascript"> 
+	$(function () {
+		tableToGrid('<?php echo "#afficher_adh_add".$this->escape($this->afficherAdherent["Id_utilisateur"]); ?>', {width: "650" ,height: "auto", caption: "Ajout de l'adhérent <?php echo $this->afficherAdherent["Id_utilisateur"]; ?>:"});
+	});
+	
+	$(function () {
+		$('<?php echo "#afficher_adh_add".$this->escape($this->afficherAdherent["Id_utilisateur"]); ?>').jqGrid('gridResize',{minWidth:650,maxWidth:1000,minHeight:100, maxHeight:800});
+	});
+</script>
