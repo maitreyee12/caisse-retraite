@@ -145,11 +145,11 @@ class CarriereController extends Zend_Controller_Action
             	
             	$this->view->salaire_moyen = round($salaire_moyen,2);
             	if($salaire_moyen <= $plafond_secu){
-            		$this->view->salaire_plafonne = $salaire_moyen;
+            		$this->view->salaire_plafonne = round($salaire_moyen,2);
             	}else{
-            		$this->view->salaire_plafonne = $plafond_secu;
+            		$this->view->salaire_plafonne = round($plafond_secu,2);
             	}
-            	//Calcul du montant
+            	
         		 
             }
         }
@@ -199,6 +199,10 @@ class CarriereController extends Zend_Controller_Action
         	$demande_depart = $demande->getDemandeDepart($Id_utilisateur);
         	$Id_demande = $demande_depart->Id_demande;
         	$demande->modifierEtatDemande($Id_demande, 2);
+        	
+        	//Modification droit utilisateur
+        	$utilisateur = new Application_Model_DbTable_Utilisateur();
+        	$utilisateur->editDroit($Id_utilisateur, 1);
         }
     }
 

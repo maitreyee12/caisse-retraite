@@ -102,15 +102,16 @@
 		//echo $this->action('afficher-notes', 'Note', null, array('id' => ($this->demande_depart->Id_demande))); 
 		
 		//formulaire pour ajouter une note
-		//echo $this->action('ajouter-note', 'Note', null, array('id' => ($this->demande_depart->Id_demande), 'prov' => (md5("demandeDepart")))); 
-	
-		echo "<a href='".$this->url(array('controller'=>'Carriere','action'=>'depart-retraite', 'id'=>($this->Id_utilisateur)))."'>Valider le plan de liquidation de la retraite</a>";
-		
+		//echo $this->action('ajouter-note', 'Note', null, array('id' => ($this->demande_depart->Id_demande), 'prov' => (md5("demandeDepart"))));
+		$auth=Zend_Auth::getInstance(); 
+		$profil = $auth->getIdentity();
+		$droits = $profil->Droits;
+		if($droits == 3){
+			echo "<a href='".$this->url(array('controller'=>'Carriere','action'=>'depart-retraite', 'id'=>($this->Id_utilisateur)))."'>Valider le plan de liquidation de la retraite</a>";
+		}
 		}else{
 		?>
-		
 		L'Adhérent n'a pas de droit au départ à la retraite.
-		
 		<?php 
 		}
 		
