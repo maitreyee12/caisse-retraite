@@ -86,7 +86,10 @@ $(function() {
 			?>
 		</div>
 		<div id='tabs-5'>
-			Plan retraite + liquider retraite
+			<?php 
+					//On affiche la carrière de l'adhérent
+					echo $this->action('afficher-Plan', 'Carriere', null, array('id' => ($this->id))); 
+			?>
 		</div>
 		<?php }	?>
 		
