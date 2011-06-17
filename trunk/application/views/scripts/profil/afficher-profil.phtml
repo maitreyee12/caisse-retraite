@@ -34,17 +34,18 @@ $(function() {
 			<?php 
 				if($droits !=3 || ($droits != $this->droit_profil && $droits == 3)){
 			?>
-			<li><a href="#tabs-2">Vos demandes</a></li>
+			<li><a href="#tabs-2">Vos RIB</a></li>
+			<li><a href="#tabs-3">Vos demandes</a></li>
 			<?php if($droits == 0 || $droits == 1 || ($droits != $this->droit_profil && $droits == 3)){ ?>
 		
-			<li><a href="#tabs-3">Votre carrière</a></li>
+			<li><a href="#tabs-4">Votre carrière</a></li>
 			<?php }	}?>
 			
 			<?php 
 				if($droits != $this->droit_profil && $droits == 3){
 			?>
-			<li><a href="#tabs-4">Droits</a></li>
-			<li><a href="#tabs-5">Plan de retraite</a></li>
+			<li><a href="#tabs-5">Droits</a></li>
+			<li><a href="#tabs-6">Plan de retraite</a></li>
 			<?php }	?>
 		</ul>
 		
@@ -63,13 +64,21 @@ $(function() {
 			
 				<?php 
 					//On affiche les demandes de l'utilisateur
+					echo $this->action('afficher-rib', 'rib', null, array('id' => ($this->id))); 
+				?>
+			
+		</div>
+		<div id='tabs-3' >
+			
+				<?php 
+					//On affiche les demandes de l'utilisateur
 					echo $this->action('index', 'ListeDemandes', null, array('id' => ($this->id))); 
 				?>
 			
 		</div>
 		<?php if($droits == 0 || $droits == 1 || ($droits != $this->droit_profil && $droits == 3)){ ?>
 		
-		<div id='tabs-3' >
+		<div id='tabs-4' >
 				<?php 
 					//On affiche la carrière de l'adhérent
 					echo $this->action('afficher-Carriere', 'Carriere', null, array('id' => ($this->id))); 
@@ -79,13 +88,13 @@ $(function() {
 		<?php 
 				if($droits != $this->droit_profil && $droits == 3){
 			?>
-		<div id='tabs-4'>
+		<div id='tabs-5'>
 			<?php 
 					//On affiche la carrière de l'adhérent
 					echo $this->action('afficher-Droit', 'Carriere', null, array('id' => ($this->id))); 
 			?>
 		</div>
-		<div id='tabs-5'>
+		<div id='tabs-6'>
 			<?php 
 					//On affiche la carrière de l'adhérent
 					echo $this->action('afficher-Plan', 'Carriere', null, array('id' => ($this->id))); 

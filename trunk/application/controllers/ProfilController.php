@@ -112,7 +112,7 @@ class ProfilController extends Zend_Controller_Action
 												
 					}					
 				} else {
-					echo "form invalid";
+					
 					$form->populate($formData);
 				}
 			}

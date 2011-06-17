@@ -1,0 +1,39 @@
+<div id="view-content">
+		<table id='listerib'>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Numéro Compte</th>
+				<th>ID Banque</th>
+				<th>Guichet</th>
+				<th>Banque</th>
+				<th>Titulaire</th>
+				<th>Date</th>
+				<th></th>
+			</tr>
+		</thead>
+		<?php foreach ($this->liste_ribs as $rib):?>
+			<tr>
+				<td><?php echo $this->escape($rib->Id_RIB)?></td>
+				<td><?php echo $this->escape($rib->Num_compte)?></td>
+				<td><?php echo $this->escape($rib->ID_banque)?></td>
+				<td><?php echo $this->escape($rib->Num_guichet)?></td>
+				<td><?php echo $this->escape($rib->Nom_banque)?></td>
+				<td><?php echo $this->escape($rib->Nom_titulaire)?></td>
+				<td><?php echo $this->escape($rib->Date)?></td>
+				<td><?php echo "<a href='".$this->url(array('controller'=>'rib','action'=>'editer-rib', 'id_rib'=>($rib->Id_RIB),'id_utilisateur'=>($this->Id_utilisateur)))."'>Editer</a>";
+		?>
+			</tr>
+		<?php endforeach;?>
+		<tbody>
+		</tbody>
+		</table>
+		<?php echo "<a href='".$this->url(array('controller'=>'rib','action'=>'editer-rib','id_utilisateur'=>($this->Id_utilisateur)))."'>Ajouter un RIB</a>";
+		?>
+</div>
+<script type="text/javascript"> 
+	$(function () {
+		tableToGrid("#listerib", {height:"auto", width:"650", caption: "Liste de vos RIB"});
+		$("#listerib").jqGrid('gridResize',{minWidth:300,maxWidth:600,minHeight:100, maxHeight:800});
+	});
+</script>
