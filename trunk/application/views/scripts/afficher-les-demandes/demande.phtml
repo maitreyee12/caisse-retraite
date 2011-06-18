@@ -17,9 +17,9 @@
 			<td><?php echo $this->escape($this->afficher_demande->Date_demande);?></td>
 			<td><?php
 					$etat = $this->escape($this->afficher_demande->Etat);
-						  if($etat == 0){echo "En attente";}
-						  elseif ($etat == 1){echo "En cours";}
-						  else {echo "Traité";}
+						  if($etat == 0){echo "<span style='color:red' >En attente</span>";}
+						  elseif ($etat == 1){echo "<span style='color:orange' >En cours</span>";}
+						  else {echo "<span style='color:green' >Traité</span>";}
 				?></td>
 			<td><?php echo $this->escape($this->afficher_demande->Type);?></td>
 		</tr>
