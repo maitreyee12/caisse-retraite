@@ -22,7 +22,7 @@ echo $this->action('afficher-documents', 'Document', null, array('id' => ($this-
 echo $this->action('ajouter-note', 'Note', null, array('id' => ($this->afficher_demande->Id_demande), 'prov' => (md5("demandeInformations")))); 
 
 //on ajoute un document
-echo $this->action('ajouter-document', 'Document', null, array('id' => ($this->afficher_demande_affiliation->Id_demande), 'prov' => (md5("demandeInformations")))); 
+echo $this->action('ajouter-document', 'Document', null, array('id' => ($this->afficher_demande->Id_demande), 'prov' => (md5("demandeInformations")))); 
 ?>
 
 </div>

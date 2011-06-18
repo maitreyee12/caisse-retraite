@@ -27,11 +27,11 @@
 					      echo $date[0];?></td>
 				<td><?php $etat = $this->escape($demande->Etat);
 						  if($etat == 0){
-						  	echo "En attente";
+						  	echo "<span style='color:red' >En attente</span>";
 						  }elseif ($etat == 1){
-						  	echo "En cours";
+						  	echo "<span style='color:orange' >En cours</span>";
 						  }else {
-						  	echo "Traité";
+						  	echo "<span style='color:green' >Traité</span>";
 						  }
 				?></td>
 				<td><?php $utilisateur = new Application_Model_DbTable_Utilisateur();
