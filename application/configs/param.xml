@@ -2,6 +2,7 @@
 <config>
 	<regime>
 		<arrco>
+			<salaire_reference_arrco>13.7216</salaire_reference_arrco>
 			<point_arrco>1.2135</point_arrco>
 			<taux_cotisation>
 				<tranche type="1">7.5</tranche>
@@ -13,6 +14,7 @@
 			</taux_acquisition>
 		</arrco>
 		<agirc>
+			<salaire_reference_agirc>5.1354 </salaire_reference_agirc>
 			<point_agirc>0.4233</point_agirc>
 			<taux_cotisation>
 				<tranche type="B">20.30</tranche>
@@ -25,7 +27,7 @@
 		</agirc>
 	</regime>
 	<securite_sociale>
-		<plafond>2946</plafond>
+		<plafond>3262.22</plafond>
 	</securite_sociale>
 	<carriere>
 		<trimestre>173</trimestre>
