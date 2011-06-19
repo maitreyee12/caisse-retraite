@@ -31,6 +31,15 @@ class Application_Model_DbTable_Documents extends Zend_Db_Table_Abstract
     {
 		return $this->fetchRow($this->select()->where('Id_document = ?', $id_document));
 	}
+	
+	public function getDerniereId()
+		{
+			$row =  $this->fetchRow(
+									$this->select(array('MAX(Id_document)'))
+											->order('Id_document DESC')
+								);
+			return $row->Id_document;
+		}
 
 }
 

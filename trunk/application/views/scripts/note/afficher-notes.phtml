@@ -7,7 +7,24 @@ $i=0;
 foreach($this->afficherNote as $demande) : ?>
 	<table <?php echo "id='afficher_note_$i'"; ?>>
 		<tr>
-			<th>#<?php echo $this->escape($demande->Id_note)?></th>
+			<?php
+				$auth=Zend_Auth::getInstance();
+				$profil = $auth->getIdentity();   
+				$droits = $profil->Droits;
+	
+				if($droits != 3)
+					{
+			?>
+						<th>#<?php echo $this->escape($demande->Id_note)?></th>
+			<?php
+					}
+				else
+					{
+			?>
+						<th>#<?php echo $this->escape($demande->Id_note)?> <img src="/caisse-retraite/public/images/boutons/ico_print.gif" alt='' onclick="print_note(<?php echo $demande->Id_note; ?>)" /> </th>
+			<?php
+					}
+			?>			
 		</tr>
 		<tr>
 			<td><?php echo $this->escape($demande->Contenu);?></td>
@@ -21,9 +38,53 @@ foreach($this->afficherNote as $demande) : ?>
 		});
 </script>
 
+<div id="dialog_<?php echo $demande->Id_note ?>" style="display:none;" title="Imprimer une note">
+	<h3>Voullez-vous imprimer la note #<?php echo $demande->Id_note ?></h3>
+	<b>Contenu à imprimer : </b>
+	<fieldset>
+	<legend>CRC - Caisse de Retraite Complémentaire</legend>
+	<p>
+		<br />
+		223 rue Vinz' Elgayzou<br />
+		91000 EVRY<br />
+		Tel. : 01 64 99 47 76<br />
+		Fax : 01 64 99 37 45 <br />
+		Email : contact@crc.fr<br />
+		<br />
+	</p>
+	<p style="margin-left:500px;">
+	<?php echo $this->Nom_destinataire."<br />"; ?>
+	<?php echo $this->Adresse_destinataire."<br />"; ?>
+	</p>
+	<br />
+	<?php echo $this->escape($demande->Contenu)."<br />"; ?>
+	</fieldset>
+</div>
+
 
 <?php
 $i++;
 
 endforeach; ?>
+
+
+<script>
+	function print_note(id_note){
+		$( "#dialog_"+id_note).dialog({
+			height:400,
+			width:800,
+			modal: true,
+			buttons: {
+				"Imprimer": function() {
+					$( this ).dialog( "close" );
+					window.print();
+				},
+				"Annuler": function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+	}
+	
+</script>
 
