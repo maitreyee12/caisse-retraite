@@ -13,17 +13,7 @@ class Application_Form_DemandeDepartRetraite extends ZendX_JQuery_Form
 		$id
 				->addFilter('Int');
 
-		//DATE				
-		$date = new ZendX_JQuery_Form_Element_DatePicker('Date',
-						array('jQueryParams' => array('dateFormat' => 'dd/mm/yy',
-                                                  'changeMonth' => 'true',
-                                                  'changeYear' => 'true',
-                                                  'yearRange' => '-20:0',
-                                                  'minDate' => '-20Y',
-                                                  'maxDate' => '0')));
-		$date ->setLabel('Date de départ souhaitée :');
-		
-		
+				
 		//COMMENTAIRE
 		$commentaire = new Zend_Form_Element_Textarea('Commentaires');
 		$commentaire
@@ -42,7 +32,6 @@ class Application_Form_DemandeDepartRetraite extends ZendX_JQuery_Form
 		
 		$this->addElements(array(
 											$id,
-											$date,
 											$commentaire,
 											$envoyer)
 								);

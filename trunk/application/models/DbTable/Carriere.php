@@ -13,13 +13,14 @@ class Application_Model_DbTable_Carriere extends Zend_Db_Table_Abstract
 	{
 		
 	}
-	public function addcarriere($Id_carriere, $Id_utilisateur, $Trimestre_cumul, $Points_cumul)
+	public function addcarriere($Id_carriere, $Id_utilisateur, $Trimestre_cumul, $Points_ARRCO_cumul, $Points_AGIRC_cumul)
 		{
 			$data = array(
 				'Id_carriere' => $Id_carriere,
 				'Id_utilisateur' => $Id_utilisateur,
 				'Trimestre_cumul' => $Trimestre_cumul,
-				'Points_cumul' => $Points_cumul,
+				'Points_ARRCO_cumul' => $Points_ARRCO_cumul,
+				'Points_AGIRC_cumul' => $Points_AGIRC_cumul,
 				'Date_depart_retraite' => null,
 				'Id_retraite' => null
 			);
@@ -39,10 +40,11 @@ class Application_Model_DbTable_Carriere extends Zend_Db_Table_Abstract
 		$row = $this->fetchRow($this->select(array('Trimestre_cumul'))->where('Id_utilisateur = ?', $Id_utilisateur));
 		return $row->Trimestre_cumul;
 	}
-	public function modifierCarriereEnFonctionDesPerdiodes($id_carriere, $trimestre_cumul, $points_cumul)
+	public function modifierCarriereEnFonctionDesPerdiodes($id_carriere, $trimestre_cumul, $points_arrco_cumul, $points_agirc_cumul)
 		{
 			$data = array(	'Trimestre_cumul' => (int)$trimestre_cumul,
-							'Points_cumul' => (int)$points_cumul);
+							'Points_ARRCO_cumul' => (int)$points_arrco_cumul,
+							'Points_AGIRC_cumul' => (int)$points_agirc_cumul);
 			$this->update($data, 'Id_carriere = '. (int)$id_carriere);
 		}
 

@@ -23,14 +23,11 @@ class DemandeController extends Zend_Controller_Action
 			$formData = $this->getRequest()->getPost();
 			if ($form->isValid($formData)) 
 			{
-				$date = $form->getValue('date');
 				$commentaires  = $form->getValue('Commentaires');
 
-				$commentaires = "Date départ souhaitée : ".$date+" /n".$commentaires;
-				
 				$auth = Zend_Auth::getInstance();
 				$id_utilisateur = $auth->getIdentity()->Id_utilisateur;
-				$date_demande = date("Y-m-d H:i:s");
+				$date_demande = date("Y-m-d");
 				$etat = 0;
 				$type = "demande depart";
 				
