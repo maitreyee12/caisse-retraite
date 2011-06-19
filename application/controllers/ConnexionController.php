@@ -62,7 +62,7 @@ class ConnexionController extends Zend_Controller_Action
                     $this->_helper->redirector ( 'index', 'index' );
                 } else {
                 	//On affiche une erreur si besoin
-                    $form->addError ( "Il n'existe pas d'utilisateur avec ce mot de passe" + $email +" "+$password );
+                    $form->addError ("Login ou mot de passe incorrecte");
                 }
             }
         }
