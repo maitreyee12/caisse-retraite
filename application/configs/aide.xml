@@ -58,8 +58,9 @@
 		</login>
 	</Connexion>
 	<Declaration>
-		<index>Grâce à ce formulaire vous pouvez nous transmettre votre DADS
-		</index>
+		<ajouter-declaration-dads>Grâce à ce formulaire vous pouvez nous transmettre votre DADS. Vous pouvez consulter la liste des 
+		déclarations que vous nous avez déjà soumises.
+		</ajouter-declaration-dads>
 	</Declaration>
 	<Demande>
 		<accepte>
