@@ -29,7 +29,7 @@ a:hover{
 body{
 	font: 12px Arial, Helvetica, sans-serif;
 	color: #000000;
-	background: url(../images/images_template/bg.jpg) top repeat-x ;
+	background: url(../images/images_template/bg.jpg) top repeat-x ;background: url(../images/images_template/bg.jpg) top repeat-x ;
 	background-attachment:fixed;
 	margin: 4px 0px 0px 0px;
 	line-height: 20px;
@@ -115,10 +115,18 @@ height: 370px;
 	color:#000000;
 }
 
-.right_b {	background: url(../images/images_template/fish.png)  10px 17px no-repeat;
+.right_b {	
+		background: url(../images/images_template/fish.png)  10px 17px no-repeat;
 		padding-left: 32px;
 		padding-top: 15px;
 		width: 240px;}
+
+.right_b_aide {	
+		padding-left: 32px;
+		padding-top: 15px;
+		text-align: justify;
+		width: 240px;}
+
 
 .text{
 	padding: 0px 0px 0px 5px;
@@ -146,6 +154,17 @@ height: 370px;
 	text-align:center;
 	background: url(../images/images_template/tit_r.jpg) left top no-repeat;
 	height: 32px;
+	padding-top: 12px;
+}
+
+#right H2{
+	font-family: Arial Narrow, Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight: 100;
+	color: #ffffff;
+	text-align:center;
+	background: url(../images/images_template/right_tit_bot_reverse.jpg) left top no-repeat;
+	height: 50px;
 	padding-top: 12px;
 }
 
