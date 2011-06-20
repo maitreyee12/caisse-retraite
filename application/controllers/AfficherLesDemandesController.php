@@ -69,6 +69,18 @@ class AfficherLesDemandesController extends Zend_Controller_Action
 		$this->view->afficher_demande_reversion = $afficher_demande_reversion->getDemande($id);
     }
 
+    public function demandeModificationDossierAction()
+    {
+         //on récupére l'id
+		$id =  $this->_getParam("id");
+		
+		//on récupére les infos de la demande dans afficher_demande
+		$afficher_demande_modif = new Application_Model_DbTable_DemandeModificationCarriere();
+		$this->view->afficher_demande_reversion = $afficher_demande_modif->getDemande($id);
+    }
+
 
 }
+
+
 

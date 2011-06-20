@@ -48,6 +48,10 @@
 							{
 								echo "<a href='".$this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-informations', 'id'=>$demande->Id_demande))."'>Voir</a>";
 							}
+						 else if($type == "demande modification")
+							{
+								echo "<a href='".$this->url(array('controller'=>'AfficherLesDemandes','action'=>'demande-modification-dossier', 'id'=>$demande->Id_demande))."'>Voir</a>";
+							}
 					?></td>
 			</tr>
 			<?php 

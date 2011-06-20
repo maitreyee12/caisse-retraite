@@ -75,6 +75,7 @@
           <actionMethod actionName="demandeRachatTrimestres"/>
           <actionMethod actionName="demande"/>
           <actionMethod actionName="demandeReversion"/>
+          <actionMethod actionName="demandeModificationDossier"/>
         </controllerFile>
         <controllerFile controllerName="Note">
           <actionMethod actionName="index"/>
@@ -438,6 +439,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Declaration">
             <viewScriptFile forActionName="afficherDeclarationDads"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="AfficherLesDemandes">
+            <viewScriptFile forActionName="demandeModificationDossier"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

@@ -1,0 +1,57 @@
+﻿<?php
+	$this->title = 'Fiche demande affiliation';
+	$this->headTitle($this->title);
+?>
+<div id="view-content">
+
+
+<?php 
+
+	//appel de l'action demande du controller AfficherLesDemandes
+	echo $this->action('demande', 'AfficherLesDemandes', null, array('id' => ($this->afficher_demande_reversion->Id_demande), 'prov' => (md5("demandeModification")))); 
+	
+?>
+
+
+<table id='listedemandes_modif' >
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Date début</th>
+			<th>Date fin</th>
+			<th>Salaire</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php echo $this->escape($this->afficher_demande_reversion->Id_demande);?></td>
+			<td><?php echo $this->escape($this->afficher_demande_reversion->Date_debut);?></td>
+			<td><?php echo $this->escape($this->afficher_demande_reversion->Date_fin);?></td>
+			<td><?php echo $this->escape($this->afficher_demande_reversion->Salaire);?></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<script type="text/javascript"> 
+	$(function () {
+		tableToGrid("#listedemandes_modif", {height:"auto", caption: "Informations sur l'entreprise"});
+	});
+</script>
+
+
+<?php
+
+//lister les notes de cette demande et les afficher
+echo $this->action('afficher-notes', 'Note', null, array('id' => ($this->afficher_demande_reversion->Id_demande))); 
+
+//afficher la liste des documents + traiter la DADS
+echo $this->action('afficher-documents', 'Document', null, array('id' => ($this->afficher_demande_reversion->Id_demande))); 
+
+//appel de l'action demande du controller AfficherLesDemandes
+//formulaire pour ajouter une note
+echo $this->action('ajouter-note', 'Note', null, array('id' => ($this->afficher_demande_reversion->Id_demande), 'prov' => (md5("demandeModification")))); 
+
+//on ajoute un document
+echo $this->action('ajouter-document', 'Document', null, array('id' => ($this->afficher_demande_reversion->Id_demande), 'prov' => (md5("demandeModification")))); 
+?>
