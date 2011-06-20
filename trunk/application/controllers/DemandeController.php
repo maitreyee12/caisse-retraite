@@ -95,7 +95,41 @@ class DemandeController extends Zend_Controller_Action
 
     public function modificationDossierAction()
     {
-        // action body
+        $form = new Application_Form_DemandeModificationDossier();
+		$this->view->form = $form;
+		
+		if ($this->getRequest()->isPost()) 
+		{
+			$formData = $this->getRequest()->getPost();
+			if ($form->isValid($formData)) 
+			{
+				$Id_courrier  = $form->getValue('Id_courrier');
+				$Salaire  = $form->getValue('Salaire');
+				$Date_debut  = $form->getValue('from');
+				$Date_fin  = $form->getValue('to');
+				$commentaires = $form->getValue('Commentaires');
+
+				$auth = Zend_Auth::getInstance();
+				$id_utilisateur = $auth->getIdentity()->Id_utilisateur;
+				$date_demande = date("Y-m-d");
+				$etat = 0;
+				$type = "demande modification";
+				
+				$model_Demande = new Application_Model_DbTable_Demande();
+				$model_Demande->ajouterDemande($Id_courrier, $id_utilisateur, $commentaires, $date_demande, $etat, $type);
+
+				$id_demande = $model_Demande->getDerniereId();			
+				
+				$model_modif_carrier = new Application_Model_DbTable_DemandeModificationCarriere();
+				$model_modif_carrier->addModificationCarriere($id_demande, $Date_debut, $Date_fin, $Salaire);
+				
+				$this->_helper->redirector('accepte');
+			} 
+			else 
+			{
+				$form->populate($formData);
+			}
+		}
     }
 
     public function reversionAction()

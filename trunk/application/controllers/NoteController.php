@@ -55,7 +55,10 @@ class NoteController extends Zend_Controller_Action
 									{
 										$this->_helper->redirector('demande-reversion','AfficherLesDemandes', null, array('id' => ($id)));
 									}
-									
+								else if(md5("demandeModification") == $prov)
+									{
+										$this->_helper->redirector('demande-modification-dossier','AfficherLesDemandes', null, array('id' => ($id)));
+									}	
 							} 
 						else 
 							{
