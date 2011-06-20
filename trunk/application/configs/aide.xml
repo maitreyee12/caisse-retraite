@@ -1,16 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <aide>
 	<Adherent>
-		<index></index>
+		<index>
+		</index>
 	</Adherent>
 	<AfficherLesDemandes>
 		<demande></demande>
-		<demandeAffiliation></demandeAffiliation>
-		<demandeDepartRetraite></demandeDepartRetraite>
-		<demandeInformation>
+		<demande-affiliation>Ceci est une demande d'affiliation.		
+		Vous y trouverez l'ensemble des informations relatives à la l'entreprise demandeuse.
+		Vous aurez la possibilité d'ajouter des notes et des documents afin d'assurer un suivi 
+		de qualité dans la démarche d'affiliation. Vous pouvez depuis ce menu modifier l'état 
+		de la demande en fonction de l'avancement de celle-ci. Une fois la demande validé, 
+		le profil de l'entreprise sera créé et ses informations d'authentification lui seront transmises.
+		</demande-affiliation>
+		<demandeDepartRetraite>
+		</demandeDepartRetraite>
+		<demandeInformation>Ceci est une demande d'informations, 
+		vous y trouverez l'ensemble des questions posées par le demandeur. 
+		Vous aurez la possibilité d'ajouter des notes et des documents afin 
+		d'assurer un suivi de qualité dans la démarche d'affiliation. Vous 
+		pouvez depuis ce menu modifier l'état de la demande en fonction de l'avancement de celle-ci. 
 		</demandeInformation>		
 		<demandeRachatTrimsetre>
+		Ceci est une demande de rachat de trimestres, 
+		vous y trouverez le nombre de trimestres que le salarié souhaite racheter ainsi que les informations le concernant. 
+		Vous aurez la possibilité d'ajouter des notes et des documents afin 
+		d'assurer un suivi de qualité dans la démarche d'affiliation. Vous 
+		pouvez depuis ce menu modifier l'état de la demande en fonction de l'avancement de celle-ci. 		
 		</demandeRachatTrimsetre>
 		<demandeReversion>
+		Ceci est une demande de réversion, 
+		le demandeur doit y spécifié les infortmations concernant le défunt ainsi que joindre l'ensemble des documents justificatifs nécessaires. 
+		Vous aurez la possibilité d'ajouter des notes et des documents afin 
+		d'assurer un suivi de qualité dans la démarche d'affiliation. Vous 
+		pouvez depuis ce menu modifier l'état de la demande en fonction de l'avancement de celle-ci. 
 		</demandeReversion>
 		<index></index>
 	</AfficherLesDemandes>
@@ -27,29 +50,48 @@
 		</index>
 	</Carriere>
 	<Contact>
-		<index>
+		<index>Bienvenu dans la section contact. Vous trouverez ici toutes nos informations postales et téléphoniques.
 		</index>
 	</Contact>
+	<Connexion>
+		<login>Saisissez votre identifiant et votre mot de passe afin d'accéder à votre compte en ligne. Ces informations vous ont été transmise dès votre affiliation par courrier et/ou par e-mail.
+		</login>
+	</Connexion>
+	<Declaration>
+		<index>Grâce à ce formulaire vous pouvez nous transmettre votre DADS
+		</index>
+	</Declaration>
 	<Demande>
 		<accepte>
 		</accepte>
-		<affiliation>
+		<affiliation>Vous êtes une entreprise souhaitant vous affilier à notre caisse? Remplissez le formulaire suivant. Vous avez la possibilité de nous le transmettre par courrier ou joindre par téléphone notre équipe clientèle. Une fois votre demande enregistrée elle sera traité et vous receverez une réponse sous 15 jours.
 		</affiliation>
-		<departRetraite>
-		</departRetraite>
+		<depart-retraite>Remplissez le formulaire et transmettez nous votre demande. Vous pouvez consulter les conditions de validation d'un départ en retraite.
+		N'hésitez pas à solliciter nos services afin de répondre à toutes vos questions concernant la retraite CRC et vos droits à y accéder.
+		</depart-retraite>
 		<getDemande>
 		</getDemande>
-		<index>
+		<index>Choisissez l'un des types de demande afin d'accéder au formulaire correspondant
 		</index>
-		<information>
-		</information>
-		<modificationDossier>
-		</modificationDossier>
+		<informations>Remplissez le formulaire et transmettez nous votre demande. Vous avez aussi la possibiliter de nous la transmettre 
+		par courrier ou par téléphone.
+		</informations>
+		<modification-dossier>Par le biais de ce formulaire vous pouvez nous soumettre une correction des informations 
+		d'une période de votre parcours professionnel.
+		</modification-dossier>
 		<modificationEtatDemande>
 		</modificationEtatDemande>
-		<rachatTrimestre>
-		</rachatTrimestre>
-		<reversion>
+		<rachat-trimestres>Ceci est une demande de rachat de trimestres, 
+		vous y trouverez le nombre de trimestres que le salarié souhaite racheter ainsi que les informations le concernant. 
+		Vous aurez la possibilité d'ajouter des notes et des documents afin 
+		d'assurer un suivi de qualité dans la démarche d'affiliation. Vous 
+		pouvez depuis ce menu modifier l'état de la demande en fonction de l'avancement de celle-ci. 	
+		</rachat-trimestres>
+		<reversion>Ceci est une demande de réversion, 
+		le demandeur doit y spécifié les infortmations concernant le défunt ainsi que joindre l'ensemble des documents justificatifs nécessaires. 
+		Vous aurez la possibilité d'ajouter des notes et des documents afin 
+		d'assurer un suivi de qualité dans la démarche d'affiliation. Vous 
+		pouvez depuis ce menu modifier l'état de la demande en fonction de l'avancement de celle-ci. 
 		</reversion>
 	</Demande>
 	<Document>
@@ -74,13 +116,13 @@
 		</ajouterEntreprise>
 		<index></index>
 	</Entreprise>
-	<Error>
-		<error></error>
+	<error>
+		<error>Page d'erreur</error>
 		<getLog></getLog>
-	</Error>
+	</error>
 	<Index>
-		<index>Vous trouverez ici rebgvbdgbvudb rigndrngoinhrigndu nbgiundriugiudh riugvirdhgurdgrfdg</index>
-		<mainAdherentEmploye> 
+		<index>Vous trouverez ici une aide correspondant à la section du site que vous visitez.</index>
+		<mainAdherentEmploye>
 		</mainAdherentEmploye>
 		<mainAdherentRetraite>
 		</mainAdherentRetraite>
@@ -93,7 +135,7 @@
 		<mainEntreprise>
 		</mainEntreprise>		
 	</Index>
-	<ListeDemandes>
+	<Liste-demandes>
 		<ficheDemandeModification>
 		</ficheDemandeModification>
 		<ficheDepartRetraite>
@@ -104,9 +146,9 @@
 		</ficheRachatTrimestre>
 		<ficheReversion>
 		</ficheReversion>
-		<index>
+		<index>Cette section vous donne accès à la liste des demandes effectués par les entreprises affiliés et/ou les adhérents. Vous avez la possibilité de consulter chaque demande et/ou consulter le profil du demandeur.
 		</index>
-	</ListeDemandes>
+	</Liste-demandes>
 	<News>
 		<accepte>
 		</accepte>
@@ -133,11 +175,13 @@
 	</Periode>
 	<Profil>
 		<accepte></accepte>
-		<afficheProfil></afficheProfil>
+		<afficher-profil>Dans cette section vous trouverez vos informations personnelles</afficher-profil>
 		<index></index>
 	</Profil>
 	<Recherche>
-		<index></index>
+		<index>Grâce à ce module de recherche vous avez la possibilité de retrouver un adhérent ou une entreprise en complétant tout ou partie 
+		du formulaire concerné.
+		</index>
 		<listeAdherents>
 		</listeAdherents>
 		<listeEntreprises>

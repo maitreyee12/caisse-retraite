@@ -10,27 +10,27 @@ $droits = $profil->Droits;
 ?>
 
 <ul>
-	<li><a href="<?php echo $this->url(array('controller'=>'demande','action'=>'informations'));?>">Demande informations</a></li>
+	<li><a href="<?php echo $this->url(array('controller'=>'Demande','action'=>'informations'));?>">Demande informations</a></li>
 	<?php
 		//seuls les admins déposent des demandes
 		if($droits == 3)
 			{
 				echo "
-					<li><a href=".$this->url(array('controller'=>'demande','action'=>'affiliation')).">Demande affiliation</a></li>
+					<li><a href=".$this->url(array('controller'=>'Demande','action'=>'affiliation')).">Demande affiliation</a></li>
 				";
 			}
 		if(($droits == 0) || ($droits == 1) || ($droits == 3))
 			{
 				echo "
-					<li><a href=".$this->url(array('controller'=>'demande','action'=>'reversion')).">Demande reversion</a></li>
-					<li><a href=".$this->url(array('controller'=>'demande','action'=>'modification-dossier')).">Demande modifications de dossier</a></li>
+					<li><a href=".$this->url(array('controller'=>'Demande','action'=>'reversion')).">Demande reversion</a></li>
+					<li><a href=".$this->url(array('controller'=>'Demande','action'=>'modification-dossier')).">Demande modifications de dossier</a></li>
 				";
 			}
 		if(($droits == 0) || ($droits == 3))
 			{
 				echo "
-					<li><a href=".$this->url(array('controller'=>'demande','action'=>'rachat-trimestres')).">Demande rachat trimestres</a></li>
-					<li><a href=".$this->url(array('controller'=>'demande','action'=>'depart-retraite')).">Demande depart en retraite</a></li>
+					<li><a href=".$this->url(array('controller'=>'Demande','action'=>'rachat-trimestres')).">Demande rachat trimestres</a></li>
+					<li><a href=".$this->url(array('controller'=>'Demande','action'=>'depart-retraite')).">Demande depart en retraite</a></li>
 				";
 			}
 	?>
