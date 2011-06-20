@@ -15,6 +15,8 @@ class IndexController extends Zend_Controller_Action
 		$this->view->news_adherent_retraite = $model_news->getNews("adherent_retraite");
 		$this->view->news_entreprise = $model_news->getNews("entreprise");
 		$this->view->news_groupe = $model_news->getNews("groupe");
+		
+		
     }
 
     public function mainAdherentEmployeAction()
