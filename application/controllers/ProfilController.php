@@ -6,6 +6,7 @@ class ProfilController extends Zend_Controller_Action
 	public function init()
 	{
 		/* Initialize action controller here */
+		
 	}
 
 	public function indexAction()
@@ -17,14 +18,8 @@ class ProfilController extends Zend_Controller_Action
 	{
 		////////////////////////////////////////Test calcul/////////////////////////////////////////////////
 
-		///Init/////
-		$tab_all_adh[0]["SALAIRE"] = 25000;
-		$type = "cadre";
-
 		
-		/////////////////////////////////////////////////////////////////////////////////////////
-
-
+		
 
 		//Récupération des droits de l'utilisateur connecté
 		$droit_user = Zend_Auth::getInstance ()->getIdentity()->Droits;
