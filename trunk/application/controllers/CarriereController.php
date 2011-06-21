@@ -202,7 +202,7 @@ class CarriereController extends Zend_Controller_Action
         	
         	//Modification droit utilisateur
         	$utilisateur = new Application_Model_DbTable_Utilisateur();
-        	$utilisateur->editDroit($Id_utilisateur, 1);
+        	$utilisateur->editDroit((int)$Id_utilisateur, 1);
         }
     }
 
