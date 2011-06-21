@@ -1,11 +1,13 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+﻿<?php
+echo $this->doctype();
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 	<head>
 		<?php
 			echo $this->headMeta(); 
 			echo $this->headTitle();
 			$this->headTitle()->setSeparator(' - ');
 			$this->headTitle('CRC');
-			echo $this->doctype(); 
 
 			//CSS
 			$this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); 
@@ -31,7 +33,7 @@
 
 		?>
 	</head>
-	<body>
+	<body style="text-align: center; width:width: 1016px;">
 		<div id="main">
 			<!-- HEADER -->
 			<!-- MENU + CAROUSEL -->
