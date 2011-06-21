@@ -14,7 +14,10 @@ echo $this->doctype();
 			$this->headLink()->prependStylesheet($this->baseUrl().'/css/cadre.css'); 
 			$this->headLink()->prependStylesheet($this->baseUrl().'/css/carousel.css'); 
 			$this->headLink()->prependStylesheet($this->baseUrl().'/css/ui.jqgrid.css'); 
+			//Define jQuery theme
 			$this->headLink()->prependStylesheet($this->baseUrl().'/css/ui-lightness/jquery-ui-1.8.12.custom.css'); 
+			//$this->headLink()->prependStylesheet($this->baseUrl().'/css/cupertino/jquery-ui-1.8.13.custom.css'); 
+			//$this->headLink()->prependStylesheet($this->baseUrl().'/css/flick/jquery-ui-1.8.13.custom.css'); 
 			
 			//jQuery
 			$this->jQuery()->enable();
