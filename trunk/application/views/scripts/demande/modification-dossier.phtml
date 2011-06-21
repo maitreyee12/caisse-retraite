@@ -4,6 +4,49 @@ $this->title = "Modifier une de mes périodes";
 $this->headTitle($this->title);
 ?>
 
+
+<p class="news_intro">
+	Ici vous pouvez faire une demande de modification de période.
+</p>
+<p class="news_content">
+	<ul>
+		<li>Modifier vos périodes</li>
+		<li>Correction sous 24heures</li>
+	</ul>
+</p>
+
+
+<h2>Faire une demande de modification de période</h2>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">En ligne</a></li>
+		<li><a href="#tabs-2">Par courrier</a></li>
+		<li><a href="#tabs-3">Par téléphone</a></li>
+	</ul>
+	<div id="tabs-1">
+		<?php
+			echo $this->form;
+		?>
+	</div>
+	<div id="tabs-2">
+		<p class="news_content">
+			Télécharger la demande (<?php echo "<a href='/caisse-retraite/storage/Fiche_demande_modification.docx'>ici</a>";?>) puis envoyer la à l'adresse suivante :
+			<br />
+			<br />
+			Service adhésion<br />
+			131 Boulevard de la cotisation<br />
+			75012 Paris<br />
+		</p>
+	</div>
+	<div id="tabs-3">
+		<p class="news_content">
+			Appeler un de nos conseiller au 01.03.46.84.12 de 8h à 20h, du Lundi au Samedi
+		</p>
+	</div>
+</div>
+
+	
+
 <script>
 	$(function() {
 		var dates = $( "#from, #to" ).datepicker({
@@ -26,6 +69,11 @@ $this->headTitle($this->title);
 	});
 </script>
 
-<?php
-	echo $this->form;
-?>
+
+
+<script type="text/javascript"> 
+$(function() {
+	$( "#tabs" ).tabs();
+});
+
+</script>

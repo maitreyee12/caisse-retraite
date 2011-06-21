@@ -15,10 +15,14 @@ class DeclarationController extends Zend_Controller_Action
 		$model_declaration = new Application_Model_DbTable_Declaration();
 		$this->view->liste_declaration = $model_declaration->getDeclarationByIdUtilisateur($id_utilisateur);
 		
+		$this->view->id_utilisateur = $id_utilisateur;
+		
 		//adhérent
 		$request = clone $this->getRequest();
 		$request->setActionName('ajouter-declaration-dads');
 		$this->_helper->actionStack($request);
+		
+
 
     }
 

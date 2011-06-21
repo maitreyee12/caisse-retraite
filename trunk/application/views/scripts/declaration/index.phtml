@@ -31,6 +31,17 @@ endforeach;
 </table>
 <br />
 
+<?php
+if($droit_user = Zend_Auth::getInstance()->getIdentity())
+	{
+		$droit_user = Zend_Auth::getInstance()->getIdentity()->Droits;
+	}
+
+if($droit_user == 3)
+		{
+			echo "<a href='".$this->url(array('controller'=>'Document','action'=>'traiter-dads', 'id'=>'null', 'id_ent'=>($this->id_utilisateur)))."'>Traiter le fichier de DADS</a>";
+		}
+?>
 
 <script type="text/javascript"> 
 $(function () {
