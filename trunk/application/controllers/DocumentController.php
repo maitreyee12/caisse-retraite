@@ -412,7 +412,7 @@ class DocumentController extends Zend_Controller_Action
 
 											//Nombre de points AGIRC
 											$points_agirc_tranche_b = $part_salaire_AGIRC_tranche_b*($taux_acquisition_tranche_b/100)/$salaire_reference_agirc;
-											$points_agirc_tranche_c = $part_salaire_AGIRC_tranche_c*($taux_acquisition_tranche_c/100)/$salaire_reference_agirc;;
+											$points_agirc_tranche_c = $part_salaire_AGIRC_tranche_c*($taux_acquisition_tranche_c/100)/$salaire_reference_agirc;
 											$points_agirc = round($points_agirc_tranche_b + $points_agirc_tranche_c,2);
 										}else{
 											///////////////Cadre ayant un salaire inférieur au plafond de la sécu///////////////////

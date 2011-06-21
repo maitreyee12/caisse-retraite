@@ -24,13 +24,14 @@ class Application_Model_DbTable_Periode extends Zend_Db_Table_Abstract
 				);
 			$this->insert($data);
 		}
-public function getAnneePlanRetraite($id_carriere)
+	public function getAnneePlanRetraite($id_carriere)
 	{
 		//Récupération de la date du début de carrière et fin de carrière
 		$row =  $this->fetchRow($this->select(array('MIN(Date_debut)'))->where('Id_carriere = ?', $id_carriere)->order('Date_debut ASC'));
 		$date_debut = $row->Date_debut;
 		$row =  $this->fetchRow($this->select(array('MAX(Date_fin)'))->where('Id_carriere = ?', $id_carriere)->order('Date_fin DESC'));
 		$date_fin = $row->Date_fin;
+		
 		
 		//Boucle debut while(date début< date fin dernière période)
 		while($date_debut < $date_fin){
@@ -55,14 +56,14 @@ public function getAnneePlanRetraite($id_carriere)
 			$salaire_annee = 0;
 			foreach($row as $periode) :
 				
-				if($date_debut_temp <= $periode->Date_debut && $periode->Date_debut < $date_fin_temp)
+				if($date_debut_temp <= $periode->Date_debut && $periode->Date_debut <= $date_fin_temp)
 				{
 					$salaire = floatval($periode->Salaire_percu);
 					$nombre_jour = round((strtotime($date_fin_temp)-strtotime($periode->Date_debut))/(60*60*24));
 					$prorata = 100*$nombre_jour/365;	
 					//echo "</br>Cas 1 = Salaire de :".$salaire." pour ".$nombre_jour." jours avec un prorata de ".$prorata;
 						
-				}elseif ($date_debut_temp <= $periode->Date_fin && $periode->Date_fin < $date_fin_temp)
+				}elseif ($date_debut_temp <= $periode->Date_fin && $periode->Date_fin <= $date_fin_temp)
 				{
 					$salaire = floatval($periode->Salaire_percu);
 					$nombre_jour = round((strtotime($periode->Date_fin)-strtotime($date_debut_temp))/(60*60*24));

@@ -141,7 +141,7 @@ class CarriereController extends Zend_Controller_Action
             	foreach($annees as $keys => $value):
             		$salaire_total +=$value;
             	endforeach;
-            	$salaire_moyen = $salaire_total/5/12;
+            	$salaire_moyen = $salaire_total/25/12;
             	
             	$this->view->salaire_moyen = round($salaire_moyen,2);
             	if($salaire_moyen <= $plafond_secu){
