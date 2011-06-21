@@ -37,8 +37,7 @@ body{
 
 #main {
 	width: 1016px;
-	margin-left: 0px;
-	margin: 0px auto;
+	margin:auto;
 }
 
 
@@ -193,6 +192,7 @@ float: left;
 width: 695px;
 margin-left: 0px;
 padding: 0px 0px 0px 0px;
+text-align:left;
 }
 
 .tit_bot { background: url(../images/images_template/right_tit_bot.jpg) left top no-repeat;
