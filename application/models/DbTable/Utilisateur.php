@@ -60,11 +60,11 @@ class Application_Model_DbTable_Utilisateur extends Zend_Db_Table_Abstract
 		{
 			return $this->fetchRow($this->select()->where('Login  = ?', $name));
 		}
-public function editDroit($Id_utilisateur, $Droits){
+	public function editDroit($Id_utilisateur, $Droits){
 			$data = array(
-				'Droits' => $Droits	
+				'Droits' => $Droits,
 				);
-			$this->update($data,'Id_utilisateur = ?'.$Id_utilisateur);
+			$this->update($data,'Id_utilisateur = '. (int)$Id_utilisateur);
 	}
 
 		

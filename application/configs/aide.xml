@@ -107,8 +107,8 @@
 		<documentVerouille>
 		</documentVerouille>
 		<index></index>
-		<traiterDads>
-		</traiterDads>
+		<traiter-dads>Entrez l'Id de la DADS à intégrer puis validez le formulaire
+		</traiter-dads>
 	</Document>
 	<Entreprise>
 		<afficherEntreprise>
